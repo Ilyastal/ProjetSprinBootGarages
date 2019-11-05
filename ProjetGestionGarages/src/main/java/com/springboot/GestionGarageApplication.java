@@ -1,13 +1,13 @@
-package com.garage;
+package com.springboot;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class ProjetGestionGaragesApplication {
+public class GestionGarageApplication {
 
 	public static void main(String[] args) {
-		SpringApplication.run(ProjetGestionGaragesApplication.class, args);
+		SpringApplication.run(GestionGarageApplication.class, args);
 	}
 
 }
