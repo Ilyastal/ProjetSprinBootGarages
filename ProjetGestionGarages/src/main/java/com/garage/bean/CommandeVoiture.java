@@ -10,7 +10,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
-import javax.persistence.OneToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
@@ -40,9 +40,11 @@ public class CommandeVoiture {
 	
 	
 	
-	@OneToOne(fetch = FetchType.EAGER)
+	@OneToMany(fetch = FetchType.EAGER)
 	@JoinColumn(name = "devis_id")
 	private Devis devis;
+	
+	
 	
 	@Temporal(TemporalType.TIMESTAMP)
 	private Date dateCommande;
