@@ -43,12 +43,7 @@ public class Utilisateur {
 	 * 
 	 */
 	private String user;
-
-	/**
-	 * 
-	 */
 	private String motpass;
-
 	/**
 	 * 
 	 */
@@ -91,14 +86,6 @@ public class Utilisateur {
 		this.user = user;
 	}
 
-	public String getMotpass() {
-		return motpass;
-	}
-
-	public void setMotpass(String motpass) {
-		this.motpass = motpass;
-	}
-
 	public Boolean getDesactiverUser() {
 		return desactiverUser;
 	}
@@ -113,6 +100,14 @@ public class Utilisateur {
 
 	public void setDesactiverAngular(Boolean desactiverAngular) {
 		this.desactiverAngular = desactiverAngular;
+	}
+
+	public String getMotpass() {
+		return motpass;
+	}
+
+	public void setMotpass(String motpass) {
+		this.motpass = motpass;
 	}
 
 
