@@ -9,6 +9,7 @@ import com.garage.bean.Utilisateur;
  */
 public interface IServiceUtilisateur {
 	public List<Utilisateur> rechercheUtilisateur();
+	public Utilisateur rechercherUtilisateurId(final int id);
 	public void creerUtilisateur(final Utilisateur user);
 	public void modifierUtilisateur(final Utilisateur user);
 	public void supprimerUtilisateur(final Utilisateur user);

@@ -47,6 +47,11 @@ public class Utilisateur {
 	/**
 	 * 
 	 */
+	private String motpass;
+
+	/**
+	 * 
+	 */
 	private Boolean desactiverUser;
 
 	/**
@@ -84,6 +89,14 @@ public class Utilisateur {
 
 	public void setUser(String user) {
 		this.user = user;
+	}
+
+	public String getMotpass() {
+		return motpass;
+	}
+
+	public void setMotpass(String motpass) {
+		this.motpass = motpass;
 	}
 
 	public Boolean getDesactiverUser() {
