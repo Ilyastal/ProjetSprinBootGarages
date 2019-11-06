@@ -1,6 +1,7 @@
 package com.garage.bean;
 
 
+import java.util.Collection;
 import java.util.Date;
 
 import javax.persistence.Entity;
@@ -9,6 +10,8 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
@@ -35,13 +38,20 @@ public class Fiche {
 	private Integer id;
 
 	
-	@OneToOne(fetch = FetchType.EAGER)
+	@ManyToOne(fetch = FetchType.EAGER)
 	@JoinColumn(name = "Utilisateur_id")
 	private Utilisateur utilisateur;
 	
-	@OneToOne(fetch = FetchType.EAGER)
+	@ManyToOne(fetch = FetchType.EAGER)
 	@JoinColumn(name = "client_id")
 	private Client client;
+	
+	
+	@OneToMany(mappedBy="fiche")
+    private Collection<Tache> taches;
+	
+	@OneToOne(mappedBy="fiche")
+    private FactureEntretien factures;
 	/**
 	 * 
 	 */
@@ -118,6 +128,22 @@ public class Fiche {
 
 	public void setClient(Client client) {
 		this.client = client;
+	}
+
+	public Collection<Tache> getTaches() {
+		return taches;
+	}
+
+	public void setTaches(Collection<Tache> taches) {
+		this.taches = taches;
+	}
+
+	public FactureEntretien getFactures() {
+		return factures;
+	}
+
+	public void setFactures(FactureEntretien factures) {
+		this.factures = factures;
 	}
 
 

@@ -51,4 +51,10 @@ public class ServiceUtilisateur implements IServiceUtilisateur {
 		
 	}
 
+	@Override
+	public Utilisateur rechercherUtilisateurId(int id) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
 }

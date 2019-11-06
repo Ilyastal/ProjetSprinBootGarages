@@ -1,6 +1,8 @@
 package com.garage.bean;
 
 
+import java.util.Collection;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
@@ -8,6 +10,7 @@ import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToMany;
 import javax.persistence.Table;
 
 import com.garage.enums.Fonction;
@@ -31,6 +34,10 @@ public class Role {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer id;
+	
+	
+	@ManyToMany
+    private Collection<Utilisateur> users;
 
 	/**
 	 * 
@@ -61,6 +68,18 @@ public class Role {
 
 	public void setFonction(Fonction fonction) {
 		this.fonction = fonction;
+	}
+
+
+
+	public Collection<Utilisateur> getUsers() {
+		return users;
+	}
+
+
+
+	public void setUsers(Collection<Utilisateur> users) {
+		this.users = users;
 	}
 
 

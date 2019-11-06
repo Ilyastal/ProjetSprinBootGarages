@@ -7,6 +7,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 /**
@@ -28,6 +29,10 @@ public class Voiture {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer id;
+	
+	
+	@OneToMany(mappedBy="voiture")
+    private Collection<CommandeVoiture> commandes;
 
 	/**
 	 * 
@@ -178,6 +183,14 @@ public class Voiture {
 
 	public void setPhoto(String photo) {
 		this.photo = photo;
+	}
+
+	public Collection<CommandeVoiture> getCommandes() {
+		return commandes;
+	}
+
+	public void setCommandes(Collection<CommandeVoiture> commandes) {
+		this.commandes = commandes;
 	}
 
 

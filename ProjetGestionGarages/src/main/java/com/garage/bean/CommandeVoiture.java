@@ -1,6 +1,7 @@
 package com.garage.bean;
 
 
+import java.util.Collection;
 import java.util.Date;
 
 import javax.persistence.Entity;
@@ -38,11 +39,14 @@ public class CommandeVoiture {
 	@JoinColumn(name = "Utilisateur_id")
 	private Utilisateur utilisateur;
 	
+	@ManyToOne(fetch = FetchType.EAGER)
+	@JoinColumn(name = "voiture_id")
+	private Voiture voiture;
 	
 	
 	@OneToMany(fetch = FetchType.EAGER)
 	@JoinColumn(name = "devis_id")
-	private Devis devis;
+	private Collection<Devis> devis;
 	
 	
 	
@@ -114,16 +118,25 @@ public class CommandeVoiture {
 		this.utilisateur = utilisateur;
 	}
 
-	
+	public Voiture getVoiture() {
+		return voiture;
+	}
 
-	public Devis getDevis() {
+	public void setVoiture(Voiture voiture) {
+		this.voiture = voiture;
+	}
+
+	public Collection<Devis> getDevis() {
 		return devis;
 	}
 
-	public void setDevis(Devis devis) {
+	public void setDevis(Collection<Devis> devis) {
 		this.devis = devis;
 	}
 
+	
+
+	
 
 
 

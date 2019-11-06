@@ -1,6 +1,7 @@
 package com.garage.bean;
 
 
+import java.util.Collection;
 import java.util.Date;
 
 import javax.persistence.Column;
@@ -12,8 +13,8 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
-import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
@@ -44,13 +45,13 @@ public class Tache {
 	
 	@OneToMany(fetch = FetchType.EAGER)
 	@JoinColumn(name = "piece_id")
-	private Piece piece;
+	private Collection<Piece> piece;
 	
-	@OneToOne(fetch = FetchType.EAGER)
+	@ManyToOne(fetch = FetchType.EAGER)
 	@JoinColumn(name = "Utilisateur_id")
 	private Utilisateur utilisateur;
 	
-	@OneToOne(fetch = FetchType.EAGER)
+	@ManyToOne(fetch = FetchType.EAGER)
 	@JoinColumn(name = "fiche_id")
 	private Fiche fiche;
 	/**
@@ -150,11 +151,13 @@ public class Tache {
 		this.dateCreation = dateCreation;
 	}
 
-	public Piece getPiece() {
+
+
+	public Collection<Piece> getPiece() {
 		return piece;
 	}
 
-	public void setPiece(Piece piece) {
+	public void setPiece(Collection<Piece> piece) {
 		this.piece = piece;
 	}
 

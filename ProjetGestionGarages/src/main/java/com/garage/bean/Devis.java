@@ -1,6 +1,7 @@
 package com.garage.bean;
 
 
+import java.util.Collection;
 import java.util.Date;
 
 import javax.persistence.Entity;
@@ -9,6 +10,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
@@ -30,17 +32,20 @@ public class Devis {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer id;
 	
-	@OneToOne(fetch = FetchType.EAGER)
+	@ManyToOne(fetch = FetchType.EAGER)
 	@JoinColumn(name = "Utilisateur_id")
 	private Utilisateur utilisateur;
 	
 	@OneToMany(fetch = FetchType.EAGER)
 	@JoinColumn(name = "voiture_id")
-	private Voiture voiture;
+	private Collection<Voiture> voiture;
 	
-	@OneToOne(fetch = FetchType.EAGER)
+	@ManyToOne(fetch = FetchType.EAGER)
 	@JoinColumn(name = "client_id")
 	private Client client;
+	
+	@OneToOne(mappedBy="devis")
+    private FactureVoiture factures;
 	
 	/**
 	 * 
@@ -163,11 +168,13 @@ public class Devis {
 		this.utilisateur = utilisateur;
 	}
 
-	public Voiture getVoiture() {
+	
+
+	public Collection<Voiture> getVoiture() {
 		return voiture;
 	}
 
-	public void setVoiture(Voiture voiture) {
+	public void setVoiture(Collection<Voiture> voiture) {
 		this.voiture = voiture;
 	}
 
@@ -177,6 +184,14 @@ public class Devis {
 
 	public void setClient(Client client) {
 		this.client = client;
+	}
+
+	public FactureVoiture getFactures() {
+		return factures;
+	}
+
+	public void setFactures(FactureVoiture factures) {
+		this.factures = factures;
 	}
 
 

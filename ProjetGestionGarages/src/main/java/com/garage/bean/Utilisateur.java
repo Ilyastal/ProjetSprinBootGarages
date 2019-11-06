@@ -1,12 +1,14 @@
 package com.garage.bean;
 
 
-import java.util.*;
+import java.util.Collection;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToMany;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 /**
@@ -28,7 +30,52 @@ public class Utilisateur {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer id;
+	@OneToMany(mappedBy="utilisateur")
+    private Collection<CommandePiece> commandes;
+	
+	@OneToMany(mappedBy="utilisateur")
+    private Collection<CommandeVoiture> voitures;
+	
+	@OneToMany(mappedBy="utilisateur")
+    private Collection<Devis> devis;
+	
+	@OneToMany(mappedBy="utilisateur")
+    private Collection<FactureEntretien> factures;
+	
+	
+	@OneToMany(mappedBy="utilisateur")
+    private Collection<Fiche> fiches;
+	
+	@OneToMany(mappedBy="utilisateur")
+    private Collection<Tache> taches;
+	
+	public Collection<Devis> getDevis() {
+		return devis;
+	}
 
+	public void setDevis(Collection<Devis> devis) {
+		this.devis = devis;
+	}
+
+	public Collection<CommandePiece> getCommandes() {
+		return commandes;
+	}
+
+	public void setCommandes(Collection<CommandePiece> commandes) {
+		this.commandes = commandes;
+	}
+
+	public Collection<CommandeVoiture> getVoitures() {
+		return voitures;
+	}
+
+	public void setVoitures(Collection<CommandeVoiture> voitures) {
+		this.voitures = voitures;
+	}
+
+	@ManyToMany
+    private Collection<Role> roles;
+	
 	/**
 	 * 
 	 */
@@ -108,6 +155,38 @@ public class Utilisateur {
 
 	public void setMotpass(String motpass) {
 		this.motpass = motpass;
+	}
+
+	public Collection<Role> getRoles() {
+		return roles;
+	}
+
+	public void setRoles(Collection<Role> roles) {
+		this.roles = roles;
+	}
+
+	public Collection<FactureEntretien> getFactures() {
+		return factures;
+	}
+
+	public void setFactures(Collection<FactureEntretien> factures) {
+		this.factures = factures;
+	}
+
+	public Collection<Fiche> getFiches() {
+		return fiches;
+	}
+
+	public void setFiches(Collection<Fiche> fiches) {
+		this.fiches = fiches;
+	}
+
+	public Collection<Tache> getTaches() {
+		return taches;
+	}
+
+	public void setTaches(Collection<Tache> taches) {
+		this.taches = taches;
 	}
 
 

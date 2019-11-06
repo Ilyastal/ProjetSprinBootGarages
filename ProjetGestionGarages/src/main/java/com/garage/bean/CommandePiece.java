@@ -1,6 +1,7 @@
 package com.garage.bean;
 
 
+import java.util.Collection;
 import java.util.Date;
 
 import javax.persistence.Entity;
@@ -36,7 +37,7 @@ public class CommandePiece {
 	 */
 	@OneToMany(fetch = FetchType.EAGER)
 	@JoinColumn(name = "piece_id")
-	private Piece piece;
+	private Collection<Piece> pieces;
 	
 	@ManyToOne(fetch = FetchType.EAGER)
 	@JoinColumn(name = "Utilisateur_id")
@@ -114,12 +115,14 @@ public class CommandePiece {
 		this.quantite = quantite;
 	}
 
-	public Piece getPiece() {
-		return piece;
+	
+
+	public Collection<Piece> getPieces() {
+		return pieces;
 	}
 
-	public void setPiece(Piece piece) {
-		this.piece = piece;
+	public void setPieces(Collection<Piece> pieces) {
+		this.pieces = pieces;
 	}
 
 	public Utilisateur getUtilisateur() {
