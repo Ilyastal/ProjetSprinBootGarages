@@ -1,6 +1,8 @@
 package com.garage.iservice;
 
-import java.util.*;
+import java.util.List;
+
+import com.garage.bean.Devis;
 
 import com.garage.bean.Devis;
 

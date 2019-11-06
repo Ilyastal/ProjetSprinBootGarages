@@ -1,6 +1,8 @@
 package com.garage.iservice;
 
-import java.util.*;
+import java.util.List;
+
+import com.garage.bean.Client;
 
 import com.garage.bean.Client;
 

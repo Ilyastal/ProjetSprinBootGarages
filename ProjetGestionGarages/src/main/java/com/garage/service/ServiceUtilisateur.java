@@ -1,6 +1,6 @@
 package com.garage.service;
 
-import java.util.*;
+import java.util.List;
 
 import javax.transaction.Transactional;
 
@@ -21,6 +21,7 @@ public class ServiceUtilisateur implements IServiceUtilisateur {
 	 * Default constructor
 	 */
 	public ServiceUtilisateur() {
+		
 	}
 
 	@Transactional
@@ -54,7 +55,7 @@ public class ServiceUtilisateur implements IServiceUtilisateur {
 	@Transactional
 	@Override
 	public void loginUser(String user, String motpasse) {
-		// TODO Auto-generated method stub
+		
 		
 	}
 
@@ -64,5 +65,4 @@ public class ServiceUtilisateur implements IServiceUtilisateur {
 		// TODO Auto-generated method stub
 		return userDao.findById(id).get();
 	}
-
 }

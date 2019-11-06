@@ -1,12 +1,13 @@
 package com.garage.bean;
 
-
-import java.util.*;
+import java.util.List;
 
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 /**
@@ -15,75 +16,38 @@ import javax.persistence.Table;
 @Entity
 @Table(name = "voiture")
 public class Voiture {
-
-	/**
-	 * Default constructor
-	 */
-	public Voiture() {
-	}
-
-	/**
-	 * 
-	 */
+	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer id;
-
-	/**
-	 * 
-	 */
+	
 	private String categorie;
-
-	/**
-	 * 
-	 */
+	
 	private String marque;
-
-	/**
-	 * 
-	 */
-	private String model;
-
-	/**
-	 * 
-	 */
+	
+	private String modele;
+	
 	private Integer annee;
-
-	/**
-	 * 
-	 */
+	
 	private Integer porte;
-
-	/**
-	 * 
-	 */
+	
 	private String energie;
-
-	/**
-	 * 
-	 */
+	
 	private Integer co2;
-
-	/**
-	 * 
-	 */
+	
 	private Double prixUnitaire;
-
-	/**
-	 * 
-	 */
+	
 	private String couleur;
-
-	/**
-	 * 
-	 */
+	
 	private Integer quantite;
-
-	/**
-	 * 
-	 */
+	
 	private String photo;
-
+	
+	
+	@OneToMany(mappedBy="voiture", fetch = FetchType.EAGER)
+    private List<CommandeVoiture> commandes;
+	
+	
 	public Integer getId() {
 		return id;
 	}
@@ -109,11 +73,11 @@ public class Voiture {
 	}
 
 	public String getModel() {
-		return model;
+		return modele;
 	}
 
-	public void setModel(String model) {
-		this.model = model;
+	public void setModel(String modele) {
+		this.modele = modele;
 	}
 
 	public Integer getAnnee() {
@@ -179,6 +143,13 @@ public class Voiture {
 	public void setPhoto(String photo) {
 		this.photo = photo;
 	}
+	
+	
+	public List<CommandeVoiture> getCommandes() {
+		return commandes;
+	}
 
-
+	public void setCommandes(List<CommandeVoiture> commandes) {
+		this.commandes = commandes;
+	}
 }

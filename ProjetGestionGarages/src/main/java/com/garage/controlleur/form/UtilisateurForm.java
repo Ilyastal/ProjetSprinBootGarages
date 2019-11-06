@@ -1,7 +1,5 @@
 package com.garage.controlleur.form;
 
-import java.util.*;
-
 import javax.validation.constraints.NotEmpty;
 
 /**

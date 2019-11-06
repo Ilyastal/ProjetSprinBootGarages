@@ -1,0 +1,165 @@
+html {
+    height: 100%;
+    font-size: 100%;
+    background-color: #FFF6CC;
+}
+
+.box-shadow {
+    box-shadow: 0 0 5px 0 #544600;
+}
+
+header {
+    position: fixed;
+    width: 100%;
+    height: 70px;
+    background-image: linear-gradient(#322800, #000);
+    color: white;
+    z-index: 999;
+}
+
+header img {
+    position: absolute;
+    padding: 10px;
+}
+
+header #img-left { left: 0; }
+
+header #img-right { right: 0; }
+
+header span {
+    position: absolute;
+    font-size: 1.5rem;
+    line-height: 70px;
+}
+
+header #span-left { left: 80px; }
+
+header #span-right { right: 80px; }
+
+header ul {
+    position: absolute;
+    top: 70px;
+    line-height: 48px;
+    height: 50px;
+    margin: 0;
+    padding: 0;
+    border-style: solid;
+    border-color: #544600;
+    border-width: 0 0 2px 0;
+    font-size: 0;
+    box-shadow: 0 0 5px 0 #544600;
+}
+
+header li {
+    background-color: #FFDE4C;
+    text-align: center;
+    font-size: 1.3rem;
+    display: inline-block;
+    width: 150px;
+    margin: 0;
+    padding: 0;
+    border-style: solid;
+    border-color: #544600;
+    border-width: 0 2px 0 0;
+    transition: background-color 0.25s;
+}
+
+header li:hover {
+    background-color: #FFEC99;
+}
+
+section {
+    background-color: #FFF6CC;
+}
+
+a {
+    color: #544600;
+}
+
+button {
+    margin: 5px 0;
+}
+
+.btn-normal {
+    background-color: #FF0;
+}
+
+.container {
+    padding-top: 150px;
+}
+
+.container {
+    margin-bottom: 50px;
+}
+
+.fiche {
+    background-color: #FFF;
+    border: #544600 solid 2px;
+    margin-top: 5px;
+}
+
+.fiche span {
+    margin: auto;
+    border-left: #544600 solid 2px;
+    border-right: #544600 solid 2px;
+}
+
+.fiche span:first-child, span:last-child {
+    width: 16.669%;
+    text-align: center;
+    border: none;
+}
+
+.tache {
+    background-color: #FFF;
+    border: #544600 solid 2px;
+    border-top: none;
+}
+
+.tache span {
+    margin: auto;
+    border-left: #544600 solid 2px;
+    border-right: #544600 solid 2px;
+}
+
+.tache span:first-child, span:last-child {
+    text-align: center;
+    border: none;
+}
+
+.block-container {
+    padding: 20px;
+    background-color: white;
+    box-shadow: 0 0 5px 0 black;
+    border-radius: 20px;
+}
+
+.h-left {
+    left: 0;
+}
+
+.h-right {
+    position: absolute;
+    right: 0;
+}
+
+.stock {
+    font-size: 1.2rem;
+    border: #544600 solid 2px;
+}
+
+.thead {
+    font-weight: bold;
+    font-size: 1.2rem;
+    border: #544600 solid 2px;
+}
+
+.user span {
+    text-align: center;
+    margin: auto;
+}
+
+.line {
+    border: #544600 solid 2px;
+    border-top: none;
+}
