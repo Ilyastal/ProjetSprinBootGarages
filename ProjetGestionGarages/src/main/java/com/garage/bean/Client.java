@@ -2,6 +2,8 @@ package com.garage.bean;
 
 import java.util.List;
 
+import java.util.Collection;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
@@ -110,6 +112,30 @@ public class Client {
 	
 	public void setTelephone(String telephone) {
 		this.telephone = telephone;
+	}
+
+	public Collection<Devis> getDevis() {
+		return devis;
+	}
+
+	public void setDevis(Collection<Devis> devis) {
+		this.devis = devis;
+	}
+
+	public Collection<FactureEntretien> getFactures() {
+		return factures;
+	}
+
+	public void setFactures(Collection<FactureEntretien> factures) {
+		this.factures = factures;
+	}
+
+	public Collection<Fiche> getFiches() {
+		return fiches;
+	}
+
+	public void setFiches(Collection<Fiche> fiches) {
+		this.fiches = fiches;
 	}
 	
 	public Genre getSexe() {

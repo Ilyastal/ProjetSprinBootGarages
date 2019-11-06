@@ -3,7 +3,7 @@ package com.garage.service;
 /**
  * 
  */
-public class ServiceRole {
+public class ServiceRole implements IServiceRole {
 
 	/**
 	 * Default constructor

@@ -22,7 +22,6 @@ public class Devis {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer id;
-
 	@Temporal(TemporalType.TIMESTAMP)
 	private Date dateDevis;
 	
@@ -147,11 +146,13 @@ public class Devis {
 		this.utilisateur = utilisateur;
 	}
 
-	public Voiture getVoiture() {
+	
+
+	public Collection<Voiture> getVoiture() {
 		return voiture;
 	}
 
-	public void setVoiture(Voiture voiture) {
+	public void setVoiture(Collection<Voiture> voiture) {
 		this.voiture = voiture;
 	}
 	
