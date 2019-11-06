@@ -1,71 +1,50 @@
 package com.garage.bean;
 
-
 import java.util.Date;
 
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
-import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
-/**
- * 
- */
 @Entity
-@Table(name = "commandevoiture")
+@Table(name = "commande_voiture")
 public class CommandeVoiture {
-
-	 
-
-	/**
-	 * 
-	 */
+	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer id;
-
-	/**
-	 * 
-	 */
-	@ManyToOne(fetch = FetchType.EAGER)
-	@JoinColumn(name = "Utilisateur_id")
+	
+	@Temporal(TemporalType.TIMESTAMP)
+	private Date dateCommande;
+	
+	@Temporal(TemporalType.TIMESTAMP)
+	private Date dateReception;
+	
+	private Integer quantite;
+	
+	@Temporal(TemporalType.TIMESTAMP)
+	private Date dateCloture;
+	
+	
+	@ManyToOne
+	@JoinColumn(name = "utilisateur_id")
 	private Utilisateur utilisateur;
 	
+	@ManyToOne
+	@JoinColumn(name = "voiture_id")
+	private Voiture voiture;
 	
-	
-	@OneToMany(fetch = FetchType.EAGER)
+	@ManyToOne
 	@JoinColumn(name = "devis_id")
 	private Devis devis;
 	
 	
-	
-	@Temporal(TemporalType.TIMESTAMP)
-	private Date dateCommande;
-
-	/**
-	 * 
-	 */
-	@Temporal(TemporalType.TIMESTAMP)
-	private Date dateReception;
-
-	/**
-	 * 
-	 */
-	private Integer quantite;
-
-	/**
-	 * 
-	 */
-	@Temporal(TemporalType.TIMESTAMP)
-	private Date dateCloture;
-
 	public Integer getId() {
 		return id;
 	}
@@ -105,6 +84,7 @@ public class CommandeVoiture {
 	public void setDateCloture(Date dateCloture) {
 		this.dateCloture = dateCloture;
 	}
+	
 
 	public Utilisateur getUtilisateur() {
 		return utilisateur;
@@ -114,8 +94,14 @@ public class CommandeVoiture {
 		this.utilisateur = utilisateur;
 	}
 
-	
+	public Voiture getVoiture() {
+		return voiture;
+	}
 
+	public void setVoiture(Voiture voiture) {
+		this.voiture = voiture;
+	}
+	
 	public Devis getDevis() {
 		return devis;
 	}
@@ -123,9 +109,4 @@ public class CommandeVoiture {
 	public void setDevis(Devis devis) {
 		this.devis = devis;
 	}
-
-
-
-
-
 }

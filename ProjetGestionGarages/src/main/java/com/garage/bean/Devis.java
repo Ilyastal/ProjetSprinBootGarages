@@ -1,7 +1,7 @@
 package com.garage.bean;
 
-
 import java.util.Date;
+import java.util.List;
 
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -9,80 +9,55 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
-import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
-/**
- * 
- */
 @Entity
 @Table(name = "devis")
 public class Devis {
-
-
-	/**
-	 * 
-	 */
+	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer id;
+
+	@Temporal(TemporalType.TIMESTAMP)
+	private Date dateDevis;
 	
-	@OneToOne(fetch = FetchType.EAGER)
-	@JoinColumn(name = "Utilisateur_id")
-	private Utilisateur utilisateur;
+	private String description;
 	
-	@OneToMany(fetch = FetchType.EAGER)
-	@JoinColumn(name = "voiture_id")
-	private Voiture voiture;
+	private Boolean validationDevis;
 	
-	@OneToOne(fetch = FetchType.EAGER)
+	private Double prixHt;
+	
+	private Double tva;
+	
+	private Integer quantite;
+	
+	private Boolean refusDevis;
+	
+	private Boolean annulationDevis;
+	
+	
+	@ManyToOne
 	@JoinColumn(name = "client_id")
 	private Client client;
 	
-	/**
-	 * 
-	 */
-	@Temporal(TemporalType.TIMESTAMP)
-	private Date dateDevis;
+	@ManyToOne
+	@JoinColumn(name = "utilisateur_id")
+	private Utilisateur utilisateur;
+	
+	@ManyToOne
+	@JoinColumn(name = "voiture_id")
+	private Voiture voiture;
+	
 
-	/**
-	 * 
-	 */
-	private String description;
-
-	/**
-	 * 
-	 */
-	private Boolean validationDevis;
-
-	/**
-	 * 
-	 */
-	private Double prixHT;
-
-	/**
-	 * 
-	 */
-	private Double tva;
-
-	/**
-	 * 
-	 */
-	private Integer quantite;
-
-	/**
-	 * 
-	 */
-	private Boolean refusDevis;
-
-	/**
-	 * 
-	 */
-	private Boolean annulationDevis;
-
+	@OneToMany(mappedBy = "devis", fetch = FetchType.EAGER)
+	private List<CommandeVoiture> commandesVoiture;
+	
+	
 	public Integer getId() {
 		return id;
 	}
@@ -115,12 +90,12 @@ public class Devis {
 		this.validationDevis = validationDevis;
 	}
 
-	public Double getPrixHT() {
-		return prixHT;
+	public Double getPrixHt() {
+		return prixHt;
 	}
 
-	public void setPrixHT(Double prixHT) {
-		this.prixHT = prixHT;
+	public void setPrixHt(Double prixHt) {
+		this.prixHt = prixHt;
 	}
 
 	public Double getTva() {
@@ -154,6 +129,15 @@ public class Devis {
 	public void setAnnulationDevis(Boolean annulationDevis) {
 		this.annulationDevis = annulationDevis;
 	}
+	
+	
+	public Client getClient() {
+		return client;
+	}
+	
+	public void setClient(Client client) {
+		this.client = client;
+	}
 
 	public Utilisateur getUtilisateur() {
 		return utilisateur;
@@ -170,17 +154,13 @@ public class Devis {
 	public void setVoiture(Voiture voiture) {
 		this.voiture = voiture;
 	}
+	
 
-	public Client getClient() {
-		return client;
+	public List<CommandeVoiture> getCommandesVoiture() {
+		return commandesVoiture;
 	}
 
-	public void setClient(Client client) {
-		this.client = client;
+	public void setCommandesVoiture(List<CommandeVoiture> commandesVoiture) {
+		this.commandesVoiture = commandesVoiture;
 	}
-
-
-
-
-
 }

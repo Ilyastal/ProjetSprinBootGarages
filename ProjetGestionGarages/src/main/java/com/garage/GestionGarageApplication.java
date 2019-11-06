@@ -1,4 +1,4 @@
-package com.springboot;
+package com.garage;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;

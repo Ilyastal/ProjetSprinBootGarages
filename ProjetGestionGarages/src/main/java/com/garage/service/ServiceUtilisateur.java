@@ -1,6 +1,6 @@
 package com.garage.service;
 
-import java.util.*;
+import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -19,12 +19,12 @@ public class ServiceUtilisateur implements IServiceUtilisateur {
 	 * Default constructor
 	 */
 	public ServiceUtilisateur() {
+		
 	}
 
 	@Override
 	public List<Utilisateur> rechercheUtilisateur() {
-		// TODO Auto-generated method stub
-		return null;
+		return this.userDao.findAll();
 	}
 
 	@Override
@@ -49,6 +49,12 @@ public class ServiceUtilisateur implements IServiceUtilisateur {
 	public void loginUser(String user, String motpasse) {
 		// TODO Auto-generated method stub
 		
+	}
+
+	@Override
+	public Utilisateur rechercherUtilisateurId(int id) {
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 }
