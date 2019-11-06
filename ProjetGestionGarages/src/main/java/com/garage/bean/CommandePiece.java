@@ -91,14 +91,12 @@ public class CommandePiece {
 	}
 	
 
-	
-
-	public Collection<Piece> getPieces() {
-		return pieces;
+	public Piece getPiece() {
+		return piece;
 	}
 
-	public void setPieces(Collection<Piece> pieces) {
-		this.pieces = pieces;
+	public void setPiece(Piece piece) {
+		this.piece = piece;
 	}
 
 	public Utilisateur getUtilisateur() {

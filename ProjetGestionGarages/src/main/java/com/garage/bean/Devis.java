@@ -129,11 +129,11 @@ public class Devis {
 		this.annulationDevis = annulationDevis;
 	}
 	
-	
+
 	public Client getClient() {
 		return client;
 	}
-	
+
 	public void setClient(Client client) {
 		this.client = client;
 	}
@@ -146,13 +146,11 @@ public class Devis {
 		this.utilisateur = utilisateur;
 	}
 
-	
-
-	public Collection<Voiture> getVoiture() {
+	public Voiture getVoiture() {
 		return voiture;
 	}
 
-	public void setVoiture(Collection<Voiture> voiture) {
+	public void setVoiture(Voiture voiture) {
 		this.voiture = voiture;
 	}
 	

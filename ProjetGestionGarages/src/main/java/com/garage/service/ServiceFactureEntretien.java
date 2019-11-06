@@ -1,5 +1,10 @@
 package com.garage.service;
 
+import java.util.List;
+
+import com.garage.bean.FactureEntretien;
+import com.garage.iservice.IServiceFactureEntretien;
+
 /**
  * 
  */

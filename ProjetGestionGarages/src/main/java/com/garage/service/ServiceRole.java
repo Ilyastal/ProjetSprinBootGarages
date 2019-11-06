@@ -1,5 +1,7 @@
 package com.garage.service;
 
+import com.garage.iservice.IServiceRole;
+
 /**
  * 
  */

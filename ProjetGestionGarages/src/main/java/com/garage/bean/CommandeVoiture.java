@@ -106,7 +106,7 @@ public class CommandeVoiture {
 		return devis;
 	}
 
-	public void setDevis(Collection<Devis> devis) {
+	public void setDevis(Devis devis) {
 		this.devis = devis;
 	}
 }
