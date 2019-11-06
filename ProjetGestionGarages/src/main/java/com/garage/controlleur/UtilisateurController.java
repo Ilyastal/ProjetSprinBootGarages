@@ -26,14 +26,14 @@ public class UtilisateurController {
 	@Autowired
 	private IServiceUtilisateur serviceutilisateur;
 	
-	@GetMapping(value = "/afficherUser")
+	@GetMapping("/afficherUser")
 	public String Afficher(Model model) {
 		final List<Utilisateur> luti = serviceutilisateur.rechercheUtilisateur();
 		model.addAttribute("listeUser", luti); //attribut du fichier html
-		return "user"; //correspond au fichier html
+		return "listeUser"; //correspond au fichier html
 	}
 	
-	@GetMapping(value = "/creerUser")
+	@GetMapping("/creerUser")
 	public String creerUtilisateur(Model model) {
 		final List<Utilisateur> luti = serviceutilisateur.rechercheUtilisateur();
 		model.addAttribute("listeUser", luti); //attribut du fichier html
