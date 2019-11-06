@@ -39,7 +39,7 @@ public class CommandePiece {
 	@JoinColumn(name = "piece_id")
 	private Collection<Piece> pieces;
 	
-	@ManyToOne(fetch = FetchType.EAGER)
+	@ManyToOne
 	@JoinColumn(name = "Utilisateur_id")
 	private Utilisateur utilisateur;
 	

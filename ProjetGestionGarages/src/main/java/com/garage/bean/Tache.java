@@ -47,11 +47,11 @@ public class Tache {
 	@JoinColumn(name = "piece_id")
 	private Collection<Piece> piece;
 	
-	@ManyToOne(fetch = FetchType.EAGER)
+	@ManyToOne
 	@JoinColumn(name = "Utilisateur_id")
 	private Utilisateur utilisateur;
 	
-	@ManyToOne(fetch = FetchType.EAGER)
+	@ManyToOne
 	@JoinColumn(name = "fiche_id")
 	private Fiche fiche;
 	/**

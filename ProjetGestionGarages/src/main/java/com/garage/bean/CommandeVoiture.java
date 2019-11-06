@@ -35,11 +35,11 @@ public class CommandeVoiture {
 	/**
 	 * 
 	 */
-	@ManyToOne(fetch = FetchType.EAGER)
+	@ManyToOne
 	@JoinColumn(name = "Utilisateur_id")
 	private Utilisateur utilisateur;
 	
-	@ManyToOne(fetch = FetchType.EAGER)
+	@ManyToOne
 	@JoinColumn(name = "voiture_id")
 	private Voiture voiture;
 	

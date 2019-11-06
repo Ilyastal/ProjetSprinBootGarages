@@ -30,11 +30,11 @@ public class FactureEntretien {
 	private Integer id;
 
 	
-	@ManyToOne(fetch = FetchType.EAGER)
+	@ManyToOne
 	@JoinColumn(name = "Utilisateur_id")
 	private Utilisateur utilisateur;
 	
-	@ManyToOne(fetch = FetchType.EAGER)
+	@ManyToOne
 	@JoinColumn(name = "client_id")
 	private Client client;
 	

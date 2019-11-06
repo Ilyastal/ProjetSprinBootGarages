@@ -32,7 +32,7 @@ public class Devis {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer id;
 	
-	@ManyToOne(fetch = FetchType.EAGER)
+	@ManyToOne
 	@JoinColumn(name = "Utilisateur_id")
 	private Utilisateur utilisateur;
 	
@@ -40,7 +40,7 @@ public class Devis {
 	@JoinColumn(name = "voiture_id")
 	private Collection<Voiture> voiture;
 	
-	@ManyToOne(fetch = FetchType.EAGER)
+	@ManyToOne
 	@JoinColumn(name = "client_id")
 	private Client client;
 	
