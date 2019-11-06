@@ -47,7 +47,7 @@ public class ServiceUtilisateur implements IServiceUtilisateur {
 
 	@Override
 	public void loginUser(String user, String motpasse) {
-		// TODO Auto-generated method stub
+		
 		
 	}
 
