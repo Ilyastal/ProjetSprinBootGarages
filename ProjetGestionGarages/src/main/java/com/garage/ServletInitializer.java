@@ -1,4 +1,4 @@
-package com.springboot;
+package com.garage;
 
 import org.springframework.boot.builder.SpringApplicationBuilder;
 import org.springframework.boot.web.servlet.support.SpringBootServletInitializer;

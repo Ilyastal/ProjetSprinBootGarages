@@ -11,6 +11,6 @@ spring:
               format_sql: true
 
       datasource:
-           url: jdbc:mysql://localhost:3306/gestioneleves?useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC
+           url: jdbc:mysql://localhost:3306/gestiongarages?useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC
            username: root
-           password:
+           password: VLIK4392

@@ -1,72 +1,47 @@
 package com.garage.bean;
 
-
-import java.util.Collection;
 import java.util.Date;
 
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
-import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
-/**
- * 
- */
 @Entity
-@Table(name = "commandepiece")
+@Table(name = "commande_piece")
 public class CommandePiece {
 
-
-
-	/**
-	 * 
-	 */
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer id;
 
-	/**
-	 * 
-	 */
-	@OneToMany(fetch = FetchType.EAGER)
-	@JoinColumn(name = "piece_id")
-	private Collection<Piece> pieces;
-	
-	@ManyToOne
-	@JoinColumn(name = "Utilisateur_id")
-	private Utilisateur utilisateur;
-	
 	@Temporal(TemporalType.TIMESTAMP)
 	private Date dateCreation;
-
-	/**
-	 * 
-	 */
+	
 	@Temporal(TemporalType.TIMESTAMP)
 	private Date dateLivraison;
-
-	/**
-	 * 
-	 */
+	
 	private Boolean reception;
-
-	/**
-	 * 
-	 */
+	
 	private String description;
-
-	/**
-	 * 
-	 */
+	
 	private Integer quantite;
-
+	
+	
+	@ManyToOne
+	@JoinColumn(name = "piece_id")
+	private Piece piece;
+	
+	@ManyToOne
+	@JoinColumn(name = "utilisateur_id")
+	private Utilisateur utilisateur;
+	
+	
 	public Integer getId() {
 		return id;
 	}
@@ -114,15 +89,14 @@ public class CommandePiece {
 	public void setQuantite(Integer quantite) {
 		this.quantite = quantite;
 	}
-
 	
 
-	public Collection<Piece> getPieces() {
-		return pieces;
+	public Piece getPiece() {
+		return piece;
 	}
 
-	public void setPieces(Collection<Piece> pieces) {
-		this.pieces = pieces;
+	public void setPiece(Piece piece) {
+		this.piece = piece;
 	}
 
 	public Utilisateur getUtilisateur() {
@@ -132,9 +106,4 @@ public class CommandePiece {
 	public void setUtilisateur(Utilisateur utilisateur) {
 		this.utilisateur = utilisateur;
 	}
-
-	
-
-
-
 }

@@ -3,7 +3,6 @@ package com.garage.iservice;
 import java.util.List;
 
 import com.garage.bean.CommandePiece;
-import com.garage.bean.CommandeVoiture;
 
 /**
  * 

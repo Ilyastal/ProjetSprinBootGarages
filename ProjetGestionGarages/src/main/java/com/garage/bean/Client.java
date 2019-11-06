@@ -1,99 +1,67 @@
 package com.garage.bean;
 
-
-
-
-import java.util.Collection;
+import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
-import com.garage.enums.Genre;
+import org.hibernate.annotations.Fetch;
+import org.hibernate.annotations.FetchMode;
 
-/**
- * 
- */
+import com.garage.enums.Genre;
 
 @Entity
 @Table(name = "client")
 public class Client {
-
 	
-	/**
-	 * 
-	 */
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer id;
-
 	
-	@OneToMany(mappedBy="client")
-    private Collection<Devis> devis;
+	private String nom;
 	
+	private String prenom;
 	
-	@OneToMany(mappedBy="client")
-    private Collection<FactureEntretien> factures;
+	private String adresse;
 	
-	@OneToMany(mappedBy="utilisateur")
-    private Collection<Fiche> fiches;
-	/**
-	 * 
-	 */
+	private String codePostal;
+	
+	private String ville;
+	
+	private String telephone;
+	
 	@Enumerated(EnumType.STRING)
     @Column(columnDefinition = "ENUM('MADAME', 'MONSIEUR')")
 	private Genre sexe;
+	
 
-	/**
-	 * 
-	 */
-	private String nom;
+	@OneToMany(mappedBy="client", fetch = FetchType.EAGER)
+	@Fetch(value = FetchMode.SUBSELECT)
+    private List<Devis> devis;
 
-	/**
-	 * 
-	 */
-	private String prenom;
+	@OneToMany(mappedBy="client", fetch = FetchType.EAGER)
+	@Fetch(value = FetchMode.SUBSELECT)
+    private List<FactureEntretien> facturesEntretien;
 
-	/**
-	 * 
-	 */
-	private String adresse;
-
-	/**
-	 * 
-	 */
-	private Integer codePostal;
-
-	/**
-	 * 
-	 */
-	private String ville;
-
-	/**
-	 * 
-	 */
-	private String telephone;
-
+	@OneToMany(mappedBy="client", fetch = FetchType.EAGER)
+	@Fetch(value = FetchMode.SUBSELECT)
+    private List<Fiche> fiches;
+	
+	
 	public Integer getId() {
 		return id;
 	}
 
 	public void setId(Integer id) {
 		this.id = id;
-	}
-
-	public Genre getSexe() {
-		return sexe;
-	}
-
-	public void setSexe(Genre sexe) {
-		this.sexe = sexe;
 	}
 
 	public String getNom() {
@@ -120,11 +88,11 @@ public class Client {
 		this.adresse = adresse;
 	}
 
-	public Integer getCodePostal() {
+	public String getCodePostal() {
 		return codePostal;
 	}
 
-	public void setCodePostal(Integer codePostal) {
+	public void setCodePostal(String codePostal) {
 		this.codePostal = codePostal;
 	}
 
@@ -144,29 +112,36 @@ public class Client {
 		this.telephone = telephone;
 	}
 
-	public Collection<Devis> getDevis() {
+	public Genre getSexe() {
+		return sexe;
+	}
+
+	public void setSexe(Genre sexe) {
+		this.sexe = sexe;
+	}
+	
+	
+	public List<Devis> getDevis() {
 		return devis;
 	}
 
-	public void setDevis(Collection<Devis> devis) {
+	public void setDevis(List<Devis> devis) {
 		this.devis = devis;
 	}
 
-	public Collection<FactureEntretien> getFactures() {
-		return factures;
+	public List<FactureEntretien> getFacturesEntretien() {
+		return facturesEntretien;
 	}
 
-	public void setFactures(Collection<FactureEntretien> factures) {
-		this.factures = factures;
+	public void setFacturesEntretien(List<FactureEntretien> facturesEntretien) {
+		this.facturesEntretien = facturesEntretien;
 	}
 
-	public Collection<Fiche> getFiches() {
+	public List<Fiche> getFiches() {
 		return fiches;
 	}
 
-	public void setFiches(Collection<Fiche> fiches) {
+	public void setFiches(List<Fiche> fiches) {
 		this.fiches = fiches;
 	}
-	
-
 }

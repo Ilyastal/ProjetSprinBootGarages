@@ -1,65 +1,46 @@
 package com.garage.bean;
 
-
-import java.util.*;
+import java.util.List;
 
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
 import javax.persistence.OneToMany;
-import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
-/**
- * 
- */
+import org.hibernate.annotations.Fetch;
+import org.hibernate.annotations.FetchMode;
+
 @Entity
 @Table(name = "piece")
 public class Piece {
-
-	/**
-	 * Default constructor
-	 */
-	public Piece() {
-	}
-
-	/**
-	 * 
-	 */
+	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer id;
-
 	
-	
-	/**
-	 * 
-	 */
 	private String nom;
-
-	/**
-	 * 
-	 */
+	
 	private Double prixUnitaire;
-
-	/**
-	 * 
-	 */
+	
 	private Integer quantite;
-
-	/**
-	 * 
-	 */
+	
 	private String description;
-
-	/**
-	 * 
-	 */
+	
 	private String typeLot;
+	
 
+	@OneToMany(mappedBy = "piece", fetch = FetchType.EAGER)
+	@Fetch(value = FetchMode.SUBSELECT)
+	private List<CommandePiece> commandesPiece;
+
+	@OneToMany(mappedBy = "piece", fetch = FetchType.EAGER)
+	@Fetch(value = FetchMode.SUBSELECT)
+	private List<Tache> taches;
+	
+	
 	public Integer getId() {
 		return id;
 	}
@@ -107,7 +88,21 @@ public class Piece {
 	public void setTypeLot(String typeLot) {
 		this.typeLot = typeLot;
 	}
+	
+	
+	public List<CommandePiece> getCommandesPiece() {
+		return commandesPiece;
+	}
 
+	public void setCommandesPiece(List<CommandePiece> commandesPiece) {
+		this.commandesPiece = commandesPiece;
+	}
 
+	public List<Tache> getTaches() {
+		return taches;
+	}
 
+	public void setTaches(List<Tache> taches) {
+		this.taches = taches;
+	}
 }
