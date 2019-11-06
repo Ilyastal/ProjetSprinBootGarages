@@ -4,6 +4,8 @@ import java.util.List;
 
 import com.garage.bean.Client;
 
+import com.garage.bean.Client;
+
 /**
  * 
  */
@@ -13,5 +15,4 @@ public interface IServiceClient {
 	public void creerClient(final Client client);
 	public void modifierClient(final Client client);
 	public void supprimerClient(final Client client);
-	
 }

@@ -4,6 +4,8 @@ import java.util.List;
 
 import com.garage.bean.CommandeVoiture;
 
+import com.garage.bean.CommandeVoiture;
+
 /**
  * 
  */

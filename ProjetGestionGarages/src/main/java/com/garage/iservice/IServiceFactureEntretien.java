@@ -4,6 +4,8 @@ import java.util.List;
 
 import com.garage.bean.FactureEntretien;
 
+import com.garage.bean.FactureEntretien;
+
 /**
  * 
  */
@@ -13,5 +15,4 @@ public interface IServiceFactureEntretien {
 	public void creerFactureEntretien(final FactureEntretien facture);
 	public void modifierFactureEntretien(final FactureEntretien facture);
 	public void supprimerFactureEntretien(final FactureEntretien facture);
-
 }

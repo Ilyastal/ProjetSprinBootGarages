@@ -34,7 +34,7 @@ public class UtilisateurController {
 		model.addAttribute("action", "CreerUser");
 		if(model.containsAttribute("userForm") == false) {
 			UtilisateurForm userForm = new UtilisateurForm();
-//			userForm.setId(0);
+			userForm.setId(0);
 			model.addAttribute("userForm", userForm);
 		}
 		return "createUser"; //correspond au fichier html
