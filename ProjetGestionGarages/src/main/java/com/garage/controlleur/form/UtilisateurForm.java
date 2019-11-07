@@ -80,11 +80,11 @@ public class UtilisateurForm {
 		this.user = user;
 	}
 	
-	public String getMotpass() {
+	public String getPassword() {
 		return password;
 	}
 
-	public void setMotpass(String motpass) {
+	public void setPassword(String motpass) {
 		this.password = motpass;
 	}
 
