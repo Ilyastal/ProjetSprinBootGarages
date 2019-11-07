@@ -27,35 +27,30 @@ public class ServiceTache implements IServiceTache {
 	@Transactional
 	@Override
 	public List<Tache> rechercheTache() {
-		// TODO Auto-generated method stub
 		return tacheDao.findAll();
 	}
 
 	@Transactional
 	@Override
 	public Tache rechercherTacheId(int id) {
-		// TODO Auto-generated method stub
 		return tacheDao.findById(id).get();
 	}
 
 	@Transactional
 	@Override
 	public void creerTache(Tache tache) {
-		// TODO Auto-generated method stub
 		tacheDao.save(tache);
 	}
 
 	@Transactional
 	@Override
 	public void modifierTache(Tache tache) {
-		// TODO Auto-generated method stub
 		tacheDao.save(tache);
 	}
 
 	@Transactional
 	@Override
 	public void supprimerTache(Tache tache) {
-		// TODO Auto-generated method stub
 		tacheDao.deleteById(tache.getId());
 	}
 
