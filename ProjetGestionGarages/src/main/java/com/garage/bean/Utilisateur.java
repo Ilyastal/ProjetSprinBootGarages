@@ -7,15 +7,10 @@ import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
-import javax.persistence.OneToMany;
 import javax.persistence.Table;
-
-import org.hibernate.annotations.Fetch;
-import org.hibernate.annotations.FetchMode;
-
-import javax.persistence.JoinColumn;
 
 /**
  * 
@@ -40,31 +35,25 @@ public class Utilisateur {
 	
 	private Boolean desactiveAngular;
 	
-	
-	@OneToMany(mappedBy="utilisateur", fetch = FetchType.EAGER)
-	@Fetch(value = FetchMode.SUBSELECT)
+	/*
+	@OneToMany(mappedBy="utilisateurCP", fetch = FetchType.EAGER)
     private List<CommandePiece> commandesPiece;
 	
-	@OneToMany(mappedBy="utilisateur", fetch = FetchType.EAGER)
-	@Fetch(value = FetchMode.SUBSELECT)
+	@OneToMany(mappedBy="utilisateurV", fetch = FetchType.EAGER)
     private List<CommandeVoiture> voitures;
 	
-	@OneToMany(mappedBy="utilisateur", fetch = FetchType.EAGER)
-	@Fetch(value = FetchMode.SUBSELECT)
+	@OneToMany(mappedBy="utilisateurD", fetch = FetchType.EAGER)
     private List<Devis> devis;
 	
-	@OneToMany(mappedBy="utilisateur", fetch = FetchType.EAGER)
-	@Fetch(value = FetchMode.SUBSELECT)
+	@OneToMany(mappedBy="utilisateurFE", fetch = FetchType.EAGER)
     private List<FactureEntretien> factures;
 	
-	@OneToMany(mappedBy="utilisateur", fetch = FetchType.EAGER)
-	@Fetch(value = FetchMode.SUBSELECT)
+	@OneToMany(mappedBy="utilisateurF", fetch = FetchType.EAGER)
     private List<Fiche> fiches;
 	
-	@OneToMany(mappedBy="utilisateur", fetch = FetchType.EAGER)
-	@Fetch(value = FetchMode.SUBSELECT)
+	@OneToMany(mappedBy="utilisateurT", fetch = FetchType.EAGER)
     private List<Tache> taches;
-	
+	*/
 	
 	@ManyToMany(fetch = FetchType.LAZY, cascade = { CascadeType.PERSIST, CascadeType.MERGE })
 	@JoinTable(name = "utilisateur_role", joinColumns = { @JoinColumn(name = "utilisateur_id") }, inverseJoinColumns = { @JoinColumn(name = "role_id") })
@@ -125,54 +114,6 @@ public class Utilisateur {
 	
 	public void setDesactiveAngular(Boolean desactiveAngular) {
 		this.desactiveAngular = desactiveAngular;
-	}
-	
-	
-	public List<CommandePiece> getCommandesPiece() {
-		return commandesPiece;
-	}
-	
-	public void setCommandesPiece(List<CommandePiece> commandesPiece) {
-		this.commandesPiece = commandesPiece;
-	}
-	public List<CommandeVoiture> getVoitures() {
-		return voitures;
-	}
-	
-	public void setVoitures(List<CommandeVoiture> voitures) {
-		this.voitures = voitures;
-	}
-	
-	public List<Devis> getDevis() {
-		return devis;
-	}
-	
-	public void setDevis(List<Devis> devis) {
-		this.devis = devis;
-	}
-	
-	public List<FactureEntretien> getFactures() {
-		return factures;
-	}
-	
-	public void setFactures(List<FactureEntretien> factures) {
-		this.factures = factures;
-	}
-	
-	public List<Fiche> getFiches() {
-		return fiches;
-	}
-	
-	public void setFiches(List<Fiche> fiches) {
-		this.fiches = fiches;
-	}
-	
-	public List<Tache> getTaches() {
-		return taches;
-	}
-	
-	public void setTaches(List<Tache> taches) {
-		this.taches = taches;
 	}
 	
 	

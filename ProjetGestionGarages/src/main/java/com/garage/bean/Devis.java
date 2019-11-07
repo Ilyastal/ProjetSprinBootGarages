@@ -1,16 +1,13 @@
 package com.garage.bean;
 
 import java.util.Date;
-import java.util.List;
 
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
-import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
@@ -52,10 +49,10 @@ public class Devis {
 	@JoinColumn(name = "voiture_id")
 	private Voiture voiture;
 	
-
+	/*
 	@OneToMany(mappedBy = "devis", fetch = FetchType.EAGER)
 	private List<CommandeVoiture> commandesVoiture;
-	
+	*/
 	
 	public Integer getId() {
 		return id;
@@ -152,14 +149,5 @@ public class Devis {
 
 	public void setVoiture(Voiture voiture) {
 		this.voiture = voiture;
-	}
-	
-
-	public List<CommandeVoiture> getCommandesVoiture() {
-		return commandesVoiture;
-	}
-
-	public void setCommandesVoiture(List<CommandeVoiture> commandesVoiture) {
-		this.commandesVoiture = commandesVoiture;
 	}
 }

@@ -10,18 +10,9 @@ import org.springframework.web.bind.annotation.GetMapping;
 import com.garage.bean.Voiture;
 import com.garage.iservice.IServiceVoiture;
 
-/**
- * 
- */
 @Controller
 public class VoitureController {
 
-	/**
-	 * Default constructor
-	 */
-	public VoitureController() {
-	}
-	
 	@Autowired
 	private IServiceVoiture servicevoiture;
 	
@@ -31,5 +22,4 @@ public class VoitureController {
 		model.addAttribute("listVoiture", lvoit); //attribut du fichier html
 		return "listVoiture"; //correspond au fichier html
 	}
-
 }

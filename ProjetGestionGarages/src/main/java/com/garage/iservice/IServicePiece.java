@@ -4,8 +4,6 @@ import java.util.List;
 
 import com.garage.bean.Piece;
 
-import com.garage.bean.Piece;
-
 /**
  * 
  */

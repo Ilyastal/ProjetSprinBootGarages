@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html xmlns:th=http://www.thymeleaf.org>
+<head th:replace="fragments/head.html :: title(value='Liste des pièces')"></head>
+<body>
+	<header th:replace="fragments/header.html :: title(value='Liste des pièces')"></header>
+    
+    <section>
+        <div class="container">
+           <div class="block-container">
+               <div class="col user">
+                   <div class="row thead">
+                       <span class="col-md-2">Nom</span>
+                       <span class="col-md-4">Description</span>
+                       <span class="col-md-2">Prix unitaire</span>
+                       <span class="col-md-2">Quantité</span>
+                       <span class="col-md-2">Modification</span>
+                   </div>
+                   
+                   <div class="row line" th:each="piece : ${ listPiece }">
+                       <span class="col-md-2" th:text="*{piece.nom}"></span>
+                       <span class="col-md-4" th:text="*{piece.description}"></span>
+                       <span class="col-md-2" th:text="*{piece.prixUnitaire}"></span>
+                       <span class="col-md-2" th:text="*{piece.quantite + user.typeLot}"></span>
+                       <span class="col-md-2"><button class="btn btn-warning">Modifier</button></span>
+                   </div>
+               </div>
+           </div>
+        </div>
+    </section>
+</body>
+</html>
