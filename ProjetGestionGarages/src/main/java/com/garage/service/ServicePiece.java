@@ -2,48 +2,49 @@ package com.garage.service;
 
 import java.util.List;
 
+import javax.transaction.Transactional;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
 import com.garage.bean.Piece;
+import com.garage.dao.DaoPiece;
 import com.garage.iservice.IServicePiece;
 
-/**
- * 
- */
+@Service
 public class ServicePiece implements IServicePiece {
-
-	/**
-	 * Default constructor
-	 */
-	public ServicePiece() {
-	}
-
+	
+	@Autowired
+	DaoPiece daoPiece;
+	
+	@Transactional
 	@Override
 	public void ajouterPiece(Piece piece) {
-		// TODO Auto-generated method stub
-		
+		daoPiece.save(piece);
 	}
-
+	
+	@Transactional
 	@Override
 	public List<Piece> recherchePiece() {
-		// TODO Auto-generated method stub
-		return null;
+		return daoPiece.findAll();
 	}
-
+	
+	@Transactional
 	@Override
 	public Piece rechercherPieceId(int id) {
-		// TODO Auto-generated method stub
-		return null;
+		return daoPiece.findById(id).get();
 	}
-
+	
+	@Transactional
 	@Override
 	public void modifierPiece(Piece piece) {
-		// TODO Auto-generated method stub
-		
+		daoPiece.save(piece);
 	}
-
+	
+	@Transactional
 	@Override
 	public void supprimerPiece(Piece piece) {
-		// TODO Auto-generated method stub
-		
+		daoPiece.deleteById(piece.getId());
 	}
 
 }

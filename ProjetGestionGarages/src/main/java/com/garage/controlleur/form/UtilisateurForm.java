@@ -36,18 +36,9 @@ public class UtilisateurForm {
 	/**
 	 * 
 	 */
-	private String motpass;
+	private String password;
 
-	/**
-	 * 
-	 */
-	private Boolean desactiverUser;
-
-	/**
-	 * 
-	 */
-	private Boolean desactiverAngular;
-
+	
 	public Integer getId() {
 		return id;
 	}
@@ -80,28 +71,11 @@ public class UtilisateurForm {
 		this.user = user;
 	}
 	
-	public String getMotpass() {
-		return motpass;
+	public String getPassword() {
+		return password;
 	}
 
-	public void setMotpass(String motpass) {
-		this.motpass = motpass;
+	public void setPassword(String password) {
+		this.password = password;
 	}
-
-	public Boolean getDesactiverUser() {
-		return desactiverUser;
-	}
-
-	public void setDesactiverUser(Boolean desactiverUser) {
-		this.desactiverUser = desactiverUser;
-	}
-
-	public Boolean getDesactiverAngular() {
-		return desactiverAngular;
-	}
-
-	public void setDesactiverAngular(Boolean desactiverAngular) {
-		this.desactiverAngular = desactiverAngular;
-	}
-
 }

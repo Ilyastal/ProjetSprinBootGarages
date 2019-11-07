@@ -1,18 +1,11 @@
 package com.garage.bean;
 
-import java.util.List;
-
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
-/**
- * 
- */
 @Entity
 @Table(name = "voiture")
 public class Voiture {
@@ -43,10 +36,10 @@ public class Voiture {
 	
 	private String photo;
 	
-	
+	/*
 	@OneToMany(mappedBy="voiture", fetch = FetchType.EAGER)
     private List<CommandeVoiture> commandes;
-	
+	*/
 	
 	public Integer getId() {
 		return id;
@@ -72,11 +65,11 @@ public class Voiture {
 		this.marque = marque;
 	}
 
-	public String getModel() {
+	public String getModele() {
 		return modele;
 	}
 
-	public void setModel(String modele) {
+	public void setModele(String modele) {
 		this.modele = modele;
 	}
 
@@ -142,14 +135,5 @@ public class Voiture {
 
 	public void setPhoto(String photo) {
 		this.photo = photo;
-	}
-	
-	
-	public List<CommandeVoiture> getCommandes() {
-		return commandes;
-	}
-
-	public void setCommandes(List<CommandeVoiture> commandes) {
-		this.commandes = commandes;
 	}
 }

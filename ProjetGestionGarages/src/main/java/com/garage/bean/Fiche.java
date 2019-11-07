@@ -15,9 +15,6 @@ import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
-import org.hibernate.annotations.Fetch;
-import org.hibernate.annotations.FetchMode;
-
 @Entity
 @Table(name = "fiche")
 public class Fiche {
@@ -45,13 +42,12 @@ public class Fiche {
 	@JoinColumn(name = "utilisateur_id")
 	private Utilisateur utilisateur;
 	
+	/*
+	@OneToMany(mappedBy="fiche", fetch = FetchType.EAGER)
+    private List<FactureEntretien> facturesEntretien;
+	*/
 	
 	@OneToMany(mappedBy="fiche", fetch = FetchType.EAGER)
-	@Fetch(value = FetchMode.SUBSELECT)
-    private List<FactureEntretien> facturesEntretien;
-
-	@OneToMany(mappedBy="fiche", fetch = FetchType.EAGER)
-	@Fetch(value = FetchMode.SUBSELECT)
     private List<Tache> taches;
 	
 	
@@ -112,14 +108,6 @@ public class Fiche {
 		this.utilisateur = utilisateur;
 	}
 	
-	
-	public List<FactureEntretien> getFacturesEntretien() {
-		return facturesEntretien;
-	}
-	
-	public void setFacturesEntretien(List<FactureEntretien> facturesEntretien) {
-		this.facturesEntretien = facturesEntretien;
-	}
 
 	public List<Tache> getTaches() {
 		return taches;
