@@ -154,9 +154,13 @@ button {
     border: #544600 solid 2px;
 }
 
-.user span {
+.list span {
     text-align: center;
     margin: auto;
+}
+
+.car span {
+	
 }
 
 .line {
