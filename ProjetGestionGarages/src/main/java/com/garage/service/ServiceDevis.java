@@ -4,6 +4,7 @@ import java.util.List;
 
 import javax.transaction.Transactional;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.garage.bean.Devis;
@@ -15,7 +16,7 @@ import com.garage.iservice.IServiceDevis;
  */
 @Service
 public class ServiceDevis implements IServiceDevis {
-DaoDevis daoDevis;
+	@Autowired DaoDevis daoDevis;
 	/**
 	 * Default constructor
 	 */
