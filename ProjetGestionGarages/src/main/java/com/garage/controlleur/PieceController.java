@@ -15,12 +15,6 @@ import com.garage.iservice.IServicePiece;
  */
 @Controller
 public class PieceController {
-
-	/**
-	 * Default constructor
-	 */
-	public PieceController() {
-	}
 	
 	@Autowired
 	private IServicePiece servicepiece;
@@ -31,5 +25,4 @@ public class PieceController {
 		model.addAttribute("listPiece", lpiece); //attribut du fichier html
 		return "listPiece"; //correspond au fichier html
 	}
-
 }

@@ -13,12 +13,7 @@ import com.garage.iservice.IServicePiece;
 @Service
 public class ServicePiece implements IServicePiece {
 
-	/**
-	 * Default constructor
-	 */
-	public ServicePiece() {
-	}
-
+	
 	@Override
 	public void ajouterPiece(Piece piece) {
 		// TODO Auto-generated method stub
