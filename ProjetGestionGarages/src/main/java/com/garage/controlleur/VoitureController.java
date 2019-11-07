@@ -25,7 +25,7 @@ public class VoitureController {
 	@Autowired
 	private IServiceVoiture servicevoiture;
 	
-	@GetMapping("/afficherUser")
+	@GetMapping("/afficherVoiture")
 	public String Afficher(Model model) {
 		final List<Voiture> lvoit = servicevoiture.rechercheVoiture();
 		model.addAttribute("listVoiture", lvoit); //attribut du fichier html
