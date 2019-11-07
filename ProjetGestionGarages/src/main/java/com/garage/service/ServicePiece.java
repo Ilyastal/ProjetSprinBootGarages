@@ -30,13 +30,11 @@ DaoPiece daoPiece;
 	@Transactional
 	@Override
 	public List<Piece> recherchePiece() {
-		// TODO Auto-generated method stub
 		return daoPiece.findAll();
 	}
 	@Transactional
 	@Override
 	public Piece rechercherPieceId(int id) {
-		// TODO Auto-generated method stub
 		return daoPiece.findById(id).get();
 	}
 	@Transactional
