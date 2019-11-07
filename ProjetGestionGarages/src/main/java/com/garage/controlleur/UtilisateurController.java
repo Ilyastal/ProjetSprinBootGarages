@@ -23,8 +23,7 @@ public class UtilisateurController {
 	private IServiceUtilisateur serviceutilisateur;
 	
 	private Utilisateur convertForm(UtilisateurForm utilisateurform) throws Exception {
-        
-	    
+            
         Utilisateur user = new Utilisateur();
         user.setId(utilisateurform.getId());
         user.setNom(utilisateurform.getNom());
