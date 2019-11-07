@@ -4,6 +4,7 @@ import java.util.List;
 
 import javax.transaction.Transactional;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.garage.bean.CommandeVoiture;
@@ -17,7 +18,7 @@ import com.garage.iservice.IServiceCommandeVoiture;
  */
 @Service
 public class ServiceCommandeVoiture implements IServiceCommandeVoiture {
-	DaoCommandeVoiture daoCommandeVoiture;
+	@Autowired DaoCommandeVoiture daoCommandeVoiture;
     DaoDevis daoDevis;
 	/**
 	 * Default constructor
