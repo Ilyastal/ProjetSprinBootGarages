@@ -7,6 +7,7 @@
     <section>
         <div class="container">
            <div class="block-container">
+           	   <h3 class="h-center">Liste des pièces</h3>
                <div class="col list">
                    <div class="row thead">
                        <span class="col-md-2">Nom</span>
@@ -19,8 +20,8 @@
                    <div class="row line" th:each="piece : ${ listPiece }">
                        <span class="col-md-2" th:text="*{piece.nom}"></span>
                        <span class="col-md-4" th:text="*{piece.description}"></span>
-                       <span class="col-md-2" th:text="*{piece.prixUnitaire}"></span>
-                       <span class="col-md-2" th:text="*{piece.quantite + user.typeLot}"></span>
+                       <span class="col-md-2" th:text="*{piece.prixUnitaire + '€'}"></span>
+                       <span class="col-md-2" th:text="*{piece.quantite + ' ' + piece.typeLot}"></span>
                        <span class="col-md-2"><button class="btn btn-warning">Modifier</button></span>
                    </div>
                </div>

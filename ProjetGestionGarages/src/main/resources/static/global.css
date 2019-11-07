@@ -134,6 +134,10 @@ button {
     border-radius: 20px;
 }
 
+.h-center {
+	text-align: center;
+}
+
 .h-left {
     left: 0;
 }
