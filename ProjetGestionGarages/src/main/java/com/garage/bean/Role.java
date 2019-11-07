@@ -29,7 +29,7 @@ public class Role {
 	private Fonction fonction;
 	
 	
-	@ManyToMany(fetch = FetchType.LAZY, cascade = { CascadeType.PERSIST, CascadeType.MERGE }, mappedBy = "roles")
+	@ManyToMany(fetch = FetchType.EAGER, cascade = { CascadeType.PERSIST, CascadeType.MERGE }, mappedBy = "roles")
     private List<Utilisateur> utilisateurs;
 
 	
