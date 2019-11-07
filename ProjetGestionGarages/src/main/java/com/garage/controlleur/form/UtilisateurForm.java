@@ -38,16 +38,7 @@ public class UtilisateurForm {
 	 */
 	private String password;
 
-	/**
-	 * 
-	 */
-	private Boolean desactiveUser;
-
-	/**
-	 * 
-	 */
-	private Boolean desactiveAngular;
-
+	
 	public Integer getId() {
 		return id;
 	}
@@ -87,21 +78,4 @@ public class UtilisateurForm {
 	public void setPassword(String password) {
 		this.password = password;
 	}
-
-	public Boolean getDesactiveUser() {
-		return desactiveUser;
-	}
-
-	public void setDesactiveUser(Boolean desactiveUser) {
-		this.desactiveUser = desactiveUser;
-	}
-
-	public Boolean getDesactiveAngular() {
-		return desactiveAngular;
-	}
-
-	public void setDesactiveAngular(Boolean desactiveAngular) {
-		this.desactiveAngular = desactiveAngular;
-	}
-
 }
