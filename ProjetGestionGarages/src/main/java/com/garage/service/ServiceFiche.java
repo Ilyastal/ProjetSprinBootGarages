@@ -9,6 +9,7 @@ import org.springframework.stereotype.Service;
 
 import com.garage.bean.Fiche;
 import com.garage.dao.DaoFiche;
+import com.garage.enums.Etat;
 import com.garage.iservice.IServiceFiche;
 
 /**
@@ -26,43 +27,38 @@ public class ServiceFiche implements IServiceFiche {
 	@Transactional
 	@Override
 	public List<Fiche> rechercheFiche() {
-		// TODO Auto-generated method stub
 		return ficheDao.findAll();
 	}
 
 	@Transactional
 	@Override
 	public Fiche rechercherFicheId(int id) {
-		// TODO Auto-generated method stub
 		return ficheDao.findById(id).get();
 	}
 
 	@Transactional
 	@Override
 	public void creerFiche(Fiche fiche) {
-		// TODO Auto-generated method stub
 		ficheDao.save(fiche);
 	}
 
 	@Transactional
 	@Override
 	public void modifierFiche(Fiche fiche) {
-		// TODO Auto-generated method stub
 		ficheDao.save(fiche);
 	}
 
 	@Transactional
 	@Override
 	public void supprimerFiche(Fiche fiche) {
-		// TODO Auto-generated method stub
 		ficheDao.deleteById(fiche.getId());
 	}
 
 	@Transactional
 	@Override
 	public void ValiderFiche(Fiche fiche) {
-		// TODO Auto-generated method stub
-
+		fiche.setValidation(true);
+		ficheDao.save(fiche);
 	}
 
 }
