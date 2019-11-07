@@ -16,5 +16,5 @@ public interface IServiceTache {
 	public void creerTache(final Tache tache);
 	public void modifierTache(final Tache tache);
 	public void supprimerTache(final Tache tache);
-	public void ValiderTache(final Tache tache);
+	public void validerTache(final Tache tache);
 }

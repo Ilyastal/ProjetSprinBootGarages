@@ -16,12 +16,12 @@ import com.garage.iservice.IServiceUtilisateur;
  */
 @Service
 public class ServiceUtilisateur implements IServiceUtilisateur {
-@Autowired DaoUtilisateur userDao;
+	@Autowired DaoUtilisateur userDao;
 	/**
 	 * Default constructor
 	 */
 	public ServiceUtilisateur() {
-		
+
 	}
 
 	@Transactional
@@ -55,8 +55,8 @@ public class ServiceUtilisateur implements IServiceUtilisateur {
 	@Transactional
 	@Override
 	public void loginUser(String user, String motpasse) {
-		
-		
+
+
 	}
 
 	@Transactional
