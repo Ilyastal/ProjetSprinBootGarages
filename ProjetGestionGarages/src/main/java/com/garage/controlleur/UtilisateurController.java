@@ -11,9 +11,6 @@ import com.garage.bean.Utilisateur;
 import com.garage.controlleur.form.UtilisateurForm;
 import com.garage.iservice.IServiceUtilisateur;
 
-/**
- * 
- */
 @Controller
 public class UtilisateurController {
 

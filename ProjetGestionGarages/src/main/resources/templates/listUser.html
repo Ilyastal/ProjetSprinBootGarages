@@ -1,25 +1,8 @@
 <!DOCTYPE html>
 <html xmlns:th=http://www.thymeleaf.org>
-<head>
-	<meta charset="UTF-8">
-	<meta charset="ISO-8859-1">
-	<title>Insert title here</title>
-	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
-    <link rel="stylesheet" href="global.css">
-</head>
+<head th:replace="fragments/head.html :: title(value='Liste des utilisateurs')"></head>
 <body>
-	<header>
-        <img src="img/arrow.png" id="img-left" alt="Menu">
-        <span id="span-left">Liste des fiches</span>
-        <span id="span-right">Jean Michel - Chef d'atelier</span>
-        <img src="img/logout.png" id="img-right" alt="Deconnexion">
-        
-        <ul class="box-shadow">
-            <a href=""><li>Fiches</li></a>
-            <a href="listeStock.html"><li>Stock</li></a>
-            <li>Onglet 3</li>
-        </ul>
-    </header>
+	<header th:replace="fragments/header.html :: title(value='Liste des utilisateurs')"></header>
     
     <section>
         <div class="container">
@@ -29,7 +12,7 @@
                        <span class="col-md-2">Nom</span>
                        <span class="col-md-2">Prénom</span>
                        <span class="col-md-2">Pseudo</span>
-                       <span class="col-md-2">Compte activé</span>
+                       <span class="col-md-2">Compte désactivé</span>
                        <span class="col-md-2">Accès appli.</span>
                        <span class="col-md-2">Modification</span>
                    </div>
