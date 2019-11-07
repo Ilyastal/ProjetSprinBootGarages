@@ -1,7 +1,5 @@
 package com.garage.controlleur.form;
 
-import java.util.*;
-
 import javax.validation.constraints.NotEmpty;
 
 /**
@@ -11,11 +9,10 @@ public class UtilisateurForm {
 
 	/**
 	 * Default constructor
-	 * gkjgkmoilhlfdjs
-	 * jjcytdfthfuy
 	 */
 	public UtilisateurForm() {
 	}
+	
 	private Integer id;
 
 	/**
@@ -40,6 +37,10 @@ public class UtilisateurForm {
 	 * 
 	 */
 	private String motpass;
+
+	/**
+	 * 
+	 */
 	private Boolean desactiverUser;
 
 	/**
@@ -78,6 +79,14 @@ public class UtilisateurForm {
 	public void setUser(String user) {
 		this.user = user;
 	}
+	
+	public String getMotpass() {
+		return motpass;
+	}
+
+	public void setMotpass(String motpass) {
+		this.motpass = motpass;
+	}
 
 	public Boolean getDesactiverUser() {
 		return desactiverUser;
@@ -94,14 +103,5 @@ public class UtilisateurForm {
 	public void setDesactiverAngular(Boolean desactiverAngular) {
 		this.desactiverAngular = desactiverAngular;
 	}
-
-	public String getMotpass() {
-		return motpass;
-	}
-
-	public void setMotpass(String motpass) {
-		this.motpass = motpass;
-	}
-
 
 }
