@@ -2,12 +2,15 @@ package com.garage.service;
 
 import java.util.List;
 
+import org.springframework.stereotype.Service;
+
 import com.garage.bean.Tache;
 import com.garage.iservice.IServiceTache;
 
 /**
  * 
  */
+@Service
 public class ServiceTache implements IServiceTache {
 
 	/**
