@@ -2,12 +2,15 @@ package com.garage.service;
 
 import java.util.List;
 
+import org.springframework.stereotype.Service;
+
 import com.garage.bean.Fiche;
 import com.garage.iservice.IServiceFiche;
 
 /**
  * 
  */
+@Service
 public class ServiceFiche implements IServiceFiche {
 
 	/**

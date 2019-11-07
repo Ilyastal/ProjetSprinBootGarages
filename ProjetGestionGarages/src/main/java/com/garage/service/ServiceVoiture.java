@@ -2,12 +2,15 @@ package com.garage.service;
 
 import java.util.List;
 
+import org.springframework.stereotype.Service;
+
 import com.garage.bean.Voiture;
 import com.garage.iservice.IServiceVoiture;
 
 /**
  * 
  */
+@Service
 public class ServiceVoiture implements IServiceVoiture {
 
 	/**

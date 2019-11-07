@@ -2,12 +2,15 @@ package com.garage.service;
 
 import java.util.List;
 
+import org.springframework.stereotype.Service;
+
 import com.garage.bean.CommandePiece;
 import com.garage.iservice.IServiceCommandePiece;
 
 /**
  * 
  */
+@Service
 public class ServiceCommandePiece implements IServiceCommandePiece{
 
 	/**
