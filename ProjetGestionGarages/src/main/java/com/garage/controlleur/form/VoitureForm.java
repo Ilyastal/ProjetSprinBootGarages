@@ -30,7 +30,7 @@ public class VoitureForm {
 	private String couleur;
 	@NotEmpty
 	private String quantite;
-	@NotEmpty
+
 	private String photo;
 
 	public Integer getId() {
