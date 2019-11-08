@@ -26,16 +26,16 @@ public class VoitureController {
 	private Voiture convertForm(VoitureForm voitureForm) throws Exception {
 		Voiture voiture = new Voiture();
 		voiture.setId(voitureForm.getId());
-		voiture.setAnnee(voitureForm.getAnnee());
+		voiture.setAnnee(Integer.valueOf(voitureForm.getAnnee()));
 		voiture.setCategorie(voitureForm.getCategorie());
 		voiture.setModele(voitureForm.getModele());
-		voiture.setCo2(voitureForm.getCo2());
+		voiture.setCo2(Integer.valueOf(voitureForm.getCo2()));
 		voiture.setCouleur(voitureForm.getCouleur());
 		voiture.setEnergie(voitureForm.getEnergie());
 		voiture.setMarque(voitureForm.getMarque());
-		voiture.setPorte(voitureForm.getPorte());
-		voiture.setPrixUnitaire(voitureForm.getPrixUnitaire());
-		voiture.setQuantite(voitureForm.getQuantite());
+		voiture.setPorte(Integer.valueOf(voitureForm.getPorte()));
+		voiture.setPrixUnitaire(Double.valueOf(voitureForm.getPrixUnitaire()));
+		voiture.setQuantite(Integer.valueOf(voitureForm.getQuantite()));
 		voiture.setPhoto(voitureForm.getPhoto());
         return voiture;
     }
