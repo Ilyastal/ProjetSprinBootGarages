@@ -31,7 +31,6 @@ public class ServiceCommandePiece implements IServiceCommandePiece{
 	@Transactional
 	@Override
 	public CommandePiece rechercherCommandePieceId(int id) {
-		// TODO Auto-generated method stub
 		return commandePieceDao.findById(id).get();
 	}
 	@Transactional
@@ -44,12 +43,6 @@ public class ServiceCommandePiece implements IServiceCommandePiece{
 	@Override
 	public void modifierCommandePiece(CommandePiece commandePiece) {
 		commandePieceDao.save(commandePiece);
-		
-	}
-	@Transactional
-	@Override
-	public void supprimerCommandePiece(CommandePiece commandePiece) {
-		commandePieceDao.deleteById(commandePiece.getId());
 		
 	}
 
