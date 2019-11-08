@@ -28,7 +28,7 @@ public class TacheForm {
 	private Integer id;
 
 	@NotEmpty
-	private Date dateFinTache;
+	private String dateFinTache;
 	@NotEmpty
 	private String description;
 	
@@ -60,14 +60,6 @@ public class TacheForm {
 	
 	public void setId(Integer id) {
 		this.id = id;
-	}
-	
-	public Date getDateFinTache() {
-		return dateFinTache;
-	}
-	
-	public void setDateFinTache(Date dateFinTache) {
-		this.dateFinTache = dateFinTache;
 	}
 	
 	public String getDescription() {
