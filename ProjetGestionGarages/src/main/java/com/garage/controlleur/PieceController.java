@@ -49,8 +49,9 @@ public class PieceController {
 		return "listPiece"; //correspond au fichier html
 	}
 
-	@PostMapping("/supprimerPiece/{id}")
+	@GetMapping("/supprimerPiece/{id}")
 	public String Supprimer(@PathVariable final Integer id,Model model) {
+	
 		Piece piece = servicepiece.rechercherPieceId(id);
 		if(piece  != null) {
 			servicepiece.supprimerPiece(piece);;

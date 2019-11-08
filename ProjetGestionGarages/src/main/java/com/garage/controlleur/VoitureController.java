@@ -53,7 +53,7 @@ public class VoitureController {
 		return "listVoiture"; //correspond au fichier html
 	}
 	
-	@GetMapping("/supprimerVoiture/{id}")
+	@PostMapping("/supprimerVoiture/{id}")
 	public String Supprimer(@PathVariable final Integer id,Model model) {
 		Voiture voit = servicevoiture.rechercherVoitureId(id);
 		if(voit  != null) {

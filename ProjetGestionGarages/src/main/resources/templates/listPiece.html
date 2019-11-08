@@ -51,7 +51,7 @@
                        <span class="col-md-2" th:text="*{piece.prixUnitaire + '€'}"></span>
                        <span class="col-md-2" th:text="*{piece.quantite + ' ' + piece.typeLot}"></span>
                        <span class="col-md-2"><button class="btn btn-warning">Modifier</button></span>
-                       <form action="#" th:action="@{/supprimerPiece/{id}(id=${piece.id})}" th:method="supprimer" >
+                       <form action="#" th:action="@{'/supprimerPiece/{id}'(id=${piece.id})}" th:method="get" >
                        <span class="col-md-2"><button type="submit" class="btn btn-warning">Supprimer</button> </span>
                 
                      </form>
