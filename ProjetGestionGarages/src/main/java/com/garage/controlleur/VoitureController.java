@@ -8,9 +8,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 
-import com.garage.bean.Piece;
 import com.garage.bean.Voiture;
-import com.garage.controlleur.form.PieceForm;
 import com.garage.controlleur.form.VoitureForm;
 import com.garage.iservice.IServiceVoiture;
 
@@ -38,7 +36,7 @@ public class VoitureController {
     }
 	
 	@GetMapping("/Voitures")
-	public String Afficher(Model model) {
+	public String afficherCreer(Model model) {
 		final List<Voiture> lvoit = servicevoiture.rechercheVoiture();
 		model.addAttribute("listVoiture", lvoit); //attribut du fichier html
 		model.addAttribute("action", "CreerVoiture");
@@ -56,6 +54,6 @@ public class VoitureController {
 		if(voit  != null) {
 			servicevoiture.supprimerVoiture(voit);;
 		}
-		return this.Afficher(model);
+		return this.afficherCreer(model);
 	}
 }
