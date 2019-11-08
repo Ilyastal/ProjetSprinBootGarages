@@ -17,19 +17,19 @@ public class VoitureForm {
 	@NotEmpty
 	private String modele;
 	@NotEmpty
-	private Integer annee;
+	private String annee;
 	@NotEmpty
-	private Integer porte;
+	private String porte;
 	@NotEmpty
 	private String energie;
 	@NotEmpty
-	private Integer co2;
+	private String co2;
 	@NotEmpty
-	private Double prixUnitaire;
+	private String prixUnitaire;
 	@NotEmpty
 	private String couleur;
 	@NotEmpty
-	private Integer quantite;
+	private String quantite;
 	@NotEmpty
 	private String photo;
 
@@ -57,27 +57,27 @@ public class VoitureForm {
 		this.marque = marque;
 	}
 
-	public String getModel() {
+	public String getModele() {
 		return modele;
 	}
 
-	public void setModel(String modele) {
+	public void setModele(String modele) {
 		this.modele = modele;
 	}
 
-	public Integer getAnnee() {
+	public String getAnnee() {
 		return annee;
 	}
 
-	public void setAnnee(Integer annee) {
+	public void setAnnee(String annee) {
 		this.annee = annee;
 	}
 
-	public Integer getPorte() {
+	public String getPorte() {
 		return porte;
 	}
 
-	public void setPorte(Integer porte) {
+	public void setPorte(String porte) {
 		this.porte = porte;
 	}
 
@@ -89,19 +89,19 @@ public class VoitureForm {
 		this.energie = energie;
 	}
 
-	public Integer getCo2() {
+	public String getCo2() {
 		return co2;
 	}
 
-	public void setCo2(Integer co2) {
+	public void setCo2(String co2) {
 		this.co2 = co2;
 	}
 
-	public Double getPrixUnitaire() {
+	public String getPrixUnitaire() {
 		return prixUnitaire;
 	}
 
-	public void setPrixUnitaire(Double prixUnitaire) {
+	public void setPrixUnitaire(String prixUnitaire) {
 		this.prixUnitaire = prixUnitaire;
 	}
 
@@ -113,11 +113,11 @@ public class VoitureForm {
 		this.couleur = couleur;
 	}
 
-	public Integer getQuantite() {
+	public String getQuantite() {
 		return quantite;
 	}
 
-	public void setQuantite(Integer quantite) {
+	public void setQuantite(String quantite) {
 		this.quantite = quantite;
 	}
 
