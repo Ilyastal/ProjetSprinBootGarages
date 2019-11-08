@@ -11,45 +11,39 @@ import com.garage.bean.Voiture;
 import com.garage.dao.DaoVoiture;
 import com.garage.iservice.IServiceVoiture;
 
-/**
- * 
- */
 @Service
 public class ServiceVoiture implements IServiceVoiture {
-	@Autowired DaoVoiture daoVoiture;
-	/**
-	 * Default constructor
-	 */
-	public ServiceVoiture() {
-	}
+	
+	@Autowired
+	DaoVoiture daoVoiture;
+	
 	@Transactional
 	@Override
 	public List<Voiture> rechercheVoiture() {
-		// TODO Auto-generated method stub
 		return daoVoiture.findAll();
 	}
+	
 	@Transactional
 	@Override
 	public Voiture rechercherVoitureId(int id) {
-		// TODO Auto-generated method stub
 		return daoVoiture.findById(id).get();
 	}
+	
 	@Transactional
 	@Override
 	public void creerVoiture(Voiture voiture) {
 		daoVoiture.save(voiture);
-		
 	}
+	
 	@Transactional
 	@Override
 	public void modifierVoiture(Voiture voiture) {
 		daoVoiture.save(voiture);
-		
 	}
+	
 	@Transactional
 	@Override
 	public void supprimerVoiture(Voiture voiture) {
 		daoVoiture.deleteById(voiture.getId());
 	}
-
 }

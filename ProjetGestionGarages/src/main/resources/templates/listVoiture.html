@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html xmlns:th=http://www.thymeleaf.org>
+<head th:replace="fragments/head.html :: title(value='Liste des voitures')"></head>
+<body>
+	<header th:replace="fragments/header.html :: title(value='Liste des voitures')"></header>
+    
+    <section>
+        <div class="container">
+           <div class="block-container">
+               <div class="col car">
+                   
+                   <div class="row line" th:each="voiture : ${ listVoiture }">
+                   	   <img class="col-md-2" th:src="*{'img/voiture/' + voiture.photo}" />
+                       <span class="col-md-2" th:text="*{voiture.marque + ' : ' + voiture.modele}"></span>
+                       
+                       <span class="col-md-2"><button class="btn btn-warning">Modifier</button></span>
+                   </div>
+               </div>
+           </div>
+        </div>
+    </section>
+</body>
+</html>

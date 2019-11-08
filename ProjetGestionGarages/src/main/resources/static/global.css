@@ -134,6 +134,10 @@ button {
     border-radius: 20px;
 }
 
+.h-center {
+	text-align: center;
+}
+
 .h-left {
     left: 0;
 }
@@ -154,9 +158,13 @@ button {
     border: #544600 solid 2px;
 }
 
-.user span {
+.list span {
     text-align: center;
     margin: auto;
+}
+
+.car span {
+	
 }
 
 .line {

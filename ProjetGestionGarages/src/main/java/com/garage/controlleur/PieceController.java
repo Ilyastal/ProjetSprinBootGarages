@@ -10,9 +10,6 @@ import org.springframework.web.bind.annotation.GetMapping;
 import com.garage.bean.Piece;
 import com.garage.iservice.IServicePiece;
 
-/**
- * 
- */
 @Controller
 public class PieceController {
 	
