@@ -14,7 +14,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 
 import com.garage.bean.Utilisateur;
 import com.garage.controlleur.form.UtilisateurForm;
-import com.garage.iservice.IServiceRole;
+import com.garage.dao.DaoRole;
 import com.garage.iservice.IServiceUtilisateur;
 
 @Controller
@@ -24,7 +24,7 @@ public class UtilisateurController {
 	private IServiceUtilisateur serviceutilisateur;
 	
 	@Autowired
-	private IServiceRole servicerole;
+	private DaoRole daoRole;
 	
 	private Utilisateur convertForm(UtilisateurForm utilisateurform) throws Exception {
             
@@ -44,7 +44,7 @@ public class UtilisateurController {
 	public String afficherCreer(Model model) {
 		final List<Utilisateur> luti = serviceutilisateur.rechercheUtilisateur();
 		model.addAttribute("listUser", luti); //attribut du fichier html
-		model.addAttribute("possibleRoles", servicerole.rechercheRole());
+		model.addAttribute("possibleRoles", daoRole.findExceptAdmin());
 		model.addAttribute("action", "CreerUser");
 		if(model.containsAttribute("userForm") == false) {
 			UtilisateurForm userForm = new UtilisateurForm();
