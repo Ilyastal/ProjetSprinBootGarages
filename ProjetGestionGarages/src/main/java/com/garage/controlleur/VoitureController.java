@@ -2,11 +2,16 @@ package com.garage.controlleur;
 
 import java.util.List;
 
+import javax.validation.Valid;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
 
 import com.garage.bean.Voiture;
 import com.garage.controlleur.form.VoitureForm;
@@ -53,6 +58,25 @@ public class VoitureController {
 		Voiture voit = servicevoiture.rechercherVoitureId(id);
 		if(voit  != null) {
 			servicevoiture.supprimerVoiture(voit);;
+		}
+		return this.afficherCreer(model);
+	}
+	
+	@PostMapping("/Voitures")
+	public String ajoutVoiture( 
+			@Valid @ModelAttribute(name = "voitureForm") VoitureForm voitureForm,
+			BindingResult presult,
+			Model model)
+	{
+		if(!presult.hasErrors()) {
+			try
+			{
+				Voiture voit = convertForm(voitureForm);
+				servicevoiture.creerVoiture(voit);
+			}
+			catch(Exception e) {
+				System.err.println(e.getMessage());
+			}
 		}
 		return this.afficherCreer(model);
 	}
