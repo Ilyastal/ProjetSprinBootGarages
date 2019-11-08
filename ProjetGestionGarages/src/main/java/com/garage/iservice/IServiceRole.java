@@ -1,8 +1,8 @@
 package com.garage.iservice;
 
-/**
- * 
- */
-public interface IServiceRole {
+import com.garage.bean.Role;
 
+public interface IServiceRole {
+	
+	public Role rechercherRoleId(final int id);
 }
