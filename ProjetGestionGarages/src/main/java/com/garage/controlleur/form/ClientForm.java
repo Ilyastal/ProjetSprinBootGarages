@@ -22,7 +22,7 @@ private Integer id;
 
     @Pattern(regexp = "MADAME|MONSIEUR")
     private String sexe;
-    @NotEmpty
+
 	private String nom;
     @NotEmpty
 	private String prenom;

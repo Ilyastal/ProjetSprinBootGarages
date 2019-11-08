@@ -7,22 +7,54 @@
     <section>
         <div class="container">
            <div class="block-container">
+            <h3 class="h-center">Ajoutez une pièce</h3>
+           	   <div class="col">
+           	       <form action="#" method="post" th:action="@{/Pieces}" th:object="${pieceForm}">
+						<label for="nom">Nom :</label>
+						<input class=""	type="text" th:field="*{nom}" id="nom" placeholder="Nom">
+						<label for="prixUnitaire">Prix Unitaire :</label>
+						<input class="" type="text" th:field="*{prixUnitaire}" id="prixUnitaire" placeholder="Prix Unitaire">
+						<label for="quantite">Quantité :</label>
+						<input class="" type="text" th:field="*{quantite}" id="quantite" placeholder="quantite">
+						<label for="description">Description :</label>
+						<input class="" type="text" th:field="*{description}" id="description" placeholder="description">
+						<label for="typeLot">TypeLot :</label>
+						<input class="" type="text" th:field="*{typeLot}" id="typeLot" placeholder="typeLot">
+					
+<!-- 						<select class="" th:field="*{role}" id="role" multiple> -->
+<!-- 							<option value="">Fonction</option> -->
+<!-- 							<option value="MECANICIEN">Mécanicien</option> -->
+<!-- 							<option value="CHEFATELIER">Chef d'Atelier</option> -->
+<!-- 							<option value="COMMERCIAL">Commercial</option> -->
+<!-- 							<option value="MAGASINIER">Magasinier</option> -->
+<!-- 						</select> -->
+						
+						<button type="submit" class="btn btn-primary">Envoyé</button>
+					</form>
+           	   </div>
            	   <h3 class="h-center">Liste des pièces</h3>
+           	  
                <div class="col list">
+               
                    <div class="row thead">
                        <span class="col-md-2">Nom</span>
-                       <span class="col-md-4">Description</span>
+                       <span class="col-md-2">Description</span>
                        <span class="col-md-2">Prix unitaire</span>
                        <span class="col-md-2">Quantité</span>
-                       <span class="col-md-2">Modification</span>
+                       <span class="col-md-4">Modification</span>
                    </div>
-                   
+                    
                    <div class="row line" th:each="piece : ${ listPiece }">
+                     
                        <span class="col-md-2" th:text="*{piece.nom}"></span>
-                       <span class="col-md-4" th:text="*{piece.description}"></span>
+                       <span class="col-md-2" th:text="*{piece.description}"></span>
                        <span class="col-md-2" th:text="*{piece.prixUnitaire + '€'}"></span>
                        <span class="col-md-2" th:text="*{piece.quantite + ' ' + piece.typeLot}"></span>
                        <span class="col-md-2"><button class="btn btn-warning">Modifier</button></span>
+                       <form action="#" th:action="@{/supprimerPiece/{id}(id=${piece.id})}" th:method="supprimer" >
+                       <span class="col-md-2"><button type="submit" class="btn btn-warning">Supprimer</button> </span>
+                
+                     </form>
                    </div>
                </div>
            </div>

@@ -42,14 +42,14 @@ public class PieceController {
 		model.addAttribute("listPiece", lpiece); //attribut du fichier html
 		model.addAttribute("action", "CreerPiece");
 		if(model.containsAttribute("pieceForm") == false) {
-			UtilisateurForm pieceForm = new UtilisateurForm();
+			PieceForm pieceForm = new PieceForm();
 			pieceForm.setId(0);
 			model.addAttribute("pieceForm", pieceForm);
 		}
 		return "listPiece"; //correspond au fichier html
 	}
 
-	@GetMapping("/supprimerPiece/{id}")
+	@PostMapping("/supprimerPiece/{id}")
 	public String Supprimer(@PathVariable final Integer id,Model model) {
 		Piece piece = servicepiece.rechercherPieceId(id);
 		if(piece  != null) {
