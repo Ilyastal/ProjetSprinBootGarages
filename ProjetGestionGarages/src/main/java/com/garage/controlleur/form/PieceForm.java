@@ -12,9 +12,9 @@ private Integer id;
     @NotEmpty
 	private String nom;
     @NotEmpty
-	private Double prixUnitaire;
+	private String prixUnitaire;
     @NotEmpty
-	private Integer quantite;
+	private String quantite;
     @NotEmpty
 	private String description;
     @NotEmpty
@@ -37,19 +37,19 @@ private Integer id;
 		this.nom = nom;
 	}
 
-	public Double getPrixUnitaire() {
+	public String getPrixUnitaire() {
 		return prixUnitaire;
 	}
 
-	public void setPrixUnitaire(Double prixUnitaire) {
+	public void setPrixUnitaire(String prixUnitaire) {
 		this.prixUnitaire = prixUnitaire;
 	}
 
-	public Integer getQuantite() {
+	public String getQuantite() {
 		return quantite;
 	}
 
-	public void setQuantite(Integer quantite) {
+	public void setQuantite(String quantite) {
 		this.quantite = quantite;
 	}
 

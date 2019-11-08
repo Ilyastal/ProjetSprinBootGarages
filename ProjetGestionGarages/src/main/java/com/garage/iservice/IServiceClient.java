@@ -12,5 +12,5 @@ public interface IServiceClient {
 	public Client rechercherClientId(final int id);
 	public void creerClient(final Client client);
 	public void modifierClient(final Client client);
-	public void supprimerClient(final Client client);
+	public void desactiverClient(final Client client);
 }
