@@ -1,43 +1,28 @@
 package com.garage.controlleur.form;
 
+import java.util.List;
+
 import javax.validation.constraints.NotEmpty;
 
-/**
- * 
- */
-public class UtilisateurForm {
+import com.garage.bean.Role;
 
-	/**
-	 * Default constructor
-	 */
-	public UtilisateurForm() {
-	}
+public class UtilisateurForm {
 	
 	private Integer id;
 
-	/**
-	 * 
-	 */
 	@NotEmpty
 	private String nom;
-
-	/**
-	 * 
-	 */
+	
 	@NotEmpty
 	private String prenom;
-
-	/**
-	 * 
-	 */
+	
 	@NotEmpty
 	private String user;
-
-	/**
-	 * 
-	 */
+	
 	private String password;
-
+	
+	private List<Role> roles;
+	
 	
 	public Integer getId() {
 		return id;
@@ -77,5 +62,13 @@ public class UtilisateurForm {
 
 	public void setPassword(String password) {
 		this.password = password;
+	}
+
+	public List<Role> getRoles() {
+		return roles;
+	}
+
+	public void setRoles(List<Role> roles) {
+		this.roles = roles;
 	}
 }

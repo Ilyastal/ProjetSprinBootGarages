@@ -3,7 +3,10 @@ package com.garage.bean;
 import java.util.Date;
 import java.util.List;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -14,6 +17,8 @@ import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
+
+import com.garage.enums.Priorite;
 
 @Entity
 @Table(name = "fiche")
@@ -32,6 +37,10 @@ public class Fiche {
 	private Date dateValidation;
 	
 	private Boolean validation;
+	
+	@Enumerated(EnumType.STRING)
+    @Column(columnDefinition = "ENUM('TRESURGENT','URGENT','NORMAL','NONPRIORITAIRE')")
+	private Priorite niveauPriorite;
 	
 	
 	@ManyToOne
@@ -89,6 +98,14 @@ public class Fiche {
 	
 	public void setValidation(Boolean validation) {
 		this.validation = validation;
+	}
+	
+	public Priorite getNiveauPriorite() {
+		return niveauPriorite;
+	}
+	
+	public void setNiveauPriorite(Priorite niveauPriorite) {
+		this.niveauPriorite = niveauPriorite;
 	}
 	
 	

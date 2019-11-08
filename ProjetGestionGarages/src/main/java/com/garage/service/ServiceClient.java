@@ -48,8 +48,8 @@ public class ServiceClient implements IServiceClient {
 	}
 	@Transactional
 	@Override
-	public void supprimerClient(Client client) {
-		clientDao.deleteById(client.getId());
+	public void desactiverClient(Client client) {
+		// TODO Auto-generated method stub
 		
 	}
 

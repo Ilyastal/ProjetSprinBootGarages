@@ -12,6 +12,6 @@ public interface IServiceUtilisateur {
 	public Utilisateur rechercherUtilisateurId(final int id);
 	public void creerUtilisateur(final Utilisateur user);
 	public void modifierUtilisateur(final Utilisateur user);
-	public void supprimerUtilisateur(final Utilisateur user);
+	public void desactiverUtilisateur(final Utilisateur user);
 	public void loginUser(final String user,final String password);
 }
