@@ -15,40 +15,40 @@ import com.garage.iservice.IServiceRole;
 public class ServiceRole implements IServiceRole {
 
 	@Autowired
-	private DaoRole roleDao;
+	private DaoRole daoRole;
 	
 	@Transactional
 	@Override
 	public List<Role> rechercheRole() {
 		
-		return roleDao.findAll();
+		return daoRole.findAll();
 	}
 
 	@Transactional
 	@Override
 	public Role rechercherRoleId(int id) {
 		
-		return roleDao.findById(id).get();
+		return daoRole.findById(id).get();
 	}
 
 	@Transactional
 	@Override
 	public void creerRole(Role role) {
-		roleDao.save(role);
+		daoRole.save(role);
 		
 	}
 
 	@Transactional
 	@Override
 	public void modifierRole(Role role) {
-		roleDao.save(role);
+		daoRole.save(role);
 		
 	}
 
 	@Transactional
 	@Override
 	public void supprimerRole(Role role) {
-		roleDao.deleteById(role.getId());
+		daoRole.deleteById(role.getId());
 		
 	}
 

@@ -19,13 +19,12 @@
 						<label for="password">Mot de passe :</label>
 						<input class="" type="password" th:field="*{password}" id="password">
 						
-<!-- 						<select class="" th:field="*{role}" id="role" multiple> -->
-<!-- 							<option value="">Fonction</option> -->
-<!-- 							<option value="MECANICIEN">Mécanicien</option> -->
-<!-- 							<option value="CHEFATELIER">Chef d'Atelier</option> -->
-<!-- 							<option value="COMMERCIAL">Commercial</option> -->
-<!-- 							<option value="MAGASINIER">Magasinier</option> -->
-<!-- 						</select> -->
+<!-- 						<label for="roles">Rôles :</label> -->
+<!-- 						<input class="" type="checkbox" th:field="*{roles}" id="roles"> -->
+						
+						<select class="" th:field="*{roles}" id="roles" multiple>
+							<option th:each="role : ${possibleRoles}" th:value="${{role}}" th:text="${role.fonction}"></option>
+						</select>
 						
 						<button type="submit" class="btn btn-primary">Envoyé</button>
 					</form>
@@ -36,8 +35,9 @@
                        <span class="col-md-2">Nom</span>
                        <span class="col-md-2">Prénom</span>
                        <span class="col-md-2">Pseudo</span>
-                       <span class="col-md-2">Compte désactivé</span>
-                       <span class="col-md-2">Accès appli.</span>
+                       <span class="col-md-1">Compte désactivé</span>
+                       <span class="col-md-1">Accès appli.</span>
+                       <span class="col-md-2">Rôles</span>
                        <span class="col-md-2">Modification</span>
                    </div>
                    
@@ -45,8 +45,11 @@
                        <span class="col-md-2" th:text="*{user.nom}"></span>
                        <span class="col-md-2" th:text="*{user.prenom}"></span>
                        <span class="col-md-2" th:text="*{user.user}"></span>
-                       <span class="col-md-2" th:text="*{user.desactiveUser}"></span>
-                       <span class="col-md-2" th:text="*{user.desactiveAngular}"></span>
+                       <span class="col-md-1" th:text="*{user.desactiveUser}"></span>
+                       <span class="col-md-1" th:text="*{user.desactiveAngular}"></span>
+                       <span class="col-md-2">
+                           <span class="badge" th:each="role : ${ user.roles }" th:text="*{role.fonction}" th:classappend="*{'badge-' + role.fonction}"></span><br>
+                       </span>
                        <span class="col-md-2"><button class="btn btn-warning">Modifier</button></span>
                    </div>
                </div>

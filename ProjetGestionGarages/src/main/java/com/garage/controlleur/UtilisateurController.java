@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 
 import com.garage.bean.Utilisateur;
 import com.garage.controlleur.form.UtilisateurForm;
+import com.garage.iservice.IServiceRole;
 import com.garage.iservice.IServiceUtilisateur;
 
 @Controller
@@ -21,6 +22,9 @@ public class UtilisateurController {
 
 	@Autowired
 	private IServiceUtilisateur serviceutilisateur;
+	
+	@Autowired
+	private IServiceRole servicerole;
 	
 	private Utilisateur convertForm(UtilisateurForm utilisateurform) throws Exception {
             
@@ -30,6 +34,9 @@ public class UtilisateurController {
         user.setPrenom(utilisateurform.getPrenom());;
         user.setUser(utilisateurform.getUser());
         user.setPassword(utilisateurform.getPassword());
+        user.setRoles(utilisateurform.getRoles());
+        user.setDesactiveUser(false);
+        user.setDesactiveAngular(false);
         return user;
     }
 	
@@ -37,6 +44,7 @@ public class UtilisateurController {
 	public String afficherCreer(Model model) {
 		final List<Utilisateur> luti = serviceutilisateur.rechercheUtilisateur();
 		model.addAttribute("listUser", luti); //attribut du fichier html
+		model.addAttribute("possibleRoles", servicerole.rechercheRole());
 		model.addAttribute("action", "CreerUser");
 		if(model.containsAttribute("userForm") == false) {
 			UtilisateurForm userForm = new UtilisateurForm();
@@ -73,7 +81,7 @@ public class UtilisateurController {
 	//		}
 	//		return this.Afficher(model);
 	//	}
-
+	
 	@PostMapping("/Utilisateurs")
 	public String ajoutUtilisateur( 
 			@Valid @ModelAttribute(name = "userForm") UtilisateurForm userForm,
