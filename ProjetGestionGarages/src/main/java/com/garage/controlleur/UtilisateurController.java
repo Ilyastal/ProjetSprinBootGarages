@@ -1,7 +1,5 @@
 package com.garage.controlleur;
 
-import java.text.SimpleDateFormat;
-import java.util.Date;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,9 +10,6 @@ import org.springframework.web.bind.annotation.GetMapping;
 import com.garage.bean.Utilisateur;
 import com.garage.controlleur.form.UtilisateurForm;
 import com.garage.iservice.IServiceUtilisateur;
-import com.springboot.bean.Professeur;
-import com.springboot.controller.form.ProfesseurForm;
-import com.springboot.enums.Genre;
 
 @Controller
 public class UtilisateurController {
