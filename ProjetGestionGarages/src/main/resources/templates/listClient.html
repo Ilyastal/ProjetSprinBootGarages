@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html xmlns:th=http://www.thymeleaf.org>
+<head th:replace="fragments/head.html :: title(value='Liste des clients')"></head>
+<body>
+	<header th:replace="fragments/header.html :: title(value='Liste des clients')"></header>
+    
+    <section>
+        <div class="container">
+           <div class="block-container">
+               <h3 class="h-center">Liste des clients</h3>
+           	   <div class="col">
+           	       <form action="#" method="post" th:action="@{/Client}" th:object="${clientForm}">
+						<label for="nom">Nom :</label>
+						<input class=""	type="text" th:field="*{nom}" id="nom" placeholder="Nom">
+						<label for="prenom">Prénom :</label>
+						<input class="" type="text" th:field="*{prenom}" id="prenom" placeholder="Prénom">
+						<label for="sexe">Sexe :</label>
+						<select class="" th:field="*{sexe}" id="sexe">
+						<option value="MADAME">Madame</option>
+						<option value="MONSIEUR">Monsieur</option> 
+						</select>
+						<label for="adresse">Adresse :</label>
+						<input class="" type="text" th:field="*{adresse}" id="adresse" placeholder="Adresse">
+						<label for="codePostal">Code Postal :</label>
+						<input class="" type="text" th:field="*{codePostal}" id="codePostal" placeholder="Code Postal">
+						<label for="ville">Ville :</label>
+						<input class="" type="text" th:field="*{ville}" id="ville" placeholder="Ville">
+						<label for="telephone">Téléphone :</label>
+						<input class="" type="text" th:field="*{telephone}" id="telephone" placeholder="Téléphone">
+<!-- 						
+<select class="" th:field="*{role}" id="role" multiple> -->
+<!-- 							<option value="">Fonction</option> -->
+<!-- 							<option value="MECANICIEN">Mécanicien</option> -->
+<!-- 							<option value="CHEFATELIER">Chef d'Atelier</option> -->
+<!-- 							<option value="COMMERCIAL">Commercial</option> -->
+<!-- 							<option value="MAGASINIER">Magasinier</option> -->
+<!-- 						</select> -->
+						
+						<button type="submit" class="btn btn-primary">Envoyé</button>
+					</form>
+           	   </div>
+           	   <h3 class="h-center">Liste des clients</h3>
+               <div class="col list">
+                   <div class="row thead">
+                       <span class="col-md-1">Nom</span>
+                       <span class="col-md-1">Prénom</span>
+                       <span class="col-md-1">Sexe</span>
+                       <span class="col-md-2">Adresse</span>
+                       <span class="col-md-2">Code Postal</span>
+                       <span class="col-md-1">Ville</span>
+                       <span class="col-md-1">Téléphone</span>
+                        <span class="col-md-3">Modification</span>
+                   </div>
+                   
+                   <div class="row line" th:each="client : ${ listClient }">
+                       <span class="col-md-1" th:text="*{client.nom}"></span>
+                       <span class="col-md-1" th:text="*{client.prenom}"></span>
+                       <span class="col-md-1" th:text="*{client.sexe}"></span>
+                       <span class="col-md-2" th:text="*{client.adresse}"></span>
+                       <span class="col-md-2" th:text="*{client.codePostal}"></span>
+                       <span class="col-md-1" th:text="*{client.ville}"></span>
+                       <span class="col-md-1" th:text="*{client.telephone}"></span>
+                       <span class="col-md-3"><button class="btn btn-warning">Modifier</button></span>
+                   </div>
+               </div>
+           </div>
+        </div>
+    </section>
+</body>
+</html>

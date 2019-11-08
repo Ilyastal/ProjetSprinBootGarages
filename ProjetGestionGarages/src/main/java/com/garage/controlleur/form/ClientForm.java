@@ -21,7 +21,7 @@ public class ClientForm {
 private Integer id;
 
     @Pattern(regexp = "MADAME|MONSIEUR")
-    private Genre sexe;
+    private String sexe;
     @NotEmpty
 	private String nom;
     @NotEmpty
@@ -92,11 +92,11 @@ private Integer id;
 		this.telephone = telephone;
 	}
 
-	public Genre getSexe() {
+	public String getSexe() {
 		return sexe;
 	}
 
-	public void setSexe(Genre sexe) {
+	public void setSexe(String sexe) {
 		this.sexe = sexe;
 	}
 }
