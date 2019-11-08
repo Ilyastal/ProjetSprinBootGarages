@@ -17,18 +17,16 @@ public class FicheForm {
 	public FicheForm() {
 	}
 	private Integer id;
+	
 	 @NotEmpty
 	private String description;
 	
 	 @NotEmpty
-	private Date dateCreation;
+	private String dateCreation;
 	
 	 @NotEmpty
-	private Date dateValidation;
-	 @NotEmpty
-	private Boolean validation;
-	 @NotEmpty
 	private Client client;
+	 
 	 @NotEmpty
 	private Utilisateur utilisateur;
 	
@@ -47,31 +45,6 @@ public class FicheForm {
 	public void setDescription(String description) {
 		this.description = description;
 	}
-	
-	public Date getDateCreation() {
-		return dateCreation;
-	}
-	
-	public void setDateCreation(Date dateCreation) {
-		this.dateCreation = dateCreation;
-	}
-	
-	public Date getDateValidation() {
-		return dateValidation;
-	}
-	
-	public void setDateValidation(Date dateValidation) {
-		this.dateValidation = dateValidation;
-	}
-	
-	public Boolean getValidation() {
-		return validation;
-	}
-	
-	public void setValidation(Boolean validation) {
-		this.validation = validation;
-	}
-	
 	
 	public Client getClient() {
 		return client;
