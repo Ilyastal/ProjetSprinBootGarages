@@ -29,8 +29,8 @@ public class PieceController {
 		Piece piece = new Piece();
 		piece.setId(pieceForm.getId());
 		piece.setNom(pieceForm.getNom());
-		piece.setPrixUnitaire(pieceForm.getPrixUnitaire());;
-		piece.setQuantite(pieceForm.getQuantite());
+		piece.setPrixUnitaire(Double.valueOf(pieceForm.getPrixUnitaire()));;
+		piece.setQuantite(Integer.valueOf(pieceForm.getQuantite()));
 		piece.setDescription(pieceForm.getDescription());
 		piece.setTypeLot(pieceForm.getTypeLot());
 		return piece;
