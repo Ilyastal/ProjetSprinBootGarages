@@ -44,12 +44,6 @@ public class ServiceUtilisateur implements IServiceUtilisateur {
 
 	@Transactional
 	@Override
-	public void supprimerUtilisateur(Utilisateur user) {
-		userDao.deleteById(user.getId());
-	}
-
-	@Transactional
-	@Override
 	public void loginUser(String user, String motpasse) {
 
 	}
@@ -58,5 +52,11 @@ public class ServiceUtilisateur implements IServiceUtilisateur {
 	@Override
 	public Utilisateur rechercherUtilisateurId(int id) {
 		return userDao.findById(id).get();
+	}
+
+	@Override
+	public void desactiverUtilisateur(Utilisateur user) {
+		// TODO Auto-generated method stub
+		
 	}
 }

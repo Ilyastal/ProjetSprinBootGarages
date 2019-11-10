@@ -19,7 +19,7 @@ import com.garage.iservice.IServiceCommandeVoiture;
 @Service
 public class ServiceCommandeVoiture implements IServiceCommandeVoiture {
 	@Autowired DaoCommandeVoiture daoCommandeVoiture;
-    DaoDevis daoDevis;
+	DaoDevis daoDevis;
 	/**
 	 * Default constructor
 	 */
@@ -46,18 +46,13 @@ public class ServiceCommandeVoiture implements IServiceCommandeVoiture {
 	@Override
 	public void modifierCommandeVoiture(CommandeVoiture commandeVoiture) {
 		daoCommandeVoiture.save(commandeVoiture);
-		
+
 	}
-	@Transactional
-	@Override
-	public void supprimerCommandeVoiture(CommandeVoiture commandeVoiture) {
-		daoCommandeVoiture.deleteById(commandeVoiture.getId());
-		
-	}
+
 	@Transactional
 	@Override
 	public List<CommandeVoiture> listerCommandeValidee() {
-		
+
 		List<CommandeVoiture> listCommandeVoitures =daoCommandeVoiture.findAll();
 		List<CommandeVoiture> listCommandeValidee=null;
 		List<Devis> listDevis=daoDevis.findAll();
@@ -66,10 +61,8 @@ public class ServiceCommandeVoiture implements IServiceCommandeVoiture {
 				if(devis.getValidationDevis()==true) {
 					listCommandeValidee.add(commande);	
 				}
+			}
 		}
-		
-		}
-		
 		return listCommandeValidee;
 	}
 	@Transactional

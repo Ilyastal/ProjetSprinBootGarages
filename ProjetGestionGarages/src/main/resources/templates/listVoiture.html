@@ -7,6 +7,43 @@
     <section>
         <div class="container">
            <div class="block-container">
+            <h3 class="h-center">Ajoutez une Voiture</h3>
+           	   <div class="col">
+           	       <form action="#" method="post" th:action="@{/Voitures}" th:object="${voitureForm}">
+						<label for="annee">Annee :</label>
+						<input class=""	type="text" th:field="*{annee}" id="annee" placeholder="annee">
+						<label for="categorie">Categorie :</label>
+						<input class="" type="text" th:field="*{categorie}" id="categorie" placeholder="Categorie">
+						<label for="modele">Modele :</label>
+						<input class="" type="text" th:field="*{modele}" id="modele" placeholder="modele">
+						<label for="co2">Co2 :</label>
+						<input class="" type="text" th:field="*{co2}" id="Co2" placeholder="co2">
+						<label for="couleur">Couleur :</label>
+						<input class="" type="text" th:field="*{couleur}" id="couleur" placeholder="couleur">
+						<label for="energie">Energie :</label>
+						<input class="" type="text" th:field="*{energie}" id="energie" placeholder="Energie">
+						<label for="marque">Marque :</label>
+						<input class="" type="text" th:field="*{marque}" id="marque" placeholder="Marque">
+						<label for="porte">Porte :</label>
+						<input class="" type="text" th:field="*{porte}" id="porte" placeholder="Porte">
+						<label for="prixUnitaire">Prix Unitaire :</label>
+						<input class="" type="text" th:field="*{prixUnitaire}" id="PrixUnitaire" placeholder="PrixUnitaire">
+						<label for="quantite">Quantite :</label>
+						<input class="" type="text" th:field="*{quantite}" id="quantite" placeholder="Quantite">
+					  
+					     
+<!-- 						<select class="" th:field="*{role}" id="role" multiple> -->
+<!-- 							<option value="">Fonction</option> -->
+<!-- 							<option value="MECANICIEN">Mécanicien</option> -->
+<!-- 							<option value="CHEFATELIER">Chef d'Atelier</option> -->
+<!-- 							<option value="COMMERCIAL">Commercial</option> -->
+<!-- 							<option value="MAGASINIER">Magasinier</option> -->
+<!-- 						</select> -->
+						
+						<button type="submit" class="btn btn-primary">Envoyé</button>
+					</form>
+           	   </div>
+           	      <h3 class="h-center">Liste des Voitures</h3>
                <div class="col car">
                    
                    <div class="row line" th:each="voiture : ${ listVoiture }">
