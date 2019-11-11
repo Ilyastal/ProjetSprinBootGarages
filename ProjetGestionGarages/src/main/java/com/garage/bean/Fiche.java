@@ -18,6 +18,7 @@ import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.garage.enums.Priorite;
 
 @Entity
@@ -56,7 +57,8 @@ public class Fiche {
     private List<FactureEntretien> facturesEntretien;
 	*/
 	
-	@OneToMany(mappedBy="fiche", fetch = FetchType.EAGER)
+	@OneToMany(mappedBy="fiche", fetch = FetchType.LAZY)
+	@JsonBackReference
     private List<Tache> taches;
 	
 	

@@ -24,18 +24,18 @@ public class DevisController {
 	@Autowired
 	private IServiceDevis servicedevis;
 
-	private Devis convertForm(DevisForm devisform) throws Exception {
-		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
-
-		Date madate = sdf.parse(devisform.getDateDevis());
-		Devis devis = new Devis();
-		devis.setId(devisform.getId());
-		devis.setDateDevis(dateDevis);
-		devis.setPrenom(devisform.getPrenom());;
-		devis.setUser(devisform.getUser());
-		devis.setPassword(devisform.getPassword());
-		return devis;
-	}
+//	private Devis convertForm(DevisForm devisform) throws Exception {
+//		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+//
+//		Date madate = sdf.parse(devisform.getDateDevis());
+//		Devis devis = new Devis();
+//		devis.setId(devisform.getId());
+//		devis.setDateDevis(dateDevis);
+//		devis.setPrenom(devisform.getPrenom());;
+//		devis.setUser(devisform.getUser());
+//		devis.setPassword(devisform.getPassword());
+//		return devis;
+//	}
 
 	@GetMapping("/afficherDevis")
 	public String Afficher(Model model) {

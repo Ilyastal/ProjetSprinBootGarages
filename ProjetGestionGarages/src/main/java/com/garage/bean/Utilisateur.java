@@ -12,6 +12,9 @@ import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.Table;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+
 /**
  * 
  */
@@ -55,8 +58,12 @@ public class Utilisateur {
     private List<Tache> taches;
 	*/
 	
-	@ManyToMany(fetch = FetchType.LAZY, cascade = { CascadeType.PERSIST, CascadeType.MERGE })
-	@JoinTable(name = "utilisateur_role", joinColumns = { @JoinColumn(name = "utilisateur_id") }, inverseJoinColumns = { @JoinColumn(name = "role_id") })
+	@ManyToMany( fetch = FetchType.EAGER)
+    @JoinTable(
+        name = "utilisateur_role", 
+        joinColumns = { @JoinColumn(name = "utilisateur_id") }, 
+        inverseJoinColumns = { @JoinColumn(name = "role_id") }
+    )
 	private List<Role> roles;
 	
 	
