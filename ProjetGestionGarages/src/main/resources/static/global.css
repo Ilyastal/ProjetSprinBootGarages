@@ -80,6 +80,31 @@ button {
     margin: 5px 0;
 }
 
+.badge-ADMINISTRATEUR {
+	background-color: #DC3545;
+	color: white;
+}
+
+.badge-CHEFATELIER {
+	background-color: #FFC107;
+	color: black;
+}
+
+.badge-MECANICIEN {
+	background-color: #6C757D;
+	color: white;
+}
+
+.badge-COMMERCIAL {
+	background-color: #28A745;
+	color: white;
+}
+
+.badge-MAGASINIER {
+	background-color: #007BFF;
+	color: white;
+}
+
 .btn-normal {
     background-color: #FF0;
 }
