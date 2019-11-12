@@ -19,7 +19,12 @@ public class UtilisateurForm {
 	@NotEmpty
 	private String user;
 	
+	@NotEmpty
 	private String password;
+
+	private Boolean desactiveUser;
+
+	private Boolean desactiveAngular;
 	
 	private List<Role> roles;
 	
@@ -64,6 +69,22 @@ public class UtilisateurForm {
 		this.password = password;
 	}
 
+	public Boolean getDesactiveUser() {
+		return desactiveUser;
+	}
+	
+	public void setDesactiveUser(Boolean desactiveUser) {
+		this.desactiveUser = desactiveUser;
+	}
+	
+	public Boolean getDesactiveAngular() {
+		return desactiveAngular;
+	}
+	
+	public void setDesactiveAngular(Boolean desactiveAngular) {
+		this.desactiveAngular = desactiveAngular;
+	}
+	
 	public List<Role> getRoles() {
 		return roles;
 	}
