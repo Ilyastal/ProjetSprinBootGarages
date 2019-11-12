@@ -8,6 +8,8 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 
 import com.garage.bean.CommandeVoiture;
+import com.garage.bean.Voiture;
+import com.garage.dao.DaoCommandeVoiture;
 import com.garage.iservice.IServiceCommandeVoiture;
 
 /**
@@ -21,15 +23,14 @@ public class CommandeVoitureController {
 	 */
 	public CommandeVoitureController() {
 	}
-	
+
 	@Autowired
-	private IServiceCommandeVoiture serviceutilisateur;
-	
+	private DaoCommandeVoiture daoCommandeVoiture;
+
 	@GetMapping("/afficherCommandeVoiture")
 	public String Afficher(Model model) {
-		final List<CommandeVoiture> lcomvoit = serviceutilisateur.rechercheCommandeVoiture();
-		model.addAttribute("listCommandeVoiture", lcomvoit); //attribut du fichier html
-		return "listCommandeVoiture"; //correspond au fichier html
+		model.addAttribute("listCommandeVoiture", daoCommandeVoiture.findCommande());
+		return "listCommandeVoiture";
 	}
 
 }
