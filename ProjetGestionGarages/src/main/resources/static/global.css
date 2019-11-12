@@ -76,8 +76,12 @@ a {
     color: #544600;
 }
 
-button {
+a.btn, button {
     margin: 5px 0;
+}
+
+.hidden {
+	display: none;
 }
 
 .badge-ADMINISTRATEUR {
@@ -178,6 +182,7 @@ button {
 }
 
 .thead {
+	color: #544600;
     font-weight: bold;
     font-size: 1.2rem;
     border: #544600 solid 2px;

@@ -7,10 +7,10 @@
     <section>
         <div class="container">
            <div class="block-container">
-               <h3 class="h-center">Ajoutez un utilisateur</h3>
-           	   <div class="col">
-           	       <form action="#" method="post" th:action="@{/Utilisateurs}" th:object="${userForm}">
-						<label for="nom">Nom :</label>
+               <h3 class="h-center" th:text="${action + ' d''un utilisateur'}"></h3>
+           	   <div class="col" th:if="${action == 'Ajout'}">
+           	       <form action="#" method="post" th:action="@{/Utilisateurs/Ajouter}" th:object="${userAdd}">
+           	       		<label for="nom">Nom :</label>
 						<input class=""	type="text" th:field="*{nom}" id="nom" placeholder="Nom">
 						<label for="prenom">Prénom :</label>
 						<input class="" type="text" th:field="*{prenom}" id="prenom" placeholder="Prénom">
@@ -18,9 +18,6 @@
 						<input class="" type="text" th:field="*{user}" id="pseudo" placeholder="Pseudo">
 						<label for="password">Mot de passe :</label>
 						<input class="" type="password" th:field="*{password}" id="password">
-						
-<!-- 						<label for="roles">Rôles :</label> -->
-<!-- 						<input class="" type="checkbox" th:field="*{roles}" id="roles"> -->
 						
 						<select class="" th:field="*{roles}" id="roles" multiple>
 							<option th:each="role : ${possibleRoles}" th:value="${{role}}" th:text="${role.fonction}"></option>
@@ -41,6 +38,24 @@
                        <span class="col-md-2">Modification</span>
                    </div>
                    
+                   <div th:if="${action == 'Modification'}">
+                       <form class="row line" action="#" method="post" th:action="@{/Utilisateurs/Modifier}" th:object="${userModif}">
+                       	   <input type="hidden" th:field="*{id}" th:value="*{id}"/>
+                           <span class="col-md-2"><input type="text" th:field="*{nom}"></span>
+                           <span class="col-md-2"><input type="text" th:field="*{prenom}"></span>
+                           <span class="col-md-2"><input type="text" th:field="*{user}"></span>
+                           <input type="hidden" th:field="*{password}">
+                           <span class="col-md-1"><input type="checkbox" th:checked="*{desactiveUser}" th:value="${desactiveUser}"></span>
+                           <span class="col-md-1"><input type="checkbox" th:checked="*{desactiveAngular}" th:value="${desactiveAngular}"></span>
+                           
+						   <span class="col-md-2"><select class="" th:field="*{roles}" id="roles" multiple>
+							   <option th:each="role : ${possibleRoles}" th:value="${{role}}" th:text="${role.fonction}"></option>
+						   </select></span>
+						   
+	                       <span class="col-md-2"><button type="submit" class="btn btn-success">Valider</button></span>
+                       </form>
+                   </div>
+                   
                    <div class="row line" th:each="user : ${ listUser }">
                        <span class="col-md-2" th:text="*{user.nom}"></span>
                        <span class="col-md-2" th:text="*{user.prenom}"></span>
@@ -50,7 +65,7 @@
                        <span class="col-md-2">
                            <span class="badge" th:each="role : ${ user.roles }" th:text="*{role.fonction}" th:classappend="*{'badge-' + role.fonction}"></span><br>
                        </span>
-                       <span class="col-md-2"><button class="btn btn-warning">Modifier</button></span>
+                       <span class="col-md-2"><a th:href="@{ /Utilisateurs/Modifier/{id}(id=${user.id}) }" class="btn btn-warning">Modifier</a></span>
                    </div>
                </div>
            </div>
