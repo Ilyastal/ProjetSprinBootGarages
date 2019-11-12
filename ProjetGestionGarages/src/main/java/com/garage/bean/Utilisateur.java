@@ -11,10 +11,8 @@ import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.Table;
+import javax.validation.constraints.NotNull;
 
-/**
- * 
- */
 @Entity
 @Table(name = "utilisateur")
 public class Utilisateur {
@@ -23,17 +21,21 @@ public class Utilisateur {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer id;
 	
+	@NotNull
 	private String nom;
 	
+	@NotNull
 	private String prenom;
 	
+	@NotNull
 	private String user;
 	
+	@NotNull
 	private String password;
 	
-	private Boolean desactiveUser;
+	private Boolean activeUser;
 	
-	private Boolean desactiveAngular;
+	private Boolean activeAngular;
 	
 	/*
 	@OneToMany(mappedBy="utilisateurCP", fetch = FetchType.EAGER)
@@ -100,20 +102,20 @@ public class Utilisateur {
 		this.password = password;
 	}
 	
-	public Boolean getDesactiveUser() {
-		return desactiveUser;
+	public Boolean getActiveUser() {
+		return activeUser;
 	}
 	
-	public void setDesactiveUser(Boolean desactiveUser) {
-		this.desactiveUser = desactiveUser;
+	public void setActiveUser(Boolean activeUser) {
+		this.activeUser = activeUser;
 	}
 	
-	public Boolean getDesactiveAngular() {
-		return desactiveAngular;
+	public Boolean getActiveAngular() {
+		return activeAngular;
 	}
 	
-	public void setDesactiveAngular(Boolean desactiveAngular) {
-		this.desactiveAngular = desactiveAngular;
+	public void setActiveAngular(Boolean activeAngular) {
+		this.activeAngular = activeAngular;
 	}
 	
 	

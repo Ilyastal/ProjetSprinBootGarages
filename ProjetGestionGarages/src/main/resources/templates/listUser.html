@@ -29,43 +29,43 @@
            	   <h3 class="h-center">Liste des utilisateurs</h3>
                <div class="col list">
                    <div class="row thead">
-                       <span class="col-md-2">Nom</span>
-                       <span class="col-md-2">Prénom</span>
-                       <span class="col-md-2">Pseudo</span>
-                       <span class="col-md-1">Compte désactivé</span>
-                       <span class="col-md-1">Accès appli.</span>
-                       <span class="col-md-2">Rôles</span>
-                       <span class="col-md-2">Modification</span>
+                       <span class="cell col-md-2">Nom</span>
+                       <span class="cell col-md-2">Prénom</span>
+                       <span class="cell col-md-2">Pseudo</span>
+                       <span class="cell col-md-1">Compte activé</span>
+                       <span class="cell col-md-1">Accès appli.</span>
+                       <span class="cell col-md-2">Rôles</span>
+                       <span class="cell col-md-2">Modification</span>
                    </div>
                    
                    <div th:if="${action == 'Modification'}">
                        <form class="row line" action="#" method="post" th:action="@{/Utilisateurs/Modifier}" th:object="${userModif}">
                        	   <input type="hidden" th:field="*{id}" th:value="*{id}"/>
-                           <span class="col-md-2"><input type="text" th:field="*{nom}"></span>
-                           <span class="col-md-2"><input type="text" th:field="*{prenom}"></span>
-                           <span class="col-md-2"><input type="text" th:field="*{user}"></span>
+                           <span class="cell col-md-2"><input type="text" th:field="*{nom}"></span>
+                           <span class="cell col-md-2"><input type="text" th:field="*{prenom}"></span>
+                           <span class="cell col-md-2"><input type="text" th:field="*{user}"></span>
                            <input type="hidden" th:field="*{password}">
-                           <span class="col-md-1"><input type="checkbox" th:checked="*{desactiveUser}" th:value="${desactiveUser}"></span>
-                           <span class="col-md-1"><input type="checkbox" th:checked="*{desactiveAngular}" th:value="${desactiveAngular}"></span>
+                           <span class="cell col-md-1"><label class="checkbox"><input type="checkbox" th:field="*{activeUser}"><span class="overlay"></span></label></span>
+                           <span class="cell col-md-1"><label class="checkbox"><input type="checkbox" th:field="*{activeAngular}"><span class="overlay"></span></label></span>
                            
-						   <span class="col-md-2"><select class="" th:field="*{roles}" id="roles" multiple>
+						   <span class="cell col-md-2"><select class="" th:field="*{roles}" id="roles" multiple>
 							   <option th:each="role : ${possibleRoles}" th:value="${{role}}" th:text="${role.fonction}"></option>
 						   </select></span>
 						   
-	                       <span class="col-md-2"><button type="submit" class="btn btn-success">Valider</button></span>
+	                       <span class="cell col-md-2"><button type="submit" class="btn btn-success">Valider</button></span>
                        </form>
                    </div>
                    
                    <div class="row line" th:each="user : ${ listUser }">
-                       <span class="col-md-2" th:text="*{user.nom}"></span>
-                       <span class="col-md-2" th:text="*{user.prenom}"></span>
-                       <span class="col-md-2" th:text="*{user.user}"></span>
-                       <span class="col-md-1" th:text="*{user.desactiveUser}"></span>
-                       <span class="col-md-1" th:text="*{user.desactiveAngular}"></span>
-                       <span class="col-md-2">
-                           <span class="badge" th:each="role : ${ user.roles }" th:text="*{role.fonction}" th:classappend="*{'badge-' + role.fonction}"></span><br>
+                       <span class="cell col-md-2" th:text="*{user.nom}"></span>
+                       <span class="cell col-md-2" th:text="*{user.prenom}"></span>
+                       <span class="cell col-md-2" th:text="*{user.user}"></span>
+                       <span class="cell col-md-1"><span class="disable-check" th:classappend="*{'check-' + user.activeUser}"></span></span>
+                       <span class="cell col-md-1"><span class="disable-check" th:classappend="*{'check-' + user.activeAngular}"></span></span>
+                       <span class="cell col-md-2">
+                           <span class="badge" th:each="role : ${ user.roles }" th:text="*{role.fonction}" th:classappend="*{'badge-' + role.fonction}"></span>
                        </span>
-                       <span class="col-md-2"><a th:href="@{ /Utilisateurs/Modifier/{id}(id=${user.id}) }" class="btn btn-warning">Modifier</a></span>
+                       <span class="cell col-md-2"><a th:if="${user.id != 1}" th:href="@{ /Utilisateurs/Modifier/{id}(id=${user.id}) }" class="btn btn-warning">Modifier</a></span>
                    </div>
                </div>
            </div>

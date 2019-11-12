@@ -72,16 +72,81 @@ section {
     background-color: #FFF6CC;
 }
 
+input {
+	width: 100%;
+}
+
 a {
     color: #544600;
 }
 
-a.btn, button {
+button {
     margin: 5px 0;
+}
+
+.checkbox input {
+    display: none;
+}
+
+.checkbox .overlay {
+  display: block;
+  width: 24px;
+  height: 24px;
+  background-color: #DC3545;
+  color: white;
+  content: "\2718";
+  border-radius: 3px;
+  cursor: pointer;
+  border: 1px solid #544600;
+  transition: background-color 0.2s;
+}
+
+.checkbox input:checked ~ .overlay {
+  background-color: #28A745;
+}
+
+.checkbox input ~ .overlay::before {
+  content: "\2718";
+}
+
+.checkbox input:checked ~ .overlay::before {
+  content: "\2713";
+}
+
+.disable-check {
+  color: white;
+  text-align: center;
+  opacity: 0.7;
+}
+
+.check-true::before {
+  display: inline-block;
+  width: 24px;
+  height: 24px;
+  border-radius: 3px;
+  border: 1px solid #544600;
+  background-color: #28A745;
+  content: "\2713";
+}
+
+.check-false::before {
+  display: inline-block;
+  width: 24px;
+  height: 24px;
+  border-radius: 3px;
+  border: 1px solid #544600;
+  background-color: #DC3545;
+  content: "\2718";
 }
 
 .hidden {
 	display: none;
+}
+
+.badge {
+	display: block;
+	padding: 3px 0;
+	margin: 2px 0;
 }
 
 .badge-ADMINISTRATEUR {
@@ -120,7 +185,7 @@ a.btn, button {
 .container {
     margin-bottom: 50px;
 }
-
+/*
 .fiche {
     background-color: #FFF;
     border: #544600 solid 2px;
@@ -155,7 +220,7 @@ a.btn, button {
     text-align: center;
     border: none;
 }
-
+*/
 .block-container {
     padding: 20px;
     background-color: white;
@@ -188,13 +253,10 @@ a.btn, button {
     border: #544600 solid 2px;
 }
 
-.list span {
+.list .cell {
     text-align: center;
     margin: auto;
-}
-
-.car span {
-	
+    padding: 5px;
 }
 
 .line {
