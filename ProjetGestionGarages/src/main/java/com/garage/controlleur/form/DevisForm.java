@@ -20,17 +20,17 @@ public class DevisForm {
 	}
 	private Integer id;
 	@NotEmpty
-	private Date dateDevis;
+	private String dateDevis;
 	@NotEmpty
 	private String description;
 	@NotEmpty
 	private Boolean validationDevis;
 	@NotEmpty
-	private Double prixHt;
+	private String prixHt;
 	@NotEmpty
-	private Double tva;
+	private String tva;
 	@NotEmpty
-	private Integer quantite;
+	private String quantite;
 	@NotEmpty
 	private Boolean refusDevis;
 	@NotEmpty
@@ -55,11 +55,11 @@ public class DevisForm {
 		this.id = id;
 	}
 
-	public Date getDateDevis() {
+	public String getDateDevis() {
 		return dateDevis;
 	}
 
-	public void setDateDevis(Date dateDevis) {
+	public void setDateDevis(String dateDevis) {
 		this.dateDevis = dateDevis;
 	}
 
@@ -79,27 +79,27 @@ public class DevisForm {
 		this.validationDevis = validationDevis;
 	}
 
-	public Double getPrixHt() {
+	public String getPrixHt() {
 		return prixHt;
 	}
 
-	public void setPrixHt(Double prixHt) {
+	public void setPrixHt(String prixHt) {
 		this.prixHt = prixHt;
 	}
 
-	public Double getTva() {
+	public String getTva() {
 		return tva;
 	}
 
-	public void setTva(Double tva) {
+	public void setTva(String tva) {
 		this.tva = tva;
 	}
 
-	public Integer getQuantite() {
+	public String getQuantite() {
 		return quantite;
 	}
 
-	public void setQuantite(Integer quantite) {
+	public void setQuantite(String quantite) {
 		this.quantite = quantite;
 	}
 
