@@ -20,7 +20,7 @@ import com.garage.iservice.IServiceUtilisateur;
 public class UtilisateurController {
 
 	@Autowired
-	private IServiceUtilisateur serviceutilisateur;
+	private IServiceUtilisateur serviceUtilisateur;
 	
 	@Autowired
 	private DaoRole daoRole;
@@ -40,7 +40,7 @@ public class UtilisateurController {
 	
 	@GetMapping("/Utilisateurs/Ajouter")
 	public String afficher(Model model) {
-		model.addAttribute("listUser", serviceutilisateur.rechercheUtilisateur()); //attribut du fichier html
+		model.addAttribute("listUser", serviceUtilisateur.rechercheUtilisateur()); //attribut du fichier html
 		model.addAttribute("possibleRoles", daoRole.findExceptAdmin());
 		
 		model.addAttribute("action", "Ajout");
@@ -56,7 +56,7 @@ public class UtilisateurController {
 	
 	@GetMapping("/Utilisateurs/Modifier/{id}")
 	public String afficher(@PathVariable final Integer id, Model model) {
-		model.addAttribute("listUser", serviceutilisateur.rechercheUtilisateur()); //attribut du fichier html
+		model.addAttribute("listUser", serviceUtilisateur.rechercheUtilisateur()); //attribut du fichier html
 		model.addAttribute("possibleRoles", daoRole.findExceptAdmin());
 		
 		model.addAttribute("action", "Modification");
@@ -67,7 +67,7 @@ public class UtilisateurController {
 				return this.afficher(model);
 			}
 			
-			final Utilisateur uti = serviceutilisateur.rechercherUtilisateurId(id);
+			final Utilisateur uti = serviceUtilisateur.rechercherUtilisateurId(id);
 			userForm.setId(uti.getId());
 			userForm.setNom(uti.getNom());
 			userForm.setPrenom(uti.getPrenom());
@@ -77,7 +77,6 @@ public class UtilisateurController {
 			userForm.setActiveAngular(uti.getActiveAngular());
 			userForm.setRoles(uti.getRoles());
 			
-			model.addAttribute("action", "Modification");
 			model.addAttribute("userModif", userForm);
 		}
 		
@@ -95,7 +94,7 @@ public class UtilisateurController {
 				Utilisateur uti = convertForm(userForm);
 				uti.setActiveUser(false);
 				uti.setActiveAngular(false);
-				serviceutilisateur.creerUtilisateur(uti);
+				serviceUtilisateur.creerUtilisateur(uti);
 				
 			} catch(Exception e) {
 				System.err.println(e.getMessage());
@@ -114,7 +113,7 @@ public class UtilisateurController {
 		if(!userResult.hasErrors()) {
 			try {
 				Utilisateur uti = convertForm(userForm);
-				serviceutilisateur.modifierUtilisateur(uti);
+				serviceUtilisateur.modifierUtilisateur(uti);
 				
 			} catch(Exception e) {
 				System.err.println(e.getMessage());
