@@ -29,7 +29,7 @@
 							<select class="col-md-4" th:field="*{roles}" id="roles" multiple>
 								<option th:each="role : ${possibleRoles}" th:value="${{role}}" th:text="${role.fonction}"></option>
 							</select>
-							<button type="submit" class="offset-1 btn btn-primary">Envoyé</button>
+							<button type="submit" class="btn btn-primary">Envoyé</button>
 						</span>
 					</form>
 				</div>

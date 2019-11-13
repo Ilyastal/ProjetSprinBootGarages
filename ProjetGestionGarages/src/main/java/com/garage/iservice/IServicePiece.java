@@ -9,7 +9,7 @@ import com.garage.bean.Piece;
  */
 public interface IServicePiece {
   
-	public void ajouterPiece(Piece piece);
+	public void creerPiece(Piece piece);
 	public List<Piece> recherchePiece();
 	public Piece rechercherPieceId(final int id);
 	public void modifierPiece(final Piece piece);
