@@ -80,8 +80,16 @@ a {
     color: #544600;
 }
 
-button {
-    margin: 5px 0;
+button[type=submit] {
+	margin: auto;
+}
+
+span.form, button {
+	margin: 5px 0;
+}
+
+span.form label {
+	text-align: right;
 }
 
 .checkbox input {

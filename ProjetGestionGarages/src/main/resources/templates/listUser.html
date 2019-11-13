@@ -10,20 +10,27 @@
                <h3 class="h-center" th:text="${action + ' d''un utilisateur'}"></h3>
            	   <div class="col" th:if="${action == 'Ajout'}">
            	       <form action="#" method="post" th:action="@{/Utilisateurs/Ajouter}" th:object="${userAdd}">
-           	       		<label for="nom">Nom :</label>
-						<input class=""	type="text" th:field="*{nom}" id="nom" placeholder="Nom">
-						<label for="prenom">Prénom :</label>
-						<input class="" type="text" th:field="*{prenom}" id="prenom" placeholder="Prénom">
-						<label for="pseudo">Pseudo :</label>
-						<input class="" type="text" th:field="*{user}" id="pseudo" placeholder="Pseudo">
-						<label for="password">Mot de passe :</label>
-						<input class="" type="password" th:field="*{password}" id="password">
+           	       		<span class="row form">
+           	       			<label class="col-md-2" for="nom">Nom :</label>
+							<input class="col-md-4"	type="text" th:field="*{nom}" id="nom" placeholder="Nom">
+							<label class="col-md-2" for="prenom">Prénom :</label>
+							<input class="col-md-4" type="text" th:field="*{prenom}" id="prenom" placeholder="Prénom">
+						</span>
+						<span class="row form">
+           	       			<label class="col-md-2" for="pseudo">Pseudo :</label>
+							<input class="col-md-4"	type="text" th:field="*{user}" id="pseudo" placeholder="Pseudo">
+							<label class="col-md-2" for="password">Mot de passe :</label>
+							<input class="col-md-4" type="password" th:field="*{password}" id="password" placeholder="Password">
+						</span>
 						
-						<select class="" th:field="*{roles}" id="roles" multiple>
-							<option th:each="role : ${possibleRoles}" th:value="${{role}}" th:text="${role.fonction}"></option>
-						</select>
+						<span class="row form">
+							<label class="col-md-2" for="roles">Rôles :</label>
+							<select class="col-md-4" th:field="*{roles}" id="roles" multiple>
+								<option th:each="role : ${possibleRoles}" th:value="${{role}}" th:text="${role.fonction}"></option>
+							</select>
+							<button type="submit" class="offset-1 btn btn-primary">Envoyé</button>
+						</span>
 						
-						<button type="submit" class="btn btn-primary">Envoyé</button>
 					</form>
            	   </div>
            	   <h3 class="h-center">Liste des utilisateurs</h3>

@@ -93,6 +93,8 @@ public class UtilisateurController {
 		if(!userResult.hasErrors()) {
 			try {
 				Utilisateur uti = convertForm(userForm);
+				uti.setActiveUser(false);
+				uti.setActiveAngular(false);
 				serviceutilisateur.creerUtilisateur(uti);
 				
 			} catch(Exception e) {
