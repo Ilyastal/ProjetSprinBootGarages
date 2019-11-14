@@ -25,7 +25,18 @@
 						<span class="cell col-md-2">
 						<span class="badge" th:text="*{fiche.niveauPriorite}" th:classappend="*{'badge-' + fiche.niveauPriorite}"></span>
 						</span> 
+						<div class="row offset-1 tache box-shadow" th:each="tache, status : ${ fiche.taches }">
+							<span class="cell col-md-1" th:text="${'Tache ' + status.count}"></span>
+							<span class="cell col-md-4" th:text="*{tache.description}"></span>
+							<span class="cell col-md-2" th:text="*{tache.dateCreation}"></span>
+							<span class="cell col-md-2" th:text="*{tache.dateFinTache}"></span>
+							<span class="cell col-md-2" th:text="*{tache.etatTache}"></span>
+							<span class="cell col-md-2">
+							<span class="badge" th:text="*{tache.niveauPriorite}" th:classappend="*{'badge-' + tache.niveauPriorite}"></span>
+							</span>
+                		</div>
 					</div>
+					
 				</div>
 			</div>
 		</div>
