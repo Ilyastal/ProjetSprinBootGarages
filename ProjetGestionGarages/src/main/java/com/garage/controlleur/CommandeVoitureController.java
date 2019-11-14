@@ -90,7 +90,7 @@ private ServiceDevis serviceDevis;
     ///
     //@PathVariable final Integer id,
     
-    @GetMapping("/afficherCommandeVoiture")
+    @GetMapping("/CommandeVoiture")
 	public String afficher(Model model) {
     	 List<CommandeVoiture> list =daoCommandeVoiture.findCommande();
     		
@@ -105,7 +105,7 @@ private ServiceDevis serviceDevis;
     
     
     
-  @GetMapping("/afficherCommandeVoiture/Modifier/{id}")
+  @GetMapping("/CommandeVoiture/Modifier/{id}")
 	public String afficher(@PathVariable final Integer id,Model model) {
 	  List<CommandeVoiture> list =daoCommandeVoiture.findCommande();
 		
