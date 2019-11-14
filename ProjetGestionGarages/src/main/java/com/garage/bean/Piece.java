@@ -5,6 +5,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
+import javax.validation.constraints.NotNull;
 
 @Entity
 @Table(name = "piece")
@@ -14,8 +15,10 @@ public class Piece {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer id;
 	
+	@NotNull
 	private String nom;
 	
+	@NotNull
 	private Double prixUnitaire;
 	
 	private Integer quantite;
@@ -91,7 +94,4 @@ public class Piece {
 	public void setPieceDefectueuse(Integer pieceDefectueuse) {
 		this.pieceDefectueuse = pieceDefectueuse;
 	}
-
-	
-	
 }

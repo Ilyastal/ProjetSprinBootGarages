@@ -1,7 +1,5 @@
 package com.garage.controlleur;
 
-import java.util.List;
-
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,17 +13,15 @@ import org.springframework.web.bind.annotation.PostMapping;
 
 import com.garage.bean.Piece;
 import com.garage.controlleur.form.PieceForm;
-import com.garage.controlleur.form.UtilisateurForm;
 import com.garage.iservice.IServicePiece;
 
 @Controller
 public class PieceController {
 
 	@Autowired
-	private IServicePiece servicepiece;
+	private IServicePiece servicePiece;
 
 	private Piece convertForm(PieceForm pieceForm) throws Exception {
-
 		Piece piece = new Piece();
 		piece.setId(pieceForm.getId());
 		piece.setNom(pieceForm.getNom());
@@ -36,45 +32,82 @@ public class PieceController {
 		return piece;
 	}
 
-	@GetMapping("/Pieces")
-	public String afficherCreer(Model model) {
-		final List<Piece> lpiece = servicepiece.recherchePiece();
-		model.addAttribute("listPiece", lpiece); //attribut du fichier html
-		model.addAttribute("action", "CreerPiece");
-		if(model.containsAttribute("pieceForm") == false) {
+	@GetMapping("/Pieces/Ajouter")
+	public String afficher(Model model) {
+		model.addAttribute("listPiece", servicePiece.recherchePiece()); //attribut du fichier html
+		
+		model.addAttribute("action", "Ajout");
+		if(!model.containsAttribute("pieceAdd")) {
 			PieceForm pieceForm = new PieceForm();
 			pieceForm.setId(0);
-			model.addAttribute("pieceForm", pieceForm);
+			
+			model.addAttribute("pieceAdd", pieceForm);
 		}
+		
 		return "listPiece"; //correspond au fichier html
 	}
-
-	@GetMapping("/supprimerPiece/{id}")
-	public String Supprimer(@PathVariable final Integer id,Model model) {
 	
-		Piece piece = servicepiece.rechercherPieceId(id);
-		if(piece  != null) {
-			servicepiece.supprimerPiece(piece);;
+	@GetMapping("/Pieces/Modifier/{id}")
+	public String afficher(@PathVariable final Integer id, Model model) {
+		model.addAttribute("listPiece", servicePiece.recherchePiece()); //attribut du fichier html
+		
+		model.addAttribute("action", "Modification");
+		if(!model.containsAttribute("pieceModif")) {
+			PieceForm pieceForm = new PieceForm();
+			
+			if(id == null || id < 1) {
+				return this.afficher(model);
+			}
+			
+			final Piece pi = servicePiece.rechercherPieceId(id);
+			pieceForm.setId(pi.getId());
+			pieceForm.setNom(pi.getNom());
+			pieceForm.setPrixUnitaire(pi.getPrixUnitaire().toString());
+			pieceForm.setQuantite(pi.getQuantite().toString());
+			pieceForm.setTypeLot(pi.getTypeLot());
+			pieceForm.setDescription(pi.getDescription());
+			
+			model.addAttribute("pieceModif", pieceForm);
 		}
-		return this.afficherCreer(model);
+		
+		return "listPiece"; //correspond au fichier html
 	}
-
-	@PostMapping("/Pieces")
-	public String ajoutPiece( 
-			@Valid @ModelAttribute(name = "pieceForm") PieceForm pieceForm,
-			BindingResult presult,
+	
+	@PostMapping("/Pieces/Ajouter")
+	public String ajoutPiece(
+			@Valid @ModelAttribute(name = "pieceAdd") PieceForm pieceForm,
+			BindingResult pieceResult,
 			Model model)
 	{
-		if(!presult.hasErrors()) {
-			try
-			{
-				Piece piece = convertForm(pieceForm);
-				servicepiece.ajouterPiece(piece);
-			}
-			catch(Exception e) {
+		if(!pieceResult.hasErrors()) {
+			try {
+				Piece pi = convertForm(pieceForm);
+				servicePiece.creerPiece(pi);
+				
+			} catch(Exception e) {
 				System.err.println(e.getMessage());
 			}
 		}
-		return this.afficherCreer(model);
+		
+		return this.afficher(model);
+	}
+	
+	@PostMapping("/Pieces/Modifier")
+	public String modifPiece(
+			@Valid @ModelAttribute(name = "pieceModif") PieceForm pieceForm,
+			BindingResult pieceResult,
+			Model model)
+	{
+		if(!pieceResult.hasErrors()) {
+			try {
+				Piece pi = convertForm(pieceForm);
+				servicePiece.modifierPiece(pi);
+				
+			} catch(Exception e) {
+				System.err.println(e.getMessage());
+			}
+		}
+		
+		return this.afficher(model);
 	}
 }
