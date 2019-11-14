@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html xmlns:th=http://www.thymeleaf.org>
+<head th:replace="fragments/head.html :: title(value='Liste des fiches')"></head>
+<body>
+	<header th:replace="fragments/header.html :: title(value='Liste des fiches')"></header>
+	
+	<section>
+		<div class="container">
+			<div class="block-container">
+				<h3 class="h-center">Liste des fiches d'entretien</h3>
+				<div class="col list">
+					<div class="row thead">
+						<span class="cell col-md-1">Numéro de fiche</span>
+						<span class="cell col-md-5">Description</span>
+						<span class="cell col-md-2">Date de création</span>
+						<span class="cell col-md-2">Date de validation</span>
+						<span class="cell col-md-2">Niveau de priorité</span>
+					</div>
+					
+					<div class="row line" th:each="fiche : ${ listFiche }">
+						<span class="cell col-md-1" th:text="*{fiche.id}"></span>
+						<span class="cell col-md-5" th:text="*{fiche.description}"></span>
+						<span class="cell col-md-2" th:text="*{fiche.dateCreation}"></span>
+						<span class="cell col-md-2" th:text="*{fiche.dateValidation}"></span>
+						<span class="cell col-md-2">
+						<span class="badge" th:text="*{fiche.niveauPriorite}" th:classappend="*{'badge-' + fiche.niveauPriorite}"></span>
+						</span> 
+					</div>
+				</div>
+			</div>
+		</div>
+    </section>
+
+</body>
+</html>
