@@ -13,7 +13,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.garage.bean.Piece;
-import com.garage.bean.Tache;
 import com.garage.service.ServicePiece;
 
 /**
@@ -35,7 +34,7 @@ public class PieceRest {
 	@PostMapping(value = "/")
 	public void add(@RequestBody Piece piece) {
 		//System.out.println(cl.getId());
-		servicepiece.ajouterPiece(piece);
+		servicepiece.creerPiece(piece);
 	}
 	@PutMapping(value = "/{id}")
 	public void modifier(@PathVariable Integer id,@RequestBody Piece piece) {

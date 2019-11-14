@@ -94,7 +94,4 @@ public class Piece {
 	public void setPieceDefectueuse(Integer pieceDefectueuse) {
 		this.pieceDefectueuse = pieceDefectueuse;
 	}
-
-	
-	
 }

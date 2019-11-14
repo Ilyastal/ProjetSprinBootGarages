@@ -29,7 +29,7 @@ public class Role {
 	private Fonction fonction;
 	
 	
-	@ManyToMany(mappedBy = "roles", fetch = FetchType.EAGER)
+	@ManyToMany(mappedBy = "roles", fetch = FetchType.LAZY)
 	@JsonBackReference
     private List<Utilisateur> utilisateurs;
 
