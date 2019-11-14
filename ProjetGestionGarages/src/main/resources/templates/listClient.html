@@ -3,68 +3,88 @@
 <head th:replace="fragments/head.html :: title(value='Liste des clients')"></head>
 <body>
 	<header th:replace="fragments/header.html :: title(value='Liste des clients')"></header>
-    
-    <section>
-        <div class="container">
-           <div class="block-container">
-               <h3 class="h-center">Ajoutez un client</h3>
-           	   <div class="col">
-           	       <form action="#" method="post" th:action="@{/Client}" th:object="${clientForm}">
-						<label for="nom">Nom :</label>
-						<input class=""	type="text" th:field="*{nom}" id="nom" placeholder="Nom">
-						<label for="prenom">Prénom :</label>
-						<input class="" type="text" th:field="*{prenom}" id="prenom" placeholder="Prénom">
-						<label for="sexe">Sexe :</label>
-						<select class="" th:field="*{sexe}" id="sexe">
-						<option value="MADAME">Madame</option>
-						<option value="MONSIEUR">Monsieur</option> 
-						</select>
-						<label for="adresse">Adresse :</label>
-						<input class="" type="text" th:field="*{adresse}" id="adresse" placeholder="Adresse">
-						<label for="codePostal">Code Postal :</label>
-						<input class="" type="text" th:field="*{codePostal}" id="codePostal" placeholder="Code Postal">
-						<label for="ville">Ville :</label>
-						<input class="" type="text" th:field="*{ville}" id="ville" placeholder="Ville">
-						<label for="telephone">Téléphone :</label>
-						<input class="" type="text" th:field="*{telephone}" id="telephone" placeholder="Téléphone">
-<!-- 						
-<select class="" th:field="*{role}" id="role" multiple> -->
-<!-- 							<option value="">Fonction</option> -->
-<!-- 							<option value="MECANICIEN">Mécanicien</option> -->
-<!-- 							<option value="CHEFATELIER">Chef d'Atelier</option> -->
-<!-- 							<option value="COMMERCIAL">Commercial</option> -->
-<!-- 							<option value="MAGASINIER">Magasinier</option> -->
-<!-- 						</select> -->
+	
+	<section>
+		<div class="container">
+			<div class="block-container">
+				<h3 class="h-center" th:text="${action + ' d''un client'}"></h3>
+				<div class="col" th:if="${action == 'Ajout'}">
+					<form action="#" method="post" th:action="@{/Clients/Ajouter}" th:object="${clientAdd}">
+						<span class="row form">
+							<label class="col-md-2" for="nom">Nom :</label>
+							<input class="col-md-4" type="text" th:field="*{nom}" id="nom" placeholder="Nom">
+							<label class="col-md-2" for="prenom">Prénom :</label>
+							<input class="col-md-4" type="text" th:field="*{prenom}" id="prenom" placeholder="Prénom">
+						</span>
 						
-						<button type="submit" class="btn btn-primary">Envoyé</button>
+						<span class="row form">
+							<label class="col-md-2" for="sexe">Civilité :</label>
+							<select class="col-md-2" th:field="*{sexe}" id="sexe">
+								<option th:each="genre : ${possibleGenre}" th:value="${{genre}}" th:text="${genre}"></option>
+							</select>
+							<label class="col-md-2" for="adresse">Adresse :</label>
+							<input class="col-md-6" type="text" th:field="*{adresse}" id="adresse" placeholder="Adresse">
+						</span>
+						
+						<span class="row form">
+							<label class="col-md-2" for="codePostal">Code Postal :</label>
+							<input class="col-md-4" type="text" th:field="*{codePostal}" id="codePostal" placeholder="Code Postal">
+							<label class="col-md-2" for="ville">Ville :</label>
+							<input class="col-md-4" type="text" th:field="*{ville}" id="ville" placeholder="Ville">
+						</span>
+						
+						<span class="row form">
+							<label class="col-md-2" for="telephone">Téléphone :</label>
+							<input class="col-md-4" type="text" th:field="*{telephone}" id="telephone" placeholder="Téléphone">
+							<button type="submit" class="btn btn-primary">Envoyé</button>
+						</span>
 					</form>
-           	   </div>
-           	   <h3 class="h-center">Liste des clients</h3>
-               <div class="col list">
-                   <div class="row thead">
-                       <span class="col-md-1">Nom</span>
-                       <span class="col-md-1">Prénom</span>
-                       <span class="col-md-1">Sexe</span>
-                       <span class="col-md-2">Adresse</span>
-                       <span class="col-md-2">Code Postal</span>
-                       <span class="col-md-1">Ville</span>
-                       <span class="col-md-2">Téléphone</span>
-                       <span class="col-md-2">Modification</span>
-                   </div>
-                   
-                   <div class="row line" th:each="client : ${ listClient }">
-                       <span class="col-md-1" th:text="*{client.nom}"></span>
-                       <span class="col-md-1" th:text="*{client.prenom}"></span>
-                       <span class="col-md-1" th:text="*{client.sexe}"></span>
-                       <span class="col-md-2" th:text="*{client.adresse}"></span>
-                       <span class="col-md-2" th:text="*{client.codePostal}"></span>
-                       <span class="col-md-1" th:text="*{client.ville}"></span>
-                       <span class="col-md-2" th:text="*{client.telephone}"></span>
-                       <span class="col-md-2"><button class="btn btn-warning">Modifier</button></span>
-                   </div>
-               </div>
-           </div>
-        </div>
-    </section>
+				</div>
+				
+				<h3 class="h-center">Liste des clients</h3>
+				<div class="col list">
+					<div class="row thead">
+						<span class="cell col-md-2">Nom</span>
+						<span class="cell col-md-2">Prénom</span>
+						<span class="cell col-md-1">Civilité</span>
+						<span class="cell col-md-2">Adresse</span>
+						<span class="cell col-md-1">Code Postal</span>
+						<span class="cell col-md-1">Ville</span>
+						<span class="cell col-md-1">Téléphone</span>
+						<span class="cell col-md-2">Modification</span>
+					</div>
+					
+					<div th:if="${action == 'Modification'}">
+						<form class="row line" action="#" method="post" th:action="@{/Clients/Modifier}" th:object="${clientModif}">
+							<input type="hidden" th:field="*{id}" th:value="*{id}"/>
+							<span class="cell col-md-2"><input type="text" th:field="*{nom}"></span>
+							<span class="cell col-md-2"><input type="text" th:field="*{prenom}"></span>
+							<span class="cell col-md-1">
+								<select th:field="*{sexe}" id="sexe">
+									<option th:each="genre : ${possibleGenre}" th:value="${{genre}}" th:text="${genre}"></option>
+								</select>
+							</span>
+							<span class="cell col-md-2"><input type="text" th:field="*{adresse}"></span>
+							<span class="cell col-md-1"><input type="text" th:field="*{codePostal}"></span>
+							<span class="cell col-md-1"><input type="text" th:field="*{ville}"></span>
+							<span class="cell col-md-1"><input type="text" th:field="*{telephone}"></span>
+							<span class="cell col-md-2"><button type="submit" class="btn btn-success">Valider</button></span>
+						</form>
+					</div>
+					
+					<div class="row line" th:each="client : ${ listClient }">
+						<span class="cell col-md-2" th:text="*{client.nom}"></span>
+						<span class="cell col-md-2" th:text="*{client.prenom}"></span>
+						<span class="cell col-md-1" th:text="*{client.sexe}"></span>
+						<span class="cell col-md-2" th:text="*{client.adresse}"></span>
+						<span class="cell col-md-1" th:text="*{client.codePostal}"></span>
+						<span class="cell col-md-1" th:text="*{client.ville}"></span>
+						<span class="cell col-md-1" th:text="*{client.telephone}"></span>
+						<span class="cell col-md-2"><a th:href="@{ /Clients/Modifier/{id}(id=${client.id}) }" class="btn btn-warning">Modifier</a></span>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
 </body>
 </html>

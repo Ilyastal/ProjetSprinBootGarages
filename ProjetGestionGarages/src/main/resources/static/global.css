@@ -72,7 +72,7 @@ section {
     background-color: #FFF6CC;
 }
 
-input {
+input, select {
 	width: 100%;
 }
 
@@ -80,8 +80,16 @@ a {
     color: #544600;
 }
 
-button {
-    margin: 5px 0;
+button[type=submit] {
+	margin: auto;
+}
+
+span.form, button {
+	margin: 5px 0;
+}
+
+span.form label {
+	text-align: right;
 }
 
 .checkbox input {
@@ -256,7 +264,7 @@ button {
 .list .cell {
     text-align: center;
     margin: auto;
-    padding: 5px;
+    padding: 5px 3px;
 }
 
 .line {

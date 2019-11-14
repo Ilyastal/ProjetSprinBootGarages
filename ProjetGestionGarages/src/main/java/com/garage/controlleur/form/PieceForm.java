@@ -2,21 +2,22 @@ package com.garage.controlleur.form;
 
 import javax.validation.constraints.NotEmpty;
 
-/**
- * 
- */
 public class PieceForm {
-	public PieceForm() {
-	}
-private Integer id;
+	
+	private Integer id;
+	
     @NotEmpty
 	private String nom;
+    
     @NotEmpty
 	private String prixUnitaire;
+    
     @NotEmpty
 	private String quantite;
+    
     @NotEmpty
 	private String description;
+    
     @NotEmpty
 	private String typeLot;
 	
