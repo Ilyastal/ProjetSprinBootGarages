@@ -2,39 +2,28 @@ package com.garage.controlleur.form;
 
 import java.util.Date;
 
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
-import javax.persistence.Temporal;
-import javax.persistence.TemporalType;
 import javax.validation.constraints.NotEmpty;
 
-import com.garage.bean.Devis;
-import com.garage.bean.Utilisateur;
 import com.garage.bean.Voiture;
 
-/**
- * 
- */
 public class CommandeVoitureForm {
 
-	public CommandeVoitureForm() {
-	}
 	private Integer id;
 	
-	@NotEmpty
-	private String dateCommande;
+	private Date dateCommande;
 	
-	@NotEmpty
-	private String dateReception;
+	private Date dateReception;
+	
 	@NotEmpty
 	private String quantite;
 	
-	@NotEmpty
-	private String dateCloture;
+	private Date dateCloture;
+	
 	@NotEmpty
 	private String utilisateur;
-	@NotEmpty
-	private String voiture;
+	
+	private Voiture voiture;
+	
 	@NotEmpty
 	private String devis;
 	
@@ -46,9 +35,7 @@ public class CommandeVoitureForm {
 	public void setId(Integer id) {
 		this.id = id;
 	}
-
-
-
+	
 	public String getQuantite() {
 		return quantite;
 	}
@@ -56,31 +43,28 @@ public class CommandeVoitureForm {
 	public void setQuantite(String quantite) {
 		this.quantite = quantite;
 	}
-
 	
-	
-
-	public String getDateCommande() {
+	public Date getDateCommande() {
 		return dateCommande;
 	}
 
-	public void setDateCommande(String dateCommande) {
+	public void setDateCommande(Date dateCommande) {
 		this.dateCommande = dateCommande;
 	}
 
-	public String getDateReception() {
+	public Date getDateReception() {
 		return dateReception;
 	}
 
-	public void setDateReception(String dateReception) {
+	public void setDateReception(Date dateReception) {
 		this.dateReception = dateReception;
 	}
 
-	public String getDateCloture() {
+	public Date getDateCloture() {
 		return dateCloture;
 	}
 
-	public void setDateCloture(String dateCloture) {
+	public void setDateCloture(Date dateCloture) {
 		this.dateCloture = dateCloture;
 	}
 
@@ -92,11 +76,11 @@ public class CommandeVoitureForm {
 		this.utilisateur = utilisateur;
 	}
 
-	public String getVoiture() {
+	public Voiture getVoiture() {
 		return voiture;
 	}
 
-	public void setVoiture(String voiture) {
+	public void setVoiture(Voiture voiture) {
 		this.voiture = voiture;
 	}
 	
