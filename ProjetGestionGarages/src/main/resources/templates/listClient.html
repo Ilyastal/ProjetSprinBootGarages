@@ -48,8 +48,8 @@
                        <span class="col-md-2">Adresse</span>
                        <span class="col-md-2">Code Postal</span>
                        <span class="col-md-1">Ville</span>
-                       <span class="col-md-1">Téléphone</span>
-                        <span class="col-md-3">Modification</span>
+                       <span class="col-md-2">Téléphone</span>
+                       <span class="col-md-2">Modification</span>
                    </div>
                    
                    <div class="row line" th:each="client : ${ listClient }">
@@ -59,8 +59,8 @@
                        <span class="col-md-2" th:text="*{client.adresse}"></span>
                        <span class="col-md-2" th:text="*{client.codePostal}"></span>
                        <span class="col-md-1" th:text="*{client.ville}"></span>
-                       <span class="col-md-1" th:text="*{client.telephone}"></span>
-                       <span class="col-md-3"><button class="btn btn-warning">Modifier</button></span>
+                       <span class="col-md-2" th:text="*{client.telephone}"></span>
+                       <span class="col-md-2"><button class="btn btn-warning">Modifier</button></span>
                    </div>
                </div>
            </div>
