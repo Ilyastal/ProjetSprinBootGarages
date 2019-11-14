@@ -36,7 +36,7 @@ public class ClientsRest {
 		System.out.println(cl.getId());
 		serviceclient.creerClient(cl);
 	}
-	@PutMapping(value = "/clients/{id}")
+	@PutMapping(value = "/{id}")
 	public void modifier(@PathVariable Integer id,@RequestBody Client cl) {
 //		if(serviceclient.rechercherClientId(id) == null) return null;
 		serviceclient.modifierClient(cl);
