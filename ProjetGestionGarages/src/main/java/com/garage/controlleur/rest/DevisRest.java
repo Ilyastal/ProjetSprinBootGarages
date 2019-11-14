@@ -13,9 +13,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.garage.bean.Devis;
-import com.garage.bean.Utilisateur;
 import com.garage.service.ServiceDevis;
-import com.garage.service.ServiceUtilisateur;
 
 /**
  * 

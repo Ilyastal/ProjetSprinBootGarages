@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.garage.bean.Login;
 import com.garage.bean.Utilisateur;
 import com.garage.service.ServiceUtilisateur;
 
@@ -29,6 +30,11 @@ public class UtilisateurRest {
 	@GetMapping(name = "/")
 	public List<Utilisateur> getall() {
 		return serviceUtilisateur.rechercheUtilisateur();
+	}
+	
+	@PostMapping(value = "/auth/")
+	public  Utilisateur getUser(@RequestBody Login login){
+		return serviceUtilisateur.auth(login.getUser(), login.getPassword());
 	}
 	
 	@PostMapping(value = "/")

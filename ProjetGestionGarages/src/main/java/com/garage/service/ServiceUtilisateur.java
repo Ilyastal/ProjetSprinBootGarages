@@ -53,10 +53,17 @@ public class ServiceUtilisateur implements IServiceUtilisateur {
 	public Utilisateur rechercherUtilisateurId(int id) {
 		return userDao.findById(id).get();
 	}
-
+	
+	
 	@Override
 	public void desactiverUtilisateur(Utilisateur user) {
 		// TODO Auto-generated method stub
 		
+	}
+	@Transactional
+	@Override
+	public Utilisateur auth(String user, String password) {
+		
+		return userDao.findLogin(user, password);
 	}
 }
