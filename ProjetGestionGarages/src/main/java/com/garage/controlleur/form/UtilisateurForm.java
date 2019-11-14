@@ -22,9 +22,9 @@ public class UtilisateurForm {
 	@NotEmpty
 	private String password;
 
-	private Boolean desactiveUser;
+	private Boolean activeUser;
 
-	private Boolean desactiveAngular;
+	private Boolean activeAngular;
 	
 	private List<Role> roles;
 	
@@ -69,20 +69,20 @@ public class UtilisateurForm {
 		this.password = password;
 	}
 
-	public Boolean getDesactiveUser() {
-		return desactiveUser;
+	public Boolean getActiveUser() {
+		return activeUser;
 	}
 	
-	public void setDesactiveUser(Boolean desactiveUser) {
-		this.desactiveUser = desactiveUser;
+	public void setActiveUser(Boolean activeUser) {
+		this.activeUser = activeUser;
 	}
 	
-	public Boolean getDesactiveAngular() {
-		return desactiveAngular;
+	public Boolean getActiveAngular() {
+		return activeAngular;
 	}
 	
-	public void setDesactiveAngular(Boolean desactiveAngular) {
-		this.desactiveAngular = desactiveAngular;
+	public void setActiveAngular(Boolean activeAngular) {
+		this.activeAngular = activeAngular;
 	}
 	
 	public List<Role> getRoles() {

@@ -32,8 +32,8 @@ public class UtilisateurController {
         user.setPrenom(utilisateurform.getPrenom());;
         user.setUser(utilisateurform.getUser());
         user.setPassword(utilisateurform.getPassword());
-        user.setDesactiveUser(utilisateurform.getDesactiveUser());
-        user.setDesactiveAngular(utilisateurform.getDesactiveAngular());
+        user.setActiveUser(utilisateurform.getActiveUser());
+        user.setActiveAngular(utilisateurform.getActiveAngular());
         user.setRoles(utilisateurform.getRoles());
         return user;
     }
@@ -73,8 +73,8 @@ public class UtilisateurController {
 			userForm.setPrenom(uti.getPrenom());
 			userForm.setUser(uti.getUser());
 			userForm.setPassword(uti.getPassword());
-			userForm.setDesactiveUser(uti.getDesactiveUser());
-			userForm.setDesactiveAngular(uti.getDesactiveAngular());
+			userForm.setActiveUser(uti.getActiveUser());
+			userForm.setActiveAngular(uti.getActiveAngular());
 			userForm.setRoles(uti.getRoles());
 			
 			model.addAttribute("action", "Modification");
