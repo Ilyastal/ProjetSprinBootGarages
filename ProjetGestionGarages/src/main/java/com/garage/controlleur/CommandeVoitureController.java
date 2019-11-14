@@ -2,7 +2,7 @@ package com.garage.controlleur;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;
-import java.util.List;
+import java.util.TimeZone;
 
 import javax.validation.Valid;
 
@@ -21,136 +21,100 @@ import org.springframework.web.bind.annotation.PostMapping;
 import com.garage.bean.CommandeVoiture;
 import com.garage.bean.Devis;
 import com.garage.bean.Utilisateur;
-import com.garage.bean.Voiture;
 import com.garage.controlleur.form.CommandeVoitureForm;
 import com.garage.dao.DaoCommandeVoiture;
-import com.garage.service.ServiceCommandeVoiture;
-import com.garage.service.ServiceDevis;
-import com.garage.service.ServiceUtilisateur;
-import com.garage.service.ServiceVoiture;
+import com.garage.iservice.IServiceCommandeVoiture;
+import com.garage.iservice.IServiceDevis;
+import com.garage.iservice.IServiceUtilisateur;
 
-
-/**
-*
-*/
 @Controller
 public class CommandeVoitureController {
-@Autowired
-private ServiceCommandeVoiture serviceCommandeVoiture;
-@Autowired
-private ServiceUtilisateur serviceUser;
-@Autowired
-private ServiceVoiture serviceVoiture;
-@Autowired
-private ServiceDevis serviceDevis;
-    /**
-     * Default constructor
-     */
-    public CommandeVoitureController() {
-    }
-    
-   
-    
-    @Autowired
-    private DaoCommandeVoiture daoCommandeVoiture;
-    
-    @InitBinder
-    public void initBinder(WebDataBinder binder) {
-        SimpleDateFormat sdf = new SimpleDateFormat("dd-MM-yyyy");
-        sdf.setLenient(true);
-        binder.registerCustomEditor(Date.class, new CustomDateEditor(sdf, true));
-    }
-    private CommandeVoiture convertForm(CommandeVoitureForm commandeform) throws Exception {
-    	CommandeVoiture commande = new CommandeVoiture();
-    	commande.setId(commandeform.getId());
-    	SimpleDateFormat sdf = new SimpleDateFormat("dd-MM-yyyy");   
-    	Date dateCommande = sdf.parse(commandeform.getDateCommande());
-       commande.setDateCommande(dateCommande);
-        Date dateReception = sdf.parse(commandeform.getDateReception());
-        commande.setDateReception(dateReception);
-        Date dateCloture = sdf.parse(commandeform.getDateCloture());
-        commande.setDateCloture(dateCloture);
-        commande.setQuantite(Integer.valueOf(commandeform.getQuantite()));
-        
-        
-        Utilisateur user = serviceUser.rechercherUtilisateurId(
-				Integer.valueOf(commandeform.getUtilisateur()));
-        commande.setUtilisateur(user);
-        
-        Voiture voiture = serviceVoiture.rechercherVoitureId(
-				Integer.valueOf(commandeform.getVoiture()));
-        commande.setVoiture(voiture);
-        
-        Devis  devis  = serviceDevis.rechercherDevisId(
-				Integer.valueOf(commandeform.getDevis()));
-        commande.setDevis(devis);
-        return commande;
-    }
-
-    ///
-    //@PathVariable final Integer id,
-    
-    @GetMapping("/afficherCommandeVoiture")
-	public String afficher(Model model) {
-    	 List<CommandeVoiture> list =daoCommandeVoiture.findCommande();
-    		
-   	  
- 		model.addAttribute("listCommandeVoiture", list); //attribut du fichier html
- 		
+	
+	@Autowired
+	private IServiceCommandeVoiture serviceCommandeVoiture;
+	
+	@Autowired
+	private IServiceUtilisateur serviceUser;
+	
+	@Autowired
+	private IServiceDevis serviceDevis;
+	
+	@Autowired
+	private DaoCommandeVoiture daoCommandeVoiture;
+	
+	@InitBinder
+	public void initBinder(WebDataBinder binder) {
+		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+		sdf.setTimeZone(TimeZone.getTimeZone("GMT"));
+		binder.registerCustomEditor(Date.class, new CustomDateEditor(sdf, true));
+	}
+	
+	private CommandeVoiture convertForm(CommandeVoitureForm commandeForm) throws Exception {
+		CommandeVoiture com = new CommandeVoiture();
+		com.setId(commandeForm.getId());
+		com.setDateCommande(commandeForm.getDateCommande());
+		com.setDateReception(commandeForm.getDateReception());
+		com.setDateCloture(commandeForm.getDateCloture());
+		com.setQuantite(Integer.valueOf(commandeForm.getQuantite()));
 		
+		Utilisateur user = serviceUser.rechercherUtilisateurId(
+				Integer.valueOf(commandeForm.getUtilisateur()));
+		com.setUtilisateur(user);
+		
+		com.setVoiture(commandeForm.getVoiture());
+		
+		Devis devis = serviceDevis.rechercherDevisId(
+				Integer.valueOf(commandeForm.getDevis()));
+		com.setDevis(devis);
+		
+		return com;
+	}
+
+	
+	@GetMapping("/CommandesVoiture")
+	public String afficher(Model model) {
+ 		model.addAttribute("listCommandeVoiture", daoCommandeVoiture.findCommande()); //attribut du fichier html
+ 		model.addAttribute("action", "Liste");
+ 		
 		return "listCommandeVoiture"; //correspond au fichier html
 	}
-    
-    
-    
-    
-    
-  @GetMapping("/afficherCommandeVoiture/Modifier/{id}")
-	public String afficher(@PathVariable final Integer id,Model model) {
-	  List<CommandeVoiture> list =daoCommandeVoiture.findCommande();
+	
+	@GetMapping("/CommandesVoiture/Modifier/{id}")
+	public String afficher(@PathVariable final Integer id, Model model) {
+		model.addAttribute("listCommandeVoiture", daoCommandeVoiture.findCommande()); //attribut du fichier html
 		
-   	  
-		model.addAttribute("listCommandeVoiture", list); //attribut du fichier html
-		
-		
-	model.addAttribute("action", "Modification");
-		if(!model.containsAttribute("CommandeModif")) {
-			CommandeVoitureForm commandeform = new CommandeVoitureForm();
-		
+		model.addAttribute("action", "Modification");
+		if(!model.containsAttribute("commandeModif")) {
+			CommandeVoitureForm commandeForm = new CommandeVoitureForm();
 			
-			final CommandeVoiture uti = serviceCommandeVoiture.rechercherCommandeVoitureId(id);
-			commandeform.setId(uti.getId());
+			final CommandeVoiture com = serviceCommandeVoiture.rechercherCommandeVoitureId(id);
+			commandeForm.setId(com.getId());
 			
+			commandeForm.setDateCommande(com.getDateCommande());
+			commandeForm.setDateReception(com.getDateReception());
+			commandeForm.setDateCloture(com.getDateCloture());
 			
-			commandeform.setDateCommande(new 
-					SimpleDateFormat("dd-MM-yyyy").format(
-							uti.getDateCommande()));
+			commandeForm.setQuantite(com.getQuantite().toString());
+			commandeForm.setUtilisateur(com.getUtilisateur().getId().toString());
+			commandeForm.setVoiture(com.getVoiture());
+			commandeForm.setDevis(com.getDevis().getId().toString());
 			
-			commandeform.setDateCloture(new 
-					SimpleDateFormat("dd-MM-yyyy").format(
-							uti.getDateCloture())); 
-			commandeform.setQuantite(String.valueOf(uti.getQuantite()));
-			
-			commandeform.setUtilisateur(String.valueOf(uti.getUtilisateur().getId()));
-			commandeform.setVoiture(String.valueOf(uti.getVoiture().getId()));
-			commandeform.setDevis(String.valueOf(uti.getDevis().getId()));
-			
-			model.addAttribute("action", "Modification");
-			model.addAttribute("CommandeModif", commandeform);
+			model.addAttribute("commandeModif", commandeForm);
 		}
 		
 		return "listCommandeVoiture"; //correspond au fichier html
 	}
-   @PostMapping("/CommandeVoiture/Modifier")
+	
+	@PostMapping("/CommandesVoiture")
 	public String modifCommandeVoiture(
-			@Valid @ModelAttribute(name = "CommandeModif") CommandeVoitureForm commandeform,
-			BindingResult userResult,
+			@Valid @ModelAttribute(name = "commandeModif") CommandeVoitureForm commandeForm,
+			BindingResult commandeResult,
 			Model model)
 	{
-		if(!userResult.hasErrors()) {
+		if(!commandeResult.hasErrors()) {
 			try {
-				CommandeVoiture uti = convertForm(commandeform);
-				serviceCommandeVoiture.modifierCommandeVoiture(uti);
+				CommandeVoiture com = convertForm(commandeForm);
+				serviceCommandeVoiture.modifierCommandeVoiture(com);
 				
 			} catch(Exception e) {
 				System.err.println(e.getMessage());

@@ -2,37 +2,42 @@ package com.garage.controlleur.form;
 
 import javax.validation.constraints.NotEmpty;
 
-/**
- * 
- */
 public class VoitureForm {
-
-	public VoitureForm() {
-	}
+	
 	private Integer id;
+	
 	@NotEmpty
 	private String categorie;
+	
 	@NotEmpty
 	private String marque;
+	
 	@NotEmpty
 	private String modele;
+	
 	@NotEmpty
 	private String annee;
+	
 	@NotEmpty
 	private String porte;
+	
 	@NotEmpty
 	private String energie;
+	
 	@NotEmpty
 	private String co2;
+	
 	@NotEmpty
 	private String prixUnitaire;
+	
 	@NotEmpty
 	private String couleur;
-	@NotEmpty
+	
 	private String quantite;
 
 	private String photo;
-
+	
+	
 	public Integer getId() {
 		return id;
 	}
