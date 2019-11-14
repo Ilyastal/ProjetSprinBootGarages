@@ -30,7 +30,7 @@
                        <span class="col-md-1" th:text="*{commande.voiture.marque}"></span>
                         <span class="col-md-1"  th:text="*{commande.voiture.modele}"></span>
                         <span class="col-md-2">
-                        <a th:href="@{ /afficherCommandeVoiture/Modifier/{id}(id=${commande.id}) }" class="btn btn-warning">Modifier la date de commande</a> 
+                        <a th:href="@{ /afficherCommandeVoiture/Modifier/{id}(id=${commande.id}) }" class="btn btn-warning">Modifier la date de réception</a> 
                    </span>
                    </div>
                     <div  th:if="${action == 'Modification'}">

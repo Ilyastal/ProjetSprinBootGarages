@@ -110,7 +110,7 @@ private ServiceDevis serviceDevis;
 	  List<CommandeVoiture> list =daoCommandeVoiture.findCommande();
 		
    	  
-		model.addAttribute("listCommandeVoiture", list); //attribut du fichier html
+	model.addAttribute("listCommandeVoiture", list); //attribut du fichier html
 		
 		
 	model.addAttribute("action", "Modification");
