@@ -19,11 +19,7 @@ import com.garage.iservice.IServiceTache;
 @Controller
 public class TacheController {
 
-	/**
-	 * Default constructor
-	 */
-	public TacheController() {
-	}
+	
 	
 	@Autowired
 	private IServiceTache servicetache;

@@ -27,6 +27,8 @@ public class Piece {
 	
 	private String typeLot;
 	
+	private Integer pieceDefectueuse;
+	
 	/*
 	@OneToMany(mappedBy = "piece", fetch = FetchType.EAGER)
 	@Fetch(value = FetchMode.SUBSELECT)
@@ -84,4 +86,15 @@ public class Piece {
 	public void setTypeLot(String typeLot) {
 		this.typeLot = typeLot;
 	}
+
+	public Integer getPieceDefectueuse() {
+		return pieceDefectueuse;
+	}
+
+	public void setPieceDefectueuse(Integer pieceDefectueuse) {
+		this.pieceDefectueuse = pieceDefectueuse;
+	}
+
+	
+	
 }

@@ -19,12 +19,8 @@ import com.garage.iservice.IServiceDevis;
 @Controller
 public class DevisController {
 
-	/**
-	 * Default constructor
-	 */
-	public DevisController() {
-	}
-	
+
+
 	@Autowired
 	private IServiceDevis servicedevis;
 	
