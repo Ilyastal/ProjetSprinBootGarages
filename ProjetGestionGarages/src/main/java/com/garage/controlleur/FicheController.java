@@ -14,9 +14,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 
 import com.garage.bean.Fiche;
-import com.garage.bean.Utilisateur;
 import com.garage.controlleur.form.FicheForm;
-import com.garage.controlleur.form.UtilisateurForm;
 import com.garage.dao.DaoFiche;
 import com.garage.iservice.IServiceFiche;
 
