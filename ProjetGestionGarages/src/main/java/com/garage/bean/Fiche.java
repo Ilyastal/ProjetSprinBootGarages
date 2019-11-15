@@ -31,10 +31,10 @@ public class Fiche {
 
 	private String description;
 	
-	@Temporal(TemporalType.TIMESTAMP)
+	@Temporal(TemporalType.DATE)
 	private Date dateCreation;
 	
-	@Temporal(TemporalType.TIMESTAMP)
+	@Temporal(TemporalType.DATE)
 	private Date dateValidation;
 	
 	private Boolean validation;

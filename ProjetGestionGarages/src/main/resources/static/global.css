@@ -182,6 +182,26 @@ span.form label {
 	color: white;
 }
 
+.badge-TRESURGENT {
+	background-color: #DC3545;
+	color: white;
+}
+
+.badge-URGENT {
+	background-color: #ff0080;
+	color: white;
+}
+
+.badge-NORMAL {
+	background-color: #c0c0c0;
+	color: white;
+}
+
+.badge-NONPRIORITAIRE {
+	background-color: #00d56a;
+	color: white;
+}
+
 .btn-normal {
     background-color: #FF0;
 }
