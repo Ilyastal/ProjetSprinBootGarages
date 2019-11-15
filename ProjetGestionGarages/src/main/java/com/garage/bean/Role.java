@@ -2,7 +2,6 @@ package com.garage.bean;
 
 import java.util.List;
 
-import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
@@ -14,6 +13,7 @@ import javax.persistence.Id;
 import javax.persistence.ManyToMany;
 import javax.persistence.Table;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.garage.enums.Fonction;
 
 @Entity
@@ -29,7 +29,8 @@ public class Role {
 	private Fonction fonction;
 	
 	
-	@ManyToMany(fetch = FetchType.EAGER, cascade = { CascadeType.PERSIST, CascadeType.MERGE }, mappedBy = "roles")
+	@ManyToMany(mappedBy = "roles", fetch = FetchType.LAZY)
+	@JsonBackReference
     private List<Utilisateur> utilisateurs;
 
 	

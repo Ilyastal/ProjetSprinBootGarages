@@ -55,7 +55,7 @@ header li {
     text-align: center;
     font-size: 1.3rem;
     display: inline-block;
-    width: 150px;
+    width: 250px;
     margin: 0;
     padding: 0;
     border-style: solid;
@@ -72,12 +72,89 @@ section {
     background-color: #FFF6CC;
 }
 
+input, select {
+	width: 100%;
+}
+
 a {
     color: #544600;
 }
 
-button {
-    margin: 5px 0;
+button[type=submit] {
+	margin: auto;
+}
+
+span.form, button {
+	margin: 5px 0;
+}
+
+span.form label {
+	text-align: right;
+}
+
+.checkbox input {
+    display: none;
+}
+
+.checkbox .overlay {
+  display: block;
+  width: 24px;
+  height: 24px;
+  background-color: #DC3545;
+  color: white;
+  content: "\2718";
+  border-radius: 3px;
+  cursor: pointer;
+  border: 1px solid #544600;
+  transition: background-color 0.2s;
+}
+
+.checkbox input:checked ~ .overlay {
+  background-color: #28A745;
+}
+
+.checkbox input ~ .overlay::before {
+  content: "\2718";
+}
+
+.checkbox input:checked ~ .overlay::before {
+  content: "\2713";
+}
+
+.disable-check {
+  color: white;
+  text-align: center;
+  opacity: 0.7;
+}
+
+.check-true::before {
+  display: inline-block;
+  width: 24px;
+  height: 24px;
+  border-radius: 3px;
+  border: 1px solid #544600;
+  background-color: #28A745;
+  content: "\2713";
+}
+
+.check-false::before {
+  display: inline-block;
+  width: 24px;
+  height: 24px;
+  border-radius: 3px;
+  border: 1px solid #544600;
+  background-color: #DC3545;
+  content: "\2718";
+}
+
+.hidden {
+	display: none;
+}
+
+.badge {
+	display: block;
+	padding: 3px 0;
+	margin: 2px 0;
 }
 
 .badge-ADMINISTRATEUR {
@@ -105,8 +182,44 @@ button {
 	color: white;
 }
 
-.btn-normal {
-    background-color: #FF0;
+.badge-TRESURGENT {
+	background-color: #DC3545;
+	color: white;
+}
+
+.badge-URGENT {
+	background-color: #FF0080;
+	color: white;
+}
+
+.badge-NORMAL {
+	background-color: #C0C0C0;
+	color: white;
+}
+
+.badge-NONPRIORITAIRE {
+	background-color: #00D56A;
+	color: white;
+}
+
+.badge-AFAIRE {
+	background-color: #DC3545;
+	color: white;
+}
+
+.badge-ENCOURS {
+	background-color: #FFC107;
+	color: black;
+}
+
+.badge-TERMINER {
+	background-color: #007BFF;
+	color: white;
+}
+
+.badge-VALIDER {
+	background-color: #28A745;
+	color: white;
 }
 
 .container {
@@ -115,41 +228,6 @@ button {
 
 .container {
     margin-bottom: 50px;
-}
-
-.fiche {
-    background-color: #FFF;
-    border: #544600 solid 2px;
-    margin-top: 5px;
-}
-
-.fiche span {
-    margin: auto;
-    border-left: #544600 solid 2px;
-    border-right: #544600 solid 2px;
-}
-
-.fiche span:first-child, span:last-child {
-    width: 16.669%;
-    text-align: center;
-    border: none;
-}
-
-.tache {
-    background-color: #FFF;
-    border: #544600 solid 2px;
-    border-top: none;
-}
-
-.tache span {
-    margin: auto;
-    border-left: #544600 solid 2px;
-    border-right: #544600 solid 2px;
-}
-
-.tache span:first-child, span:last-child {
-    text-align: center;
-    border: none;
 }
 
 .block-container {
@@ -178,21 +256,33 @@ button {
 }
 
 .thead {
+	color: #544600;
     font-weight: bold;
     font-size: 1.2rem;
     border: #544600 solid 2px;
 }
 
-.list span {
-    text-align: center;
-    margin: auto;
+.thead-light {
+	color: #544600;
+    font-weight: 600;
+    font-size: 1rem;
+    border: #544600 solid 1px;
 }
 
-.car span {
-	
+.list .cell {
+    text-align: center;
+    margin: auto;
+    padding: 5px 3px;
 }
 
 .line {
     border: #544600 solid 2px;
+    border-top: none;
+    padding-bottom: 1px;
+    padding-right: 1px;
+}
+
+.line-light {
+    border: #544600 solid 1px;
     border-top: none;
 }

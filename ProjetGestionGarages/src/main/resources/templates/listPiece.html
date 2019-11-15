@@ -2,63 +2,70 @@
 <html xmlns:th=http://www.thymeleaf.org>
 <head th:replace="fragments/head.html :: title(value='Liste des pièces')"></head>
 <body>
-	<header th:replace="fragments/header.html :: title(value='Liste des pièces')"></header>
-    
-    <section>
-        <div class="container">
-           <div class="block-container">
-            <h3 class="h-center">Ajoutez une pièce</h3>
-           	   <div class="col">
-           	       <form action="#" method="post" th:action="@{/Pieces}" th:object="${pieceForm}">
-						<label for="nom">Nom :</label>
-						<input class=""	type="text" th:field="*{nom}" id="nom" placeholder="Nom">
-						<label for="prixUnitaire">Prix Unitaire :</label>
-						<input class="" type="text" th:field="*{prixUnitaire}" id="prixUnitaire" placeholder="Prix Unitaire">
-						<label for="quantite">Quantité :</label>
-						<input class="" type="text" th:field="*{quantite}" id="quantite" placeholder="quantite">
-						<label for="description">Description :</label>
-						<input class="" type="text" th:field="*{description}" id="description" placeholder="description">
-						<label for="typeLot">TypeLot :</label>
-						<input class="" type="text" th:field="*{typeLot}" id="typeLot" placeholder="typeLot">
-					
-<!-- 						<select class="" th:field="*{role}" id="role" multiple> -->
-<!-- 							<option value="">Fonction</option> -->
-<!-- 							<option value="MECANICIEN">Mécanicien</option> -->
-<!-- 							<option value="CHEFATELIER">Chef d'Atelier</option> -->
-<!-- 							<option value="COMMERCIAL">Commercial</option> -->
-<!-- 							<option value="MAGASINIER">Magasinier</option> -->
-<!-- 						</select> -->
+	<header th:replace="fragments/header.html :: title(value='Liste des pièces', role=' - Magasinier')"></header>
+
+	<section>
+		<div class="container">
+			<div class="block-container">
+				<h3 class="h-center" th:text="${action + ' d''une pièce'}"></h3>
+				<div class="col" th:if="${action == 'Ajout'}">
+					<form action="#" method="post" th:action="@{/Pieces/Ajouter}" th:object="${pieceAdd}">
+						<span class="row form">
+							<label class="col-md-2" for="nom">Nom :</label>
+							<input class="col-md-4" type="text" th:field="*{nom}" id="nom" placeholder="Nom">
+							<label class="col-md-2" for="prix">Prix unitaire :</label>
+							<input class="col-md-4" type="text" th:field="*{prixUnitaire}" id="prix" placeholder="Prix Unitaire">
+						</span>
 						
-						<button type="submit" class="btn btn-primary">Envoyé</button>
+						<span class="row form">
+							<label class="col-md-2" for="quantite">Quantité :</label>
+							<input class="col-md-4" type="text" th:field="*{quantite}" id="quantite" placeholder="Quantité">
+							<label class="col-md-2" for="type">Type de lot :</label>
+							<input class="col-md-4" type="text" th:field="*{typeLot}" id="type" placeholder="ex : boîte de 20">
+						</span>
+						
+						<span class="row form">
+							<label class="col-md-2" for="description">Description :</label>
+							<input class="col-md-8" type="text" th:field="*{description}" id="description" placeholder="Description">
+							<button type="submit" class="btn btn-primary">Envoyé</button>
+						</span>
 					</form>
-           	   </div>
-           	   <h3 class="h-center">Liste des pièces</h3>
-           	  
-               <div class="col list">
-               
-                   <div class="row thead">
-                       <span class="col-md-2">Nom</span>
-                       <span class="col-md-2">Description</span>
-                       <span class="col-md-2">Prix unitaire</span>
-                       <span class="col-md-2">Quantité</span>
-                       <span class="col-md-4">Modification</span>
-                   </div>
-                    
-                   <div class="row line" th:each="piece : ${ listPiece }">
-                     
-                       <span class="col-md-2" th:text="*{piece.nom}"></span>
-                       <span class="col-md-2" th:text="*{piece.description}"></span>
-                       <span class="col-md-2" th:text="*{piece.prixUnitaire + '€'}"></span>
-                       <span class="col-md-2" th:text="*{piece.quantite + ' ' + piece.typeLot}"></span>
-                       <span class="col-md-2"><button class="btn btn-warning">Modifier</button></span>
-                       <form action="#" th:action="@{'/supprimerPiece/{id}'(id=${piece.id})}" th:method="get" >
-                       <span class="col-md-2"><button type="submit" class="btn btn-warning">Supprimer</button> </span>
-                
-                     </form>
-                   </div>
-               </div>
-           </div>
-        </div>
-    </section>
+				</div>
+				
+				<h3 class="h-center">Liste des pièces</h3>
+				<div class="col list">
+					<div class="row thead">
+						<span class="cell col-md-2">Nom</span>
+						<span class="cell col-md-4">Description</span>
+						<span class="cell col-md-1">Prix unitaire</span>
+						<span class="cell col-md-1">Quantité</span>
+						<span class="cell col-md-2">Type de lot</span>
+						<span class="cell col-md-2">Modification</span>
+					</div>
+					
+					<div th:if="${action == 'Modification'}">
+						<form class="row line" action="#" method="post" th:action="@{/Pieces/Modifier}" th:object="${pieceModif}">
+							<input type="hidden" th:field="*{id}" th:value="*{id}"/>
+							<span class="cell col-md-2"><input type="text" th:field="*{nom}"></span>
+							<span class="cell col-md-4"><input type="text" th:field="*{description}"></span>
+							<span class="cell col-md-1"><input type="text" th:field="*{prixUnitaire}"></span>
+							<span class="cell col-md-1"><input type="text" th:field="*{quantite}"></span>
+							<span class="cell col-md-2"><input type="text" th:field="*{typeLot}"></span>
+							<span class="cell col-md-2"><button type="submit" class="btn btn-success">Valider</button></span>
+						</form>
+					</div>
+					
+					<div class="row line" th:each="piece : ${ listPiece }">
+						<span class="cell col-md-2" th:text="*{piece.nom}"></span>
+						<span class="cell col-md-4" th:text="*{piece.description}"></span>
+						<span class="cell col-md-1" th:text="*{piece.prixUnitaire}"></span>
+						<span class="cell col-md-1" th:text="*{piece.quantite}"></span>
+						<span class="cell col-md-2" th:text="*{piece.typeLot}"></span>
+						<span class="cell col-md-2"><a th:href="@{ /Pieces/Modifier/{id}(id=${piece.id}) }" class="btn btn-warning">Modifier</a></span>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
 </body>
 </html>

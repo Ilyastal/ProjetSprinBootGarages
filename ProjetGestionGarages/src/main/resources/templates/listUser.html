@@ -2,59 +2,84 @@
 <html xmlns:th=http://www.thymeleaf.org>
 <head th:replace="fragments/head.html :: title(value='Liste des utilisateurs')"></head>
 <body>
-	<header th:replace="fragments/header.html :: title(value='Liste des utilisateurs')"></header>
-    
-    <section>
-        <div class="container">
-           <div class="block-container">
-               <h3 class="h-center">Ajoutez un utilisateur</h3>
-           	   <div class="col">
-           	       <form action="#" method="post" th:action="@{/Utilisateurs}" th:object="${userForm}">
-						<label for="nom">Nom :</label>
-						<input class=""	type="text" th:field="*{nom}" id="nom" placeholder="Nom">
-						<label for="prenom">Prénom :</label>
-						<input class="" type="text" th:field="*{prenom}" id="prenom" placeholder="Prénom">
-						<label for="pseudo">Pseudo :</label>
-						<input class="" type="text" th:field="*{user}" id="pseudo" placeholder="Pseudo">
-						<label for="password">Mot de passe :</label>
-						<input class="" type="password" th:field="*{password}" id="password">
+	<header th:replace="fragments/header.html :: title(value='Liste des utilisateurs', role=' - Chef atelier')"></header>
+	
+	<section>
+		<div class="container">
+			<div class="block-container">
+				<h3 class="h-center" th:text="${action + ' d''un utilisateur'}"></h3>
+				<div class="col" th:if="${action == 'Ajout'}">
+					<form action="#" method="post" th:action="@{/Utilisateurs/Ajouter}" th:object="${userAdd}">
+						<span class="row form">
+							<label class="col-md-2" for="nom">Nom :</label>
+							<input class="col-md-4"type="text" th:field="*{nom}" id="nom" placeholder="Nom">
+							<label class="col-md-2" for="prenom">Prénom :</label>
+							<input class="col-md-4" type="text" th:field="*{prenom}" id="prenom" placeholder="Prénom">
+						</span>
 						
-<!-- 						<label for="roles">Rôles :</label> -->
-<!-- 						<input class="" type="checkbox" th:field="*{roles}" id="roles"> -->
+						<span class="row form">
+							<label class="col-md-2" for="pseudo">Pseudo :</label>
+							<input class="col-md-4"type="text" th:field="*{user}" id="pseudo" placeholder="Pseudo">
+							<label class="col-md-2" for="password">Mot de passe :</label>
+							<input class="col-md-4" type="password" th:field="*{password}" id="password" placeholder="Password">
+						</span>
 						
-						<select class="" th:field="*{roles}" id="roles" multiple>
-							<option th:each="role : ${possibleRoles}" th:value="${{role}}" th:text="${role.fonction}"></option>
-						</select>
-						
-						<button type="submit" class="btn btn-primary">Envoyé</button>
+						<span class="row form">
+							<label class="col-md-2" for="roles">Rôles :</label>
+							<select class="col-md-4" th:field="*{roles}" id="roles" multiple>
+								<option th:each="role : ${possibleRoles}" th:value="${{role}}" th:text="${role.fonction}"></option>
+							</select>
+							<button type="submit" class="btn btn-primary">Envoyé</button>
+						</span>
 					</form>
-           	   </div>
-           	   <h3 class="h-center">Liste des utilisateurs</h3>
-               <div class="col list">
-                   <div class="row thead">
-                       <span class="col-md-2">Nom</span>
-                       <span class="col-md-2">Prénom</span>
-                       <span class="col-md-2">Pseudo</span>
-                       <span class="col-md-1">Compte désactivé</span>
-                       <span class="col-md-1">Accès appli.</span>
-                       <span class="col-md-2">Rôles</span>
-                       <span class="col-md-2">Modification</span>
-                   </div>
-                   
-                   <div class="row line" th:each="user : ${ listUser }">
-                       <span class="col-md-2" th:text="*{user.nom}"></span>
-                       <span class="col-md-2" th:text="*{user.prenom}"></span>
-                       <span class="col-md-2" th:text="*{user.user}"></span>
-                       <span class="col-md-1" th:text="*{user.desactiveUser}"></span>
-                       <span class="col-md-1" th:text="*{user.desactiveAngular}"></span>
-                       <span class="col-md-2">
-                           <span class="badge" th:each="role : ${ user.roles }" th:text="*{role.fonction}" th:classappend="*{'badge-' + role.fonction}"></span><br>
-                       </span>
-                       <span class="col-md-2"><button class="btn btn-warning">Modifier</button></span>
-                   </div>
-               </div>
-           </div>
-        </div>
-    </section>
+				</div>
+				
+				<h3 class="h-center">Liste des utilisateurs</h3>
+				<div class="col list">
+					<div class="row thead">
+						<span class="cell col-md-2">Nom</span>
+						<span class="cell col-md-2">Prénom</span>
+						<span class="cell col-md-2">Pseudo</span>
+						<span class="cell col-md-1">Compte activé</span>
+						<span class="cell col-md-1">Accès appli.</span>
+						<span class="cell col-md-2">Rôles</span>
+						<span class="cell col-md-2">Modification</span>
+					</div>
+					 
+					<div th:if="${action == 'Modification'}">
+						<form class="row line" action="#" method="post" th:action="@{/Voitures/Modifier}" th:object="${userModif}">
+							<input type="hidden" th:field="*{id}" th:value="*{id}"/>
+							<span class="cell col-md-2"><input type="text" th:field="*{nom}"></span>
+							<span class="cell col-md-2"><input type="text" th:field="*{prenom}"></span>
+							<span class="cell col-md-2"><input type="text" th:field="*{user}"></span>
+							<input type="hidden" th:field="*{password}">
+							<span class="cell col-md-1"><label class="checkbox"><input type="checkbox" th:field="*{activeUser}"><span class="overlay"></span></label></span>
+							<span class="cell col-md-1"><label class="checkbox"><input type="checkbox" th:field="*{activeAngular}"><span class="overlay"></span></label></span>
+							
+							<span class="cell col-md-2">
+								<select th:field="*{roles}" id="roles" multiple>
+									<option th:each="role : ${possibleRoles}" th:value="${{role}}" th:text="${role.fonction}"></option>
+								</select>
+							</span>
+							
+							<span class="cell col-md-2"><button type="submit" class="btn btn-success">Valider</button></span>
+						</form>
+					</div>
+					
+					<div class="row line" th:each="user : ${ listUser }">
+						<span class="cell col-md-2" th:text="*{user.nom}"></span>
+						<span class="cell col-md-2" th:text="*{user.prenom}"></span>
+						<span class="cell col-md-2" th:text="*{user.user}"></span>
+						<span class="cell col-md-1"><span class="disable-check" th:classappend="*{'check-' + user.activeUser}"></span></span>
+						<span class="cell col-md-1"><span class="disable-check" th:classappend="*{'check-' + user.activeAngular}"></span></span>
+						<span class="cell col-md-2">
+							<span class="badge" th:each="role : ${ user.roles }" th:text="*{role.fonction}" th:classappend="*{'badge-' + role.fonction}"></span>
+						</span>
+						<span class="cell col-md-2"><a th:if="${user.id != 1}" th:href="@{ /Utilisateurs/Modifier/{id}(id=${user.id}) }" class="btn btn-warning">Modifier</a></span>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
 </body>
 </html>

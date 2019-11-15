@@ -24,10 +24,8 @@ public class FicheForm {
 	 @NotEmpty
 	private String dateCreation;
 	
-	 @NotEmpty
 	private Client client;
-	 
-	 @NotEmpty
+	
 	private Utilisateur utilisateur;
 	
 	public Integer getId() {
@@ -46,6 +44,14 @@ public class FicheForm {
 		this.description = description;
 	}
 	
+	public String getDateCreation() {
+		return dateCreation;
+	}
+
+	public void setDateCreation(String dateCreation) {
+		this.dateCreation = dateCreation;
+	}
+
 	public Client getClient() {
 		return client;
 	}

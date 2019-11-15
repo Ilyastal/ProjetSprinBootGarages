@@ -2,41 +2,30 @@ package com.garage.controlleur.form;
 
 import java.util.Date;
 
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
-import javax.persistence.Temporal;
-import javax.persistence.TemporalType;
 import javax.validation.constraints.NotEmpty;
 
-import com.garage.bean.Devis;
-import com.garage.bean.Utilisateur;
 import com.garage.bean.Voiture;
 
-/**
- * 
- */
 public class CommandeVoitureForm {
 
-	public CommandeVoitureForm() {
-	}
 	private Integer id;
 	
-	@NotEmpty
 	private Date dateCommande;
 	
-	@NotEmpty
 	private Date dateReception;
-	@NotEmpty
-	private Integer quantite;
 	
 	@NotEmpty
+	private String quantite;
+	
 	private Date dateCloture;
+	
 	@NotEmpty
-	private Utilisateur utilisateur;
-	@NotEmpty
+	private String utilisateur;
+	
 	private Voiture voiture;
+	
 	@NotEmpty
-	private Devis devis;
+	private String devis;
 	
 	
 	public Integer getId() {
@@ -46,7 +35,15 @@ public class CommandeVoitureForm {
 	public void setId(Integer id) {
 		this.id = id;
 	}
+	
+	public String getQuantite() {
+		return quantite;
+	}
 
+	public void setQuantite(String quantite) {
+		this.quantite = quantite;
+	}
+	
 	public Date getDateCommande() {
 		return dateCommande;
 	}
@@ -63,14 +60,6 @@ public class CommandeVoitureForm {
 		this.dateReception = dateReception;
 	}
 
-	public Integer getQuantite() {
-		return quantite;
-	}
-
-	public void setQuantite(Integer quantite) {
-		this.quantite = quantite;
-	}
-
 	public Date getDateCloture() {
 		return dateCloture;
 	}
@@ -78,13 +67,12 @@ public class CommandeVoitureForm {
 	public void setDateCloture(Date dateCloture) {
 		this.dateCloture = dateCloture;
 	}
-	
 
-	public Utilisateur getUtilisateur() {
+	public String getUtilisateur() {
 		return utilisateur;
 	}
 
-	public void setUtilisateur(Utilisateur utilisateur) {
+	public void setUtilisateur(String utilisateur) {
 		this.utilisateur = utilisateur;
 	}
 
@@ -96,11 +84,11 @@ public class CommandeVoitureForm {
 		this.voiture = voiture;
 	}
 	
-	public Devis getDevis() {
+	public String getDevis() {
 		return devis;
 	}
 
-	public void setDevis(Devis devis) {
+	public void setDevis(String devis) {
 		this.devis = devis;
 	}
 }

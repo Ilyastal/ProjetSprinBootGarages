@@ -19,7 +19,7 @@ public class ServicePiece implements IServicePiece {
 	
 	@Transactional
 	@Override
-	public void ajouterPiece(Piece piece) {
+	public void creerPiece(Piece piece) {
 		daoPiece.save(piece);
 	}
 	

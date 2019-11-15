@@ -18,11 +18,7 @@ import com.garage.iservice.IServiceTache;
 @Service
 public class ServiceTache implements IServiceTache {
 	@Autowired DaoTache tacheDao;
-	/**
-	 * Default constructor
-	 */
-	public ServiceTache() {
-	}
+	
 
 	@Transactional
 	@Override

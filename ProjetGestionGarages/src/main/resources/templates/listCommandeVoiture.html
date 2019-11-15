@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html xmlns:th=http://www.thymeleaf.org>
+<head th:replace="fragments/head.html :: title(value='Liste commandes de voiture')"></head>
+<body>
+<header th:replace="fragments/header.html :: title(value='Liste commandes voitures', role=' - Magasinier')"></header>
+
+	<section>
+		<div class="container">
+			<div class="block-container">
+				<h3 class="h-center">Liste des commandes de voiture en cours</h3>
+				<div class="col list">
+					<div class="row thead">
+						<span class="cell col-md-2">Date de commande</span>
+						<span class="cell col-md-2">Date de réception</span>
+						<span class="cell col-md-2">Date de clôture</span>
+						<span class="cell col-md-1">Quantité</span>
+						<span class="cell col-md-3">Voiture</span>
+						<span class="cell col-md-2">Modification</span>
+					</div>
+					
+					<div th:if="${action == 'Modification'}">
+						<form class="row line" action="#" method="post" th:action="@{/CommandesVoiture}" th:object="${commandeModif}">
+							<input type="hidden" th:field="*{id}" th:value="*{id}"/>
+							<input type="hidden" th:field="*{dateCommande}"/>
+							<span class="cell col-md-2" th:text="*{dateCommande}"></span>
+							<span class="cell col-md-2"><input type="date" th:field="*{dateReception}"></span>
+							<input type="hidden" th:field="*{dateCloture}"/>
+							<span class="cell col-md-2" th:text="*{dateCloture}"></span>
+							<input type="hidden" th:field="*{quantite}"/>
+							<span class="cell col-md-1" th:text="*{quantite}"></span>
+							<input type="hidden" th:field="*{voiture}"/>
+							<span class="cell col-md-3" th:text="*{voiture.marque + ' ' + voiture.modele}"></span>
+							<input type="hidden" th:field="*{utilisateur}"/>
+							<input type="hidden" th:field="*{devis}"/>
+							<span class="cell col-md-2"><button type="submit" class="btn btn-success">Valider</button></span>
+						</form>
+					</div>
+					
+					<div class="row line" th:each="commande : ${ listCommandeVoiture }">
+						<span class="cell col-md-2" th:text="*{commande.dateCommande}"></span>
+						<span class="cell col-md-2" th:text="*{commande.dateReception}"></span>
+						<span class="cell col-md-2" th:text="*{commande.dateCloture}"></span>
+						<span class="cell col-md-1" th:text="*{commande.quantite}"></span>
+						<span class="cell col-md-3" th:text="*{commande.voiture.marque + ' ' + commande.voiture.modele}"></span>
+						<span class="cell col-md-2"><a th:href="@{ /CommandesVoiture/Modifier/{id}(id=${commande.id}) }" class="btn btn-warning">Modifier</a></span>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+</body>
+</html>

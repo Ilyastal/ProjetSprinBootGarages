@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -12,44 +13,36 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.garage.bean.CommandeVoiture;
-import com.garage.bean.Piece;
-import com.garage.bean.Voiture;
-import com.garage.service.ServiceCommandeVoiture;
-import com.garage.service.ServicePiece;
-import com.garage.service.ServiceVoiture;
+import com.garage.bean.Client;
+import com.garage.service.ServiceClient;
 
 /**
  * 
  */
 @RestController
 @CrossOrigin
-@RequestMapping("/Rest/commande_voitures/")
-public class CommandeVoitureRest {
-
+@RequestMapping("/Rest/clients/")
+public class ClientsRest {
 	@Autowired
-	 ServiceCommandeVoiture serviceCommandeVoiture;
+	 ServiceClient serviceclient;
 	
 	@GetMapping(name = "/")
-	public List<CommandeVoiture> getall() {
-		return serviceCommandeVoiture.rechercheCommandeVoiture();
+	public List<Client> getall() {
+		return serviceclient.rechercheClient();
 	}
 	
 	@PostMapping(value = "/")
-	public void add(@RequestBody CommandeVoiture commandeVoiture) {
-		//System.out.println(cl.getId());
-		serviceCommandeVoiture.creerCommandeVoiture(commandeVoiture);
+	public void add(@RequestBody Client cl) {
+		System.out.println(cl.getId());
+		serviceclient.creerClient(cl);
 	}
-	@PutMapping(value = "/{id}")
-	public void modifier(@PathVariable Integer id,@RequestBody CommandeVoiture commandeVoiture) {
+	@PutMapping(value = "/clients/{id}")
+	public void modifier(@PathVariable Integer id,@RequestBody Client cl) {
 //		if(serviceclient.rechercherClientId(id) == null) return null;
-		serviceCommandeVoiture.modifierCommandeVoiture(commandeVoiture);
+		serviceclient.modifierClient(cl);
 	}
 //	@DeleteMapping(value= "/clients/{id}")
 //	public void modifier(@PathVariable Integer id) throws Exception {
 //		serviceclient.desactiverClient();
 //	}
-
-
-
 }

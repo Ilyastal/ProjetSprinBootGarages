@@ -1,5 +1,7 @@
 package com.garage.controlleur;
 
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,26 +19,35 @@ import com.garage.iservice.IServiceDevis;
 @Controller
 public class DevisController {
 
-	/**
-	 * Default constructor
-	 */
-	public DevisController() {
-	}
-	
+
+
 	@Autowired
 	private IServiceDevis servicedevis;
+	
+	private Devis convertForm(DevisForm devisForm) throws Exception {
+		SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
+		Date date = sdf.parse(devisForm.getDateDevis());
+		Devis devis = new Devis();
+		devis.setId(devisForm.getId());
+		devis.setDateDevis(date);
+		devis.setDescription(devisForm.getDescription());
+		devis.setPrixHt(Double.valueOf(devisForm.getPrixHt()));
+		devis.setTva(Double.valueOf(devisForm.getTva()));
+		devis.setQuantite(Integer.valueOf(devisForm.getQuantite()));
+       return devis;
+   }
 	
 	@GetMapping("/afficherDevis")
 	public String Afficher(Model model) {
 		final List<Devis> ldevis = servicedevis.rechercheDevis();
-		model.addAttribute("listDevis", ldevis); //attribut du fichier html
+		model.addAttribute("listDevis", ldevis);
 		model.addAttribute("action", "CreerDevis");
         if(model.containsAttribute("devisForm") == false) {
-            DevisForm devisForm = new DevisForm();
-            devisForm.setId(0);
+        	DevisForm devisForm = new DevisForm();
+        	devisForm.setId(0);
             model.addAttribute("devisForm", devisForm);
         }
-		return "listDevis"; //correspond au fichier html
+		return "listDevis";
 	}
 
 }
