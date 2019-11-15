@@ -55,7 +55,7 @@ header li {
     text-align: center;
     font-size: 1.3rem;
     display: inline-block;
-    width: 150px;
+    width: 250px;
     margin: 0;
     padding: 0;
     border-style: solid;
@@ -182,8 +182,44 @@ span.form label {
 	color: white;
 }
 
-.btn-normal {
-    background-color: #FF0;
+.badge-TRESURGENT {
+	background-color: #DC3545;
+	color: white;
+}
+
+.badge-URGENT {
+	background-color: #FF0080;
+	color: white;
+}
+
+.badge-NORMAL {
+	background-color: #C0C0C0;
+	color: white;
+}
+
+.badge-NONPRIORITAIRE {
+	background-color: #00D56A;
+	color: white;
+}
+
+.badge-AFAIRE {
+	background-color: #DC3545;
+	color: white;
+}
+
+.badge-ENCOURS {
+	background-color: #FFC107;
+	color: black;
+}
+
+.badge-TERMINER {
+	background-color: #007BFF;
+	color: white;
+}
+
+.badge-VALIDER {
+	background-color: #28A745;
+	color: white;
 }
 
 .container {
@@ -193,42 +229,7 @@ span.form label {
 .container {
     margin-bottom: 50px;
 }
-/*
-.fiche {
-    background-color: #FFF;
-    border: #544600 solid 2px;
-    margin-top: 5px;
-}
 
-.fiche span {
-    margin: auto;
-    border-left: #544600 solid 2px;
-    border-right: #544600 solid 2px;
-}
-
-.fiche span:first-child, span:last-child {
-    width: 16.669%;
-    text-align: center;
-    border: none;
-}
-
-.tache {
-    background-color: #FFF;
-    border: #544600 solid 2px;
-    border-top: none;
-}
-
-.tache span {
-    margin: auto;
-    border-left: #544600 solid 2px;
-    border-right: #544600 solid 2px;
-}
-
-.tache span:first-child, span:last-child {
-    text-align: center;
-    border: none;
-}
-*/
 .block-container {
     padding: 20px;
     background-color: white;
@@ -261,6 +262,13 @@ span.form label {
     border: #544600 solid 2px;
 }
 
+.thead-light {
+	color: #544600;
+    font-weight: 600;
+    font-size: 1rem;
+    border: #544600 solid 1px;
+}
+
 .list .cell {
     text-align: center;
     margin: auto;
@@ -269,5 +277,12 @@ span.form label {
 
 .line {
     border: #544600 solid 2px;
+    border-top: none;
+    padding-bottom: 1px;
+    padding-right: 1px;
+}
+
+.line-light {
+    border: #544600 solid 1px;
     border-top: none;
 }

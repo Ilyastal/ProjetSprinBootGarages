@@ -69,7 +69,6 @@ public class CommandeVoitureController {
 		
 		return com;
 	}
-
 	
 	@GetMapping("/CommandesVoiture")
 	public String afficher(Model model) {

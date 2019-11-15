@@ -29,7 +29,7 @@ public class Tache {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer id;
 
-	@Temporal(TemporalType.TIMESTAMP)
+	@Temporal(TemporalType.DATE)
 	private Date dateFinTache;
 	
 	private String description;
@@ -44,7 +44,7 @@ public class Tache {
 	
 	private Boolean cloture;
 	
-	@Temporal(TemporalType.TIMESTAMP)
+	@Temporal(TemporalType.DATE)
 	private Date dateCreation;
 	
 	

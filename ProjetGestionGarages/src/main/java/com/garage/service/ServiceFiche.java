@@ -56,9 +56,9 @@ public class ServiceFiche implements IServiceFiche {
 
 	@Transactional
 	@Override
-	public void ValiderFiche(Fiche fiche) {
-		fiche.setValidation(true);
-		ficheDao.save(fiche);
-	}
+	public void cloturerFiche(Fiche fiche) {
+        fiche.setValidation(true);
+        ficheDao.save(fiche);
+    }
 
 }
