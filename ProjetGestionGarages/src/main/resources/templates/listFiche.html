@@ -11,29 +11,37 @@
 				<div class="col list">
 					<div class="row thead">
 						<span class="cell col-md-1">Numéro de fiche</span>
-                        <span class="cell col-md-3">Description</span>
-                        <span class="cell col-md-2">Date de création</span>
-                        <span class="cell col-md-2">Date de validation</span>
-                        <span class="cell col-md-2">Niveau de priorité</span>
-                        <span class="cell col-md-2">Fiche terminée</span>
+						<span class="cell col-md-5">Description</span>
+						<span class="cell col-md-2">Date de création</span>
+						<span class="cell col-md-2">Date de validation</span>
+						<span class="cell col-md-2">Niveau de priorité</span>
 					</div>
 					
 					<div class="row line" th:each="fiche : ${ listFiche }">
 						<span class="cell col-md-1" th:text="*{fiche.id}"></span>
-                        <span class="cell col-md-3" th:text="*{fiche.description}"></span>
-                        <span class="cell col-md-2" th:text="*{fiche.dateCreation}"></span>
-                        <span class="cell col-md-2" th:text="*{fiche.dateValidation}"></span>
-                        <span class="cell col-md-2">
-						<span class="badge" th:text="*{fiche.niveauPriorite}" th:classappend="*{'badge-' + fiche.niveauPriorite}"></span>
-						</span> 
+						<span class="cell col-md-3" th:text="*{fiche.description}"></span>
+						<span class="cell col-md-2" th:text="*{fiche.dateCreation}"></span>
+						<span class="cell col-md-2" th:text="*{fiche.dateValidation}"></span>
+						<span class="cell col-md-2">
+							<span class="badge" th:text="*{fiche.niveauPriorite}" th:classappend="*{'badge-' + fiche.niveauPriorite}"></span>
+						</span>
 						<span class="cell col-md-2">
 							<form action="#" method="post" th:action="@{/Fiches}" th:object="${ficheForm}">
 								<input type="hidden" th:field="*{id}" th:value="*{id}"/>
 								<button type="submit" class="btn btn-success">Clôturer</button>
 							</form>
 						</span>
+
+						<div class="row thead-light offset-1 col-md-11">
+							<span class="cell col-md-1">N°</span>
+							<span class="cell col-md-3">Description</span>
+							<span class="cell col-md-2">Date de création</span>
+							<span class="cell col-md-2">Date de réalisation</span>
+							<span class="cell col-md-2">État de la tâche</span>
+							<span class="cell col-md-2">Niveau de priorité</span>
+						</div>
 						
-						<div class="row offset-1 tache box-shadow" th:each="tache, status : ${ fiche.taches }">
+						<div class="row offset-1 col-md-11 line-light" th:each="tache, status : ${ fiche.taches }">
 							<span class="cell col-md-1" th:text="${'Tache ' + status.count}"></span>
 							<span class="cell col-md-3" th:text="*{tache.description}"></span>
 							<span class="cell col-md-2" th:text="*{tache.dateCreation}"></span>

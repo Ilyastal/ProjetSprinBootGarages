@@ -28,7 +28,7 @@ public class FicheController {
 
 	@Autowired
 	private DaoFiche daoFiche;
-
+	
 	private Fiche convertForm(FicheForm ficheForm) throws Exception {
 		SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
 		Date date = sdf.parse(ficheForm.getDateCreation());
@@ -44,7 +44,6 @@ public class FicheController {
 	@GetMapping("/Fiches")
 	public String afficher(Model model) {
 		model.addAttribute("listFiche", daoFiche.findFiche());
-		model.addAttribute("action", "CreerFiche");
 		if(model.containsAttribute("ficheForm") == false) {
 			FicheForm ficheForm = new FicheForm();
 			model.addAttribute("ficheForm", ficheForm);
