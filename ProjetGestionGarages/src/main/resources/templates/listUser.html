@@ -47,7 +47,7 @@
 					</div>
 					 
 					<div th:if="${action == 'Modification'}">
-						<form class="row line" action="#" method="post" th:action="@{/Utilisateurs/Modifier}" th:object="${userModif}">
+						<form class="row line" action="#" method="post" th:action="@{/Voitures/Modifier}" th:object="${userModif}">
 							<input type="hidden" th:field="*{id}" th:value="*{id}"/>
 							<span class="cell col-md-2"><input type="text" th:field="*{nom}"></span>
 							<span class="cell col-md-2"><input type="text" th:field="*{prenom}"></span>
