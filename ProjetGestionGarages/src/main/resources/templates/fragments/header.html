@@ -1,7 +1,7 @@
-<header th:fragment="title(value)">
+<header th:fragment="title(value, role)">
     <img src="../../img/arrow.png" id="img-left" alt="Menu">
     <span id="span-left" th:text="${value}"></span>
-    <span id="span-right">Jean Michel - Chef d'atelier</span>
+    <span id="span-right" th:text="${'Jean Michel' + role}"></span>
     <img src="../../img/logout.png" id="img-right" alt="Deconnexion">
     
     <ul class="box-shadow">
