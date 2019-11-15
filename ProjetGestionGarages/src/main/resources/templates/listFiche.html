@@ -23,24 +23,34 @@
 						<span class="cell col-md-2" th:text="*{fiche.dateCreation}"></span>
 						<span class="cell col-md-2" th:text="*{fiche.dateValidation}"></span>
 						<span class="cell col-md-2">
-						<span class="badge" th:text="*{fiche.niveauPriorite}" th:classappend="*{'badge-' + fiche.niveauPriorite}"></span>
-						</span> 
-						<div class="row offset-1 tache box-shadow" th:each="tache, status : ${ fiche.taches }">
+							<span class="badge" th:text="*{fiche.niveauPriorite}" th:classappend="*{'badge-' + fiche.niveauPriorite}"></span>
+						</span>
+						
+						<div class="row thead-light offset-1 col-md-11">
+							<span class="cell col-md-1">N°</span>
+							<span class="cell col-md-3">Description</span>
+							<span class="cell col-md-2">Date de création</span>
+							<span class="cell col-md-2">Date de réalisation</span>
+							<span class="cell col-md-2">État de la tâche</span>
+							<span class="cell col-md-2">Niveau de priorité</span>
+						</div>
+						
+						<div class="row offset-1 col-md-11 line-light" th:each="tache, status : ${ fiche.taches }">
 							<span class="cell col-md-1" th:text="${'Tache ' + status.count}"></span>
-							<span class="cell col-md-4" th:text="*{tache.description}"></span>
+							<span class="cell col-md-3" th:text="*{tache.description}"></span>
 							<span class="cell col-md-2" th:text="*{tache.dateCreation}"></span>
 							<span class="cell col-md-2" th:text="*{tache.dateFinTache}"></span>
-							<span class="cell col-md-2" th:text="*{tache.etatTache}"></span>
 							<span class="cell col-md-2">
-							<span class="badge" th:text="*{tache.niveauPriorite}" th:classappend="*{'badge-' + tache.niveauPriorite}"></span>
+								<span class="badge" th:text="*{tache.etatTache}" th:classappend="*{'badge-' + tache.etatTache}"></span>
+							</span>
+							<span class="cell col-md-2">
+								<span class="badge" th:text="*{tache.niveauPriorite}" th:classappend="*{'badge-' + tache.niveauPriorite}"></span>
 							</span>
                 		</div>
 					</div>
-					
 				</div>
 			</div>
 		</div>
     </section>
-
 </body>
 </html>

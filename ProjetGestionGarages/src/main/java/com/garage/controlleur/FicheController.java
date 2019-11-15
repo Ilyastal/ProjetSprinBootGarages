@@ -13,17 +13,8 @@ import com.garage.bean.Fiche;
 import com.garage.controlleur.form.FicheForm;
 import com.garage.iservice.IServiceFiche;
 
-/**
- * 
- */
 @Controller
 public class FicheController {
-
-	/**
-	 * Default constructor
-	 */
-	public FicheController() {
-	}
 	
 	@Autowired
 	private IServiceFiche servicefiche;
@@ -37,10 +28,10 @@ public class FicheController {
         fiche.setDateCreation(date);
         fiche.setClient(ficheForm.getClient());
         fiche.setUtilisateur(ficheForm.getUtilisateur());
-       return fiche;
-   }
+        return fiche;
+	}
     
-    @GetMapping("/Fiches")
+	@GetMapping("/Fiches")
     public String Afficher(Model model) {
         final List<Fiche> lfiche = servicefiche.rechercheFiche();
         model.addAttribute("listFiche", lfiche);
