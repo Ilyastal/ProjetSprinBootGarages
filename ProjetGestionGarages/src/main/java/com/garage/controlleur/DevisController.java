@@ -23,31 +23,31 @@ public class DevisController {
 
 	@Autowired
 	private IServiceDevis servicedevis;
-
-//	private Devis convertForm(DevisForm devisform) throws Exception {
-//		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
-//
-//		Date madate = sdf.parse(devisform.getDateDevis());
-//		Devis devis = new Devis();
-//		devis.setId(devisform.getId());
-//		devis.setDateDevis(dateDevis);
-//		devis.setPrenom(devisform.getPrenom());;
-//		devis.setUser(devisform.getUser());
-//		devis.setPassword(devisform.getPassword());
-//		return devis;
-//	}
-
+	
+	private Devis convertForm(DevisForm devisForm) throws Exception {
+		SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
+		Date date = sdf.parse(devisForm.getDateDevis());
+		Devis devis = new Devis();
+		devis.setId(devisForm.getId());
+		devis.setDateDevis(date);
+		devis.setDescription(devisForm.getDescription());
+		devis.setPrixHt(Double.valueOf(devisForm.getPrixHt()));
+		devis.setTva(Double.valueOf(devisForm.getTva()));
+		devis.setQuantite(Integer.valueOf(devisForm.getQuantite()));
+       return devis;
+   }
+	
 	@GetMapping("/afficherDevis")
 	public String Afficher(Model model) {
 		final List<Devis> ldevis = servicedevis.rechercheDevis();
-		model.addAttribute("listDevis", ldevis); //attribut du fichier html
+		model.addAttribute("listDevis", ldevis);
 		model.addAttribute("action", "CreerDevis");
         if(model.containsAttribute("devisForm") == false) {
-            DevisForm devisForm = new DevisForm();
-            devisForm.setId(0);
+        	DevisForm devisForm = new DevisForm();
+        	devisForm.setId(0);
             model.addAttribute("devisForm", devisForm);
         }
-		return "listDevis"; //correspond au fichier html
+		return "listDevis";
 	}
 
 }

@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html xmlns:th=http://www.thymeleaf.org>
+<head th:replace="fragments/head.html :: title(value='Liste commandes voitures')"></head>
+<body>
+	<header th:replace="fragments/header.html :: title(value='Liste commandes voitures')"></header>
+    
+    <section>
+        <div class="container">
+           <div class="block-container">
+              
+           	   <h3 class="h-center">Liste des commandes voitures</h3>
+               <div class="col list">
+                   <div class="row thead">
+                       <span class="col-md-2">Date de commande</span>
+                       <span class="col-md-2">Date de reception</span>
+                       <span class="col-md-2">Quantité</span>
+                 
+                       <span class="col-md-2">date de cloture</span>
+                          <span class="col-md-2">Voiture</span>
+                       <span class="col-md-2">Modification</span>
+                   </div>
+                  
+                  <div class="row line" th:each="commande : ${ listCommandeVoiture }">
+                 
+                       <span class="col-md-2" th:text="*{commande.dateCommande}"></span>
+                       <span class="col-md-2" th:text="*{commande.dateReception}"></span>
+                       <span class="col-md-2" th:text="*{commande.quantite}"></span>
+         
+                       <span class="col-md-2" th:text="*{commande.dateCloture}"></span>
+                       <span class="col-md-1" th:text="*{commande.voiture.marque}"></span>
+                        <span class="col-md-1"  th:text="*{commande.voiture.modele}"></span>
+                        <span class="col-md-2">
+                        <a th:href="@{ /afficherCommandeVoiture/Modifier/{id}(id=${commande.id}) }" class="btn btn-warning">Modifier la date de commande</a> 
+                   </span>
+                   </div>
+                    <div  th:if="${action == 'Modification'}">
+                       <form class="row line" action="#" method="post" th:action="@{/CommandeVoiture/Modifier}" th:object="${CommandeModif}">
+                       	   <input type="hidden" th:field="*{id}" th:value="*{id}"/>
+                         <span class="col-md-2"> <input type="text" th:field="*{dateCommande}"></span>
+                           <span class="col-md-2"><input type="text" th:field="*{dateReception}"></span>
+                        <span class="col-md-2"> <input type="text" th:field="*{quantite}"></span>
+                           <span class="col-md-2"><input type="text" th:field="*{dateCloture}"></span>
+                      <span class="col-md-2"><input type="text" th:field="*{voiture}"></span>
+                     <input type="hidden" th:field="*{utilisateur}">
+                     <input type="hidden" th:field="*{devis}">
+                          <span class="col-md-2"><button type="submit" class="btn btn-success">Valider</button></span>
+                       </form>
+                   </div>
+               </div>
+               
+           </div>
+        </div>
+    </section>
+</body>
+</html>

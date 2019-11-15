@@ -41,7 +41,7 @@ public class TacheForm {
 	private Boolean cloture;
 	
     @NotEmpty
-	private Date dateCreation;
+	private String dateCreation;
 	
 	
     @NotEmpty
@@ -94,15 +94,22 @@ public class TacheForm {
 		this.cloture = cloture;
 	}
 	
-	public Date getDateCreation() {
+	public String getDateCreation() {
 		return dateCreation;
 	}
 	
-	public void setDateCreation(Date dateCreation) {
+	public void setDateCreation(String dateCreation) {
 		this.dateCreation = dateCreation;
 	}
 	
-	
+	public String getDateFinTache() {
+		return dateFinTache;
+	}
+
+	public void setDateFinTache(String dateFinTache) {
+		this.dateFinTache = dateFinTache;
+	}
+
 	public Fiche getFiche() {
 		return fiche;
 	}

@@ -22,21 +22,21 @@ public class CommandeVoitureForm {
 	private Integer id;
 	
 	@NotEmpty
-	private Date dateCommande;
+	private String dateCommande;
 	
 	@NotEmpty
-	private Date dateReception;
+	private String dateReception;
 	@NotEmpty
-	private Integer quantite;
+	private String quantite;
 	
 	@NotEmpty
-	private Date dateCloture;
+	private String dateCloture;
 	@NotEmpty
-	private Utilisateur utilisateur;
+	private String utilisateur;
 	@NotEmpty
-	private Voiture voiture;
+	private String voiture;
 	@NotEmpty
-	private Devis devis;
+	private String devis;
 	
 	
 	public Integer getId() {
@@ -47,60 +47,64 @@ public class CommandeVoitureForm {
 		this.id = id;
 	}
 
-	public Date getDateCommande() {
-		return dateCommande;
-	}
 
-	public void setDateCommande(Date dateCommande) {
-		this.dateCommande = dateCommande;
-	}
 
-	public Date getDateReception() {
-		return dateReception;
-	}
-
-	public void setDateReception(Date dateReception) {
-		this.dateReception = dateReception;
-	}
-
-	public Integer getQuantite() {
+	public String getQuantite() {
 		return quantite;
 	}
 
-	public void setQuantite(Integer quantite) {
+	public void setQuantite(String quantite) {
 		this.quantite = quantite;
 	}
 
-	public Date getDateCloture() {
+	
+	
+
+	public String getDateCommande() {
+		return dateCommande;
+	}
+
+	public void setDateCommande(String dateCommande) {
+		this.dateCommande = dateCommande;
+	}
+
+	public String getDateReception() {
+		return dateReception;
+	}
+
+	public void setDateReception(String dateReception) {
+		this.dateReception = dateReception;
+	}
+
+	public String getDateCloture() {
 		return dateCloture;
 	}
 
-	public void setDateCloture(Date dateCloture) {
+	public void setDateCloture(String dateCloture) {
 		this.dateCloture = dateCloture;
 	}
-	
 
-	public Utilisateur getUtilisateur() {
+	public String getUtilisateur() {
 		return utilisateur;
 	}
 
-	public void setUtilisateur(Utilisateur utilisateur) {
+	public void setUtilisateur(String utilisateur) {
 		this.utilisateur = utilisateur;
 	}
 
-	public Voiture getVoiture() {
+	public String getVoiture() {
 		return voiture;
 	}
 
-	public void setVoiture(Voiture voiture) {
+	public void setVoiture(String voiture) {
 		this.voiture = voiture;
 	}
 	
-	public Devis getDevis() {
+	public String getDevis() {
 		return devis;
 	}
 
-	public void setDevis(Devis devis) {
+	public void setDevis(String devis) {
 		this.devis = devis;
 	}
 }

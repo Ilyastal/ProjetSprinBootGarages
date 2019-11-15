@@ -8,6 +8,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
+import javax.validation.constraints.NotNull;
 
 import com.garage.enums.Genre;
 
@@ -19,18 +20,25 @@ public class Client {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer id;
 	
+	@NotNull
 	private String nom;
 	
+	@NotNull
 	private String prenom;
 	
+	@NotNull
 	private String adresse;
 	
+	@NotNull
 	private String codePostal;
 	
+	@NotNull
 	private String ville;
 	
+	@NotNull
 	private String telephone;
 	
+	@NotNull
 	@Enumerated(EnumType.STRING)
     @Column(columnDefinition = "ENUM('MADAME', 'MONSIEUR')")
 	private Genre sexe;
@@ -105,7 +113,7 @@ public class Client {
 	public Genre getSexe() {
 		return sexe;
 	}
-
+	
 	public void setSexe(Genre sexe) {
 		this.sexe = sexe;
 	}
