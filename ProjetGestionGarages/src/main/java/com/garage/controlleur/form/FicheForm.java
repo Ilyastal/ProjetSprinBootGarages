@@ -24,10 +24,8 @@ public class FicheForm {
 	 @NotEmpty
 	private String dateCreation;
 	
-	 @NotEmpty
 	private Client client;
-	 
-	 @NotEmpty
+	
 	private Utilisateur utilisateur;
 	
 	public Integer getId() {
